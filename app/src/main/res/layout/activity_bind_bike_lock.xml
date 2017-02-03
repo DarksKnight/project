@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    android:orientation="vertical"
+    tools:context="com.express56.xq.qzy.aishang.bms.activity.BindBikeLockActivity">
+
+    <RelativeLayout
+        android:id="@+id/lock_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title"
+        android:background="@color/color_title_bg">
+
+        <ImageView
+            android:id="@+id/bind_bike_lock_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:padding="8dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/str_title_express_search"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_2" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bg_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lock_title_part"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_image_bg"
+        android:orientation="vertical">
+
+        <include layout="@layout/view_line_match_parent" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lock_prompt_str_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bg_part"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/str_prompt_bind_lock_number"
+        android:textColor="#B9B9B9"
+        android:textSize="@dimen/font_content_size_4" />
+
+    <LinearLayout
+        android:id="@+id/lock_device_number_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lock_prompt_str_part"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_left"
+        android:layout_marginTop="@dimen/margin_top"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:background="@drawable/bg_bind_view_edittext_with_corner">
+
+            <ImageView
+                android:id="@+id/lock_bike_part"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bind_lock_icon"
+                android:textColor="@color/color_prompt_words"
+                android:textSize="@dimen/font_content_size_3" />
+
+            <EditText
+                android:id="@+id/edit_lock_device_number_part"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bind_bike_edittext_height"
+                android:layout_toRightOf="@+id/lock_bike_part"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+                android:gravity="center"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:textColor="#8B8B8B"
+                android:textSize="@dimen/font_content_size_2_1" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/padding_3"
+            android:layout_marginRight="@dimen/padding_3"
+            android:layout_weight="1"
+            android:background="#D3D4D8" />
+
+
+        <EditText
+            android:id="@+id/edit_lock_validate_number_part"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bind_bike_edittext_height"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_bind_view_edittext_with_corner"
+            android:layout_weight="4"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="#8B8B8B"
+            android:textSize="@dimen/font_content_size_2_1" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bind_bike_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/lock_device_number_part"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:layout_marginTop="16dp"
+        android:background="#D3D4D8" />
+
+    <TextView
+        android:id="@+id/bind_bike_upload_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bind_bike_line"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:lineSpacingMultiplier="1.1"
+        android:text="@string/str_prompt_bind_lock_number_upload_pic"
+        android:textColor="#D3D4D8"
+        android:textSize="@dimen/font_content_size_4" />
+
+    <Button
+        android:id="@+id/bind_bike_lock_btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/long_btn_height_1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:background="@drawable/bg_btn_bind_lock"
+        android:gravity="center"
+        android:text="@string/str_btn_bind"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_content_size_2" />
+
+
+    <RelativeLayout
+        android:id="@+id/bind_bike_card_part"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bind_bike_lock_btn_confirm"
+        android:layout_below="@id/bind_bike_upload_prompt"
+        android:background="@color/color_white"
+        android:padding="@dimen/margin_left">
+
+
+        <RelativeLayout android:id="@+id/bind_bike_img_part"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_upload_pic_with_corner"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/bind_bike_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/bind_bike_add_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="40dp"
+                android:drawableTop="@drawable/btn_upload_pic"
+                android:paddingTop="60dp"
+                android:paddingBottom="60dp"
+                android:text="@string/str_upload_bike_prompt" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/bind_bike_reupload_pic_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_upload_pic_with_corner_bottom"
+            android:drawableLeft="@drawable/credit_icon_update_normal"
+            android:layout_alignBottom="@id/bind_bike_img_part"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:text="@string/str_re_upload_pic"
+            android:textColor="@color/color_white"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="tag_school_gps_location" />
+    <item type="id" name="tag_school_info" />
+    <item type="id" name="tag_listholder" />
+    <item type="id" name="tag_imageview" />
+    <item type="id" name="tag_my_express" />
+</resources>

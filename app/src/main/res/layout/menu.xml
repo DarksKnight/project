@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/menu_header"
+        layout="@layout/nav_header_main" />
+
+    <TextView
+        android:id="@+id/menu_authentication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_header"
+        android:background="@drawable/menu_item_bg_color"
+        android:clickable="true"
+        android:drawableLeft="@drawable/bg_menu_account"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/main_menu_item_vertical_padding"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="@dimen/main_menu_item_vertical_padding"
+        android:text="@string/str_menu_item_my_authentication"
+        android:textColor="@drawable/menu_item_text_color"
+        android:textSize="@dimen/font_content_size_3_1" />
+
+    <TextView
+        android:id="@+id/menu_trips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_authentication"
+        android:background="@drawable/menu_item_bg_color"
+        android:clickable="true"
+        android:drawableLeft="@drawable/bg_menu_trip"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/main_menu_item_vertical_padding"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="@dimen/main_menu_item_vertical_padding"
+        android:text="@string/str_menu_item_my_trips"
+        android:textColor="@drawable/menu_item_text_color"
+        android:textSize="@dimen/font_content_size_3_1" />
+
+    <TextView
+        android:id="@+id/menu_lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_trips"
+        android:background="@drawable/menu_item_bg_color"
+        android:clickable="true"
+        android:drawableLeft="@drawable/bg_menu_lock"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/main_menu_item_vertical_padding"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="@dimen/main_menu_item_vertical_padding"
+        android:text="@string/str_menu_item_my_lock"
+        android:textColor="@drawable/menu_item_text_color"
+        android:textSize="@dimen/font_content_size_3_1" />
+
+    <TextView
+        android:id="@+id/menu_about_us"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_lock"
+        android:background="@drawable/menu_item_bg_color"
+        android:clickable="true"
+        android:drawableLeft="@drawable/bg_menu_setting"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/main_menu_item_vertical_padding"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="@dimen/main_menu_item_vertical_padding"
+        android:text="@string/str_menu_item_about_us"
+        android:textColor="@drawable/menu_item_text_color"
+        android:textSize="@dimen/font_content_size_3_1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/str_copyright"
+        android:textColor="#B9B9B9"
+        android:textSize="@dimen/font_content_size_5" />
+
+</RelativeLayout>

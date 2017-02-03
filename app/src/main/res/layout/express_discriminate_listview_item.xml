@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_image_bg"
+    android:orientation="vertical">
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginTop="10dp">-->
+
+    <!--<TextView android:id="@+id/express_discriminate_set_id"-->
+    <!--style="@style/style_button_normal"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_marginLeft="20dp"-->
+    <!--android:text="维护快递单号" />-->
+
+    <!--<TextView android:id="@+id/express_discriminate_photo_create_time"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:textColor="@color/color_view_text"-->
+    <!--android:textSize="@dimen/font_content_size_4" />-->
+    <!--</RelativeLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/express_discriminate_express_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:singleLine="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/color_view_text"
+            android:textSize="@dimen/font_content_size_4" />
+
+        <TextView
+            android:id="@+id/express_discriminate_photo_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@id/express_discriminate_express_no"
+            android:textColor="@color/color_view_text"
+            android:textSize="@dimen/font_content_size_4" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/express_discriminate_photo_create_time"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:layout_toRightOf="@id/express_discriminate_photo_size"-->
+            <!--android:textColor="@color/color_view_text"-->
+            <!--android:textSize="@dimen/font_content_size_4" />-->
+
+        <TextView
+            android:id="@+id/express_discriminate_photo_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:singleLine="true"
+            android:layout_marginTop="4dp"
+            android:layout_alignStart="@id/express_discriminate_express_no"
+            android:layout_below="@id/express_discriminate_express_no"
+            android:textColor="@color/color_view_text"
+            android:textSize="@dimen/font_content_size_4" />
+
+        <ImageView
+            android:id="@+id/express_discriminate_btn_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/upload_photo" />
+
+        <ImageView
+            android:id="@+id/express_discriminate_btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/express_discriminate_btn_upload"
+            android:src="@drawable/delete_photo" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#d3d4d6" />
+
+    <ImageView
+        android:id="@+id/express_discriminate_express_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="center"
+        android:src="@drawable/default_pic" />
+</LinearLayout>

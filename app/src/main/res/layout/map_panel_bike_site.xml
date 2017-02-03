@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_location_panel"
+    android:orientation="vertical"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp">
+
+    <TextView
+        android:id="@+id/bike_site_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_gravity="left"
+        android:textColor="#FF8B00"
+        android:textSize="@dimen/font_content_size_4" />
+
+    <LinearLayout
+        android:id="@+id/bike_site_panel_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/security_status"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_gravity="bottom"
+            android:drawableLeft="@drawable/icon_security"
+            android:drawablePadding="@dimen/padding_3"
+            android:textColor="#B9B9B9"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/font_content_size_5" />
+
+        <TextView
+            android:id="@+id/can_rent_bike_count"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_gravity="bottom"
+            android:drawableLeft="@drawable/icon_rent_bike"
+            android:drawablePadding="@dimen/padding_3"
+            android:textColor="#B9B9B9"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/font_content_size_5" />
+    </LinearLayout>
+
+
+</LinearLayout>

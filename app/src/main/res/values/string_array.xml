@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="identity">
+        <item>学生</item>
+        <item>教职工</item>
+        <item>非校园用户</item>
+    </string-array>
+
+    <string-array name="question">
+        <item>我的小学叫什么</item>
+        <item>我最喜欢的颜色</item>
+        <item>我最喜欢的运动</item>
+    </string-array>
+
+    <string-array name="wansha_tab_func_name_user">
+        <item>拍快递单</item>
+        <item>快递单扫码</item>
+        <item>快递单查询</item>
+        <item>我的快递</item>
+        <item>下单</item>
+        <item>区域价格设置</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <!--<item>充值</item>-->
+        <!--<item>快递下单</item>-->
+    </string-array>
+    <string-array name="wansha_tab_func_name_courier">
+        <item>拍快递单</item>
+        <item>快递单扫码</item>
+        <item>快递单查询</item>
+        <item>我的快递</item>
+        <item>下单</item>
+        <item>区域价格设置</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <!--<item>充值</item>-->
+        <!--<item>快递单拿单</item>-->
+    </string-array>
+
+    <string-array name="wansha_tab_func_image_user">
+        <item>camera</item>
+        <item>scan</item>
+        <item>search</item>
+        <item>search</item>
+        <item>search</item>
+        <item>search</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+    </string-array>
+    <string-array name="wansha_tab_func_image_courier">
+        <item>camera</item>
+        <item>scan</item>
+        <item>search</item>
+        <item>search</item>
+        <item>search</item>
+        <item>search</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+    </string-array>
+
+</resources>

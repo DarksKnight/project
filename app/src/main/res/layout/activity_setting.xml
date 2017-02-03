@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_image_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/lock_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title"
+        android:background="@color/color_title_bg">
+
+        <ImageView
+            android:id="@+id/setting_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_left_2"
+            android:padding="8dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/str_title_setting"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_2" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="#B9B9B9" />
+
+    <LinearLayout
+        android:id="@+id/item_msg_control"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/color_title_bg"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_setting_item_msg"
+                android:textColor="@color/color_setting_msg_text"
+                android:textSize="@dimen/font_content_size_2" />
+
+            <ImageView android:id="@+id/msg_switchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/bg_btn_msg_open" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@string/str_setting_item_msg_ps"
+            android:textColor="@color/color_setting_msg_prompt_text"
+            android:textSize="@dimen/font_content_size_3_1" />
+
+    </LinearLayout>
+
+
+    <include layout="@layout/view_line" />
+
+    <LinearLayout
+        android:id="@+id/item_mylock"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_color_setting_item"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <TextView android:id="@+id/setting_mylock_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:text="@string/str_setting_item_mylock"
+            android:textColor="@color/color_setting_msg_text"
+            android:textSize="@dimen/font_content_size_2" />
+
+        <LinearLayout android:id="@+id/setting_mylock_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/my_lock_serial_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="123456"
+                    android:textColor="@color/color_setting_setting_text"
+                    android:textSize="@dimen/font_content_size_3" />
+
+                <ImageView
+                    android:id="@+id/battery_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageButton"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="40dp"
+                    android:layout_toStartOf="@+id/imageButton"
+                    android:src="@drawable/battery_icon" />
+
+                <TextView
+                    android:id="@+id/my_lock_battery_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/battery_icon"
+                    android:text="60%"
+                    android:textColor="@color/color_setting_setting_text"
+                    android:textSize="@dimen/font_content_size_3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/setting_btn_removeBind_lock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:background="@drawable/btn_remove_bind_setting" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView android:id="@+id/setting_mylock_tv_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@string/str_setting_item_removeBind_prompt"
+            android:textColor="@color/color_setting_msg_prompt_text"
+            android:textSize="@dimen/font_content_size_3"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/view_line" />
+
+    <TextView
+        android:id="@+id/setting_btn_check_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_color_setting_item"
+        android:paddingBottom="20dp"
+        android:paddingLeft="@dimen/margin_left"
+        android:paddingTop="20dp"
+        android:text="@string/str_setting_item_check_update"
+        android:textColor="@color/color_setting_msg_text"
+        android:textSize="@dimen/font_content_size_2" />
+
+    <include layout="@layout/view_line" />
+
+    <TextView
+        android:id="@+id/setting_btn_about_us"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_color_setting_item"
+        android:paddingBottom="20dp"
+        android:paddingLeft="@dimen/margin_left"
+        android:paddingTop="20dp"
+        android:text="@string/str_setting_item_about_us"
+        android:textColor="@color/color_setting_msg_text"
+        android:textSize="@dimen/font_content_size_2" />
+
+    <TextView
+        android:id="@+id/setting_btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_color_setting_item"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:text="@string/str_setting_item_logout"
+        android:textColor="@color/color_setting_msg_text"
+        android:textSize="@dimen/font_content_size_2" />
+
+</LinearLayout>

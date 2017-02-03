@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/color_bg">
+<RelativeLayout android:id="@+id/lock_title_part"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_title"
+    android:background="@color/color_title_bg"
+    >
+    <TextView android:id="@+id/title_textview_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_content_size_2"
+        android:textColor="@color/color_white"
+        android:text="@string/str_title_bind_info"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>
+
+<ImageView android:id="@+id/lock_image_part"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/bind_bike_lock"
+    android:layout_below="@id/lock_title_part"/>
+
+<TextView android:id="@+id/account_bind_prompt_str_part"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/font_content_size_3"
+    android:textColor="@color/color_dark_grey"
+    android:text="@string/str_prompt_bind_info"
+    android:layout_below="@id/lock_image_part"
+    android:layout_marginLeft="@dimen/margin_left_1"/>
+
+<RelativeLayout android:id="@+id/lock_device_number_part"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/long_btn_height_3"
+    android:background="@color/color_bike_position_bg"
+    android:layout_marginTop="@dimen/margin_top"
+    android:layout_marginRight="@dimen/margin_left_1"
+    android:layout_marginLeft="@dimen/margin_left_1"
+    android:layout_below="@id/account_bind_prompt_str_part">
+    <TextView android:id="@+id/account_lock_device_number_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_content_size_2"
+        android:textColor="@color/color_white"
+        android:text=""
+        android:paddingLeft="@dimen/padding_2"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+<Button android:id="@+id/btn_bind_info_back"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/long_btn_height_1"
+    android:text="@string/str_btn_confirm_back"
+    android:textColor="@color/color_white"
+    android:textSize="@dimen/font_content_size_2"
+    android:layout_alignParentBottom="true"
+    android:layout_marginRight="@dimen/margin_left_1"
+    android:layout_marginLeft="@dimen/margin_left_1"
+    android:background="@drawable/bg_btn_confirm_green"
+    android:layout_marginBottom="80dp"/>
+
+</RelativeLayout>

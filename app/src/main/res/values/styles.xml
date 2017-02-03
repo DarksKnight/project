@@ -1,0 +1,148 @@
+<resources>
+
+
+    <dimen name="view_small_padding">1dp</dimen>
+    <dimen name="view_padding">6dp</dimen>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <style name="list_item_seperator_layout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.5dip</item>
+        <item name="android:background">@color/color_dark_grey</item>
+    </style>
+
+    <style name="list_item_cell_seperator_layout">
+        <item name="android:layout_width">1dip</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/color_dark_grey</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/bg_edittext_with_corner</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="alarm_view" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_alarm_page_with_corner</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+    </style>
+
+    <style name="abnormal_view" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_alarm_page_with_corner</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="MyDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item> //设置dialog的背景，此处为系统给定的透明值
+        <item name="android:windowFrame">@null</item>               // Dialog的windowFrame框为无
+        <item name="android:windowNoTitle">true</item>　　　　　　　　// 是否显示标题
+        <item name="android:windowIsFloating">true</item>           // 是否浮现在activity之上
+        <item name="android:windowIsTranslucent">true</item>       //  是否半透明
+        <item name="android:windowContentOverlay">@null</item>      // 是否有覆盖
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>   //设置Activity出现方式
+        <item name="android:backgroundDimEnabled">true</item>        //背景是否模糊显示
+    </style>
+
+    <style name="Theme.AppStartLoadTranslucent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="ClusterIcon.TextAppearance" parent="android:TextAppearance">
+        <item name="android:textColor">#ffeeeeee</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Bubble.TextAppearance.Dark" parent="android:TextAppearance.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ff7f7f7f</item>
+    </style>
+
+    <style name="Bubble.TextAppearance.Light" parent="Bubble.TextAppearance.Dark">
+        <item name="android:textColor">#ffeeeeee</item>
+    </style>
+
+    <style name="Transparent" parent="normalTheme">　　
+        <item name="android:windowBackground">@color/color_transparent</item>　　　　
+    </style>
+
+    <style name="normalTheme" parent="@android:style/Theme">　　
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+.    </style>
+
+    <style name="MenuTransparent" parent="normalTheme">　　
+        <item name="android:windowBackground">@color/color_transparent</item>　　　　
+        <item name="android:windowAnimationStyle">@style/Animation.Activity.Menu</item>
+    </style>
+
+    <style name="dialog" parent="android:Theme.Dialog">　　
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>　　　
+        <item name="android:background">@null</item>　
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="BikeStatusDialog" parent="android:Theme.Dialog">　　
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/bg_alarm_page_with_corner</item>
+    </style>
+
+
+    <style name="Animation.Activity.Menu" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/menu_activity_open_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/menu_activity_close_enter</item>
+
+        <!--<item name="android:taskOpenEnterAnimation">@anim/activity_open_enter</item>-->
+        <!--<item name="android:taskOpenExitAnimation">@anim/activity_open_exit</item>-->
+        <!--<item name="android:taskCloseEnterAnimation">@anim/activity_close_enter</item>-->
+        <!--<item name="android:taskCloseExitAnimation">@anim/activity_close_exit</item>-->
+
+        <!--<item name="android:taskToFrontEnterAnimation">@anim/activity_open_enter</item>-->
+        <!--<item name="android:taskToFrontExitAnimation">@anim/activity_open_exit</item>-->
+        <!--<item name="android:taskToBackEnterAnimation">@anim/activity_close_enter</item>-->
+        <!--<item name="android:taskToBackExitAnimation">@anim/activity_close_exit</item>-->
+    </style>
+
+    <style name="item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="MyCheckBoxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_selector</item>
+        <item name="android:paddingLeft">25.0dip</item>
+        <item name="android:maxHeight">10.0dip</item>
+    </style>
+
+    <style name="MyToggleButton" parent="@android:style/Widget.CompoundButton">
+        <item name="android:button">@drawable/setting_checkbox_button</item>
+    </style>
+
+
+</resources>

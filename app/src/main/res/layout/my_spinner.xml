@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_pwd_dialog_with_corner"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/my_spinner_textView_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#8B8B8B"
+        android:visibility="gone"
+        android:textSize="@dimen/font_content_size_4" />
+
+    <ListView android:id="@+id/my_spinner_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:listSelector="@android:color/transparent"
+        android:divider="@null"
+        android:requiresFadingEdge="none"
+        android:scrollbars="none"
+        android:cacheColorHint="#00000000"
+        android:visibility="visible"
+        />
+
+</LinearLayout>

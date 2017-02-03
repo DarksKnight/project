@@ -1,0 +1,148 @@
+apply plugin: 'com.android.application'
+import com.android.builder.core.DefaultManifestParser
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+def getAppVersionName() {
+    return new DefaultManifestParser().getVersionName(file(android.sourceSets.main.manifest.srcFile));
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://dl.bintray.com/journeyapps/maven"
+    }
+
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+ext.appReleaseDir = ""
+
+// 加载版本信息配置文件方法
+def loadProperties() {
+    def proFile = file("../local.properties")
+    Properties pro = new Properties()
+    proFile.withInputStream { stream ->
+        pro.load(stream)
+    }
+    appReleaseDir = pro.appReleaseDir
+}
+// 加载版本信息
+//loadProperties()
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        applicationId 'com.express56.xq'
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionName getVersionName()
+        multiDexEnabled true
+    }
+    //签名
+    signingConfigs {
+        release {
+            storePassword "tianxia09"
+            keyAlias "express"
+            keyPassword "tianxia09"
+//            storePassword System.console().readLine("\nKeystore password: ")
+//            keyPassword System.console().readLine("\nKey password: ")
+            storeFile file('express56.jks')
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+
+    buildTypes {
+        release {
+            //是否混淆
+            minifyEnabled true
+            //是否zip对齐
+            zipAlignEnabled true
+            //是否打开debuggable开关
+            debuggable false
+            //是否打开jniDebuggable开关
+            jniDebuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        develop {}
+//        xiaomi{}
+//        huawei{}
+//        anzhi{}
+    }
+
+
+//    android.applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+////                def fileName = "demo_${variant.productFlavors[0].name}-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}.apk"
+////                def fileName = "LockBikeApp-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}.apk"
+////                def fileName = "LockBikeApp_${defaultConfig.versionName}.apk"
+////                def fileName = "LockBikeApp_${new DefaultManifestParser().getVersionName(file(android.sourceSets.main.manifest.srcFile))}.apk"
+//                def fileName = "express56_${getVersionName()}.apk"
+////                output.outputFile = new File(outputFile.parent, fileName)
+////                output.outputFile = new File(appReleaseDir, fileName)
+//            }
+//        }
+//    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+//    tasks.withType(JavaCompile) {
+//        options.encoding = "UTF-8"
+//
+//    }
+//
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_7
+//        targetCompatibility JavaVersion.VERSION_1_7
+//    }
+
+    productFlavors {
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':library')
+    compile(name: 'ucrop-1.0.1', ext: 'aar')
+    compile(name: 'bottom-navigation-bar-1.3.0', ext: 'aar')
+    //    compile 'com.ashokvarma.android:bottom-navigation-bar:1.2.0'
+    //    compile 'com.yalantis:ucrop:1.0.1'
+    compile files('libs/locSDK_6.13.jar')
+    compile files('libs/core-3.0.0.jar')
+    compile files('libs/alipaySdk-20160809.jar')
+    compile files('libs/ucrop-1.0.1-sources.jar')
+    compile files('libs/commons-codec-1.9.jar')
+    compile files('libs/commons-lang3-3.3.2.jar')
+    compile files('libs/junit-4.12.jar')
+    compile files('libs/okhttp-3.2.0.jar')
+    compile files('libs/eventbus-3.0.0.jar')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile files('libs/universal-image-loader-1.9.5.jar')
+}
+

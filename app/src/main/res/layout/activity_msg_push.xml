@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_alarm_page_with_corner"
+    android:orientation="vertical"
+    tools:context="com.express56.xq.qzy.aishang.bms.activity.BindBikeLockActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitCenter"
+        android:layout_marginLeft="@dimen/alarm_page_text_margin_horizontal"
+        android:layout_marginRight="@dimen/alarm_page_text_margin_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/bg_abnormal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/alarm_page_text_margin_horizontal"
+        android:layout_marginRight="@dimen/alarm_page_text_margin_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/alarm_label_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/alarm_page_text_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:text="@string/str_prompt_push_bike_alarm_1"
+            android:textColor="@color/color_prompt_words"
+            android:textSize="@dimen/font_content_size_3" />
+
+        <TextView
+            android:id="@+id/push_alarm_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="@dimen/alarm_page_text_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/color_push_alarm_words"
+            android:textSize="@dimen/font_content_size_3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/alarm_page_text_margin_horizontal"
+        android:layout_marginRight="@dimen/alarm_page_text_margin_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/alarm_label_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/alarm_page_text_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:text="@string/str_prompt_push_bike_alarm_2"
+            android:textColor="@color/color_prompt_words"
+            android:textSize="@dimen/font_content_size_3" />
+
+        <TextView
+            android:id="@+id/push_alarm_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/alarm_page_text_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/color_push_alarm_words"
+            android:textSize="@dimen/font_content_size_3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/alarm_page_text_margin_horizontal"
+        android:layout_marginRight="@dimen/alarm_page_text_margin_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/alarm_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/alarm_page_text_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:text="@string/str_prompt_push_bike_alarm_3_leave"
+            android:textColor="@color/color_prompt_words"
+            android:textSize="@dimen/font_content_size_3" />
+
+        <TextView
+            android:id="@+id/push_alarm_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/alarm_page_text_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/color_push_alarm_words"
+            android:textSize="@dimen/font_content_size_3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/alarm_page_text_margin_horizontal"
+        android:layout_marginRight="@dimen/alarm_page_text_margin_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/push_alarm_label_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/alarm_page_text_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:text="@string/str_dialog_prompt_confirm_alert"
+            android:textColor="@color/color_prompt_words"
+            android:textSize="@dimen/font_content_size_3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="@dimen/alarm_page_text_margin_horizontal"
+        android:layout_marginRight="@dimen/alarm_page_text_margin_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/left_alarm_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_alarm_page_left"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/str_dialog_btn_remove_abnormal"
+            android:textColor="#8B8B8B"
+            android:textSize="@dimen/font_content_size_2_1" />
+
+        <TextView
+            android:id="@+id/right_alarm_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_alarm_page_right"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/str_dialog_btn_confirm_alert"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/font_content_size_2_1" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

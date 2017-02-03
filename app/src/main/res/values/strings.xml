@@ -1,0 +1,399 @@
+<resources>
+    <string name="app_name">瓦法</string>
+    <string name="str_editText_hint_username">用户名</string>
+    <string name="str_editText_hint_password">密&#160;码</string>
+    <string name="str_editText_hint_new_password">设置密码</string>
+    <string name="str_editText_hint_repeat_password">确认密码</string>
+    <string name="str_editText_hint_real_name">姓名</string>
+    <string name="str_editText_hint_contact_information">手机号码</string>
+    <string name="str_editText_hint_answer">您的答案</string>
+    <string name="str_editText_hint_question_answer">问题答案</string>
+    <string name="str_prompt_username_check">请填写正确的手机号码</string>
+    <string name="str_prompt_old_pwd_check">请填写原密码</string>
+    <string name="str_prompt_phoneNumber_error">该用户没有手机号码</string>
+    <string name="str_prompt_password_check">请填写密码</string>
+    <string name="str_prompt_repeat_password_check">请填写确认密码</string>
+    <string name="str_prompt_password_equal_check">两次输入的密码不一致</string>
+    <string name="str_prompt_realname_check">请填写真实姓名</string>
+    <string name="str_prompt_verify_code_check">请填写验证码</string>
+    <string name="str_label_answer_question">回答问题</string>
+    <string name="str_label_password_recovery_question">密码找回问题</string>
+    <string name="str_checkbox_normal_user">普通用户</string>
+    <string name="str_checkbox_courier">快&#160;递&#160;员</string>
+
+    <string name="str_logo">安&#160;全&#160;用&#160;&#160;方&#160;便&#160;行</string>
+    <string name="str_title_monitor_platform">监控平台</string>
+    <string name="str_title_lock_position">锁定位置</string>
+    <string name="str_title_unlock_bike">解&#160;&#160;锁</string>
+    <string name="str_title_lock_bike">锁&#160;&#160;车</string>
+    <string name="str_title_using_bike">车辆使用中</string>
+    <string name="str_title_bike_exception">车辆异常</string>
+    <string name="str_title_position_search">位置查询</string>
+    <string name="str_title_bind_info">绑定信息</string>
+    <string name="str_title_message_push">信息推送</string>
+    <string name="str_title_express_search">快递单查询</string>
+    <string name="str_title_my_express">我的快递</string>
+    <string name="str_title_my_lock_card">我的车牌</string>
+    <string name="str_title_rent_bike">用车中</string>
+    <string name="str_title_alarm_route">报警追踪</string>
+    <string name="str_title_trip_payment">行程结算</string>
+    <string name="str_title_personal_info">个人资料</string>
+    <string name="str_title_personal_info_modify">修改资料</string>
+    <string name="str_title_authentication">实名认证</string>
+    <string name="str_title_authentication_result_info">认证信息</string>
+    <string name="str_title_setting">系统设置</string>
+    <string name="str_title_school_detail">校区详情</string>
+    <string name="str_monitor_position">监控位置：</string>
+    <string name="str_monitor_name">请填写监控点</string>
+    <string name="str_bikeNumber">车号</string>
+    <string name="str_bikeStatus">状态</string>
+    <string name="str_monitor_time">监控时间</string>
+    <string name="str_bikeStatus_OK">OK</string>
+    <string name="str_bikeStatus_NG">NG</string>
+    <string name="str_setting_item_msg">消息免打扰</string>
+    <string name="str_setting_item_mylock">车牌号</string>
+    <string name="str_setting_item_check_update">检查更新</string>
+    <string name="str_setting_item_about_us">关于爱尚</string>
+    <string name="str_setting_item_logout">账号登出</string>
+    <string name="str_setting_item_removeBind_prompt">未绑定车锁，点击进行绑定操作</string>
+    <string name="str_setting_item_msg_ps">免打扰打开后，APP在后台不会弹出消息推送。</string>
+    <string name="str_label_mobile_number">手机号</string>
+    <string name="str_label_device_number">车牌号：%1$s</string>
+    <string name="str_prompt_bind_lock_number">请输入5位电子车牌号及3位校验码，进行绑定</string>
+    <string name="str_prompt_my_lock_card_number">您的电子车牌号为</string>
+    <string name="str_prompt_bind_lock_number_upload_pic">您也可以上传您车辆的全身靓照，以便于我们更好的为您提供防盗监控服务。(请横屏拍摄)</string>
+    <string name="str_prompt_current_lock_position">当前停车位置</string>
+    <string name="str_prompt_bind">请绑定手机号，绑定车锁</string>
+    <string name="str_prompt_bind_using">不在有效桩位内</string>
+    <string name="str_prompt_bind_exception">当前状态异常</string>
+    <string name="str_prompt_bind_info">您的手机号：%1$s，已绑定车锁：</string>
+    <string name="str_prompt_phone_number_invalid">手机号码必须是11位数字</string>
+    <string name="str_prompt_verification_code_invalid">验证码必须是6位数字</string>
+    <string name="str_prompt_bind_info_1">您的手机号：</string>
+    <string name="str_prompt_bind_info_2">，已绑定车锁：</string>
+    <string name="str_prompt_push_msg">您的自行车在%1$s离开了您的停车位置(%2$s),请确认是否正常。</string>
+    <string name="str_prompt_abnormal_bike_id">车牌号</string>
+    <string name="str_prompt_using_words">正常使用中，请停靠到指定停车港，才能正常锁车，并激活系统防盗功能。</string>
+    <string name="str_prompt_abnormal_words">异常离开停车港，如是本人取车或车已找回，可点击解除异常按钮，否则请点击确认报警按钮，进行车辆追踪。</string>
+    <string name="str_prompt_alarm_words_click">处于报警追踪状态，经过监控点时，会收到追踪信息。点击路径追踪，可查看车辆异常后的动向。如车已找回，请点击解除报警按钮，取消报警追踪。</string>
+    <string name="str_prompt_alarm_words_push">点击路径追踪，可查看车辆异常后的动向。 如车已找回，请点击解除报警按钮，取消报警追踪。</string>
+    <string name="str_prompt_abnormal_words_ps">（当车辆经过监控点时，会收到追踪信息。）</string>
+    <string name="str_prompt_push_bike_alarm_1">您的车：</string>
+    <string name="str_prompt_push_bike_alarm_2">已于：</string>
+    <string name="str_prompt_push_bike_alarm_3_leave">离开：</string>
+    <string name="str_prompt_push_bike_alarm_3_pass">经过：</string>
+    <string name="str_prompt_push_bike_alarm_4">请确认是否正常！</string>
+    <string name="str_prompt_push_msg1"><Data><![CDATA[您的自行车在<font color="#00CFB4"><b>&#160;%1$s&#160;</b></font>离开了您的停车位置(<font color="#00CFB4"><b>&#160;%2$s&#160;</b></font>),请确认是否正常。]]></Data></string>
+    <string name="str_label_validate_code">验证码</string>
+    <string name="str_btn_get_validate_code">短信验证码</string>
+    <string name="str_btn_get_validate_code_2">获取验证码</string>
+    <string name="str_btn_reget_validate_code">重新获取(%1$d)</string>
+    <string name="str_btn_next">下一步</string>
+    <string name="str_btn_bind">绑&#160;&#160;定</string>
+    <string name="str_btn_update_bike_pic">更新车辆照片</string>
+    <string name="str_btn_confirm_lock">确认锁定</string>
+    <string name="str_btn_confirm_unlock">确认解锁</string>
+    <string name="str_btn_confirm_back">返&#160;&#160;回</string>
+    <string name="str_btn_confirm">确&#160;&#160;认</string>
+    <string name="str_result_bind_success">绑定成功</string>
+    <string name="str_result_lock_success">锁定成功</string>
+    <string name="str_result_unlock_success">解锁成功</string>
+    <string name="str_result_query_fail">位置查询失败</string>
+    <string name="str_result_querying">位置查询中&#183;&#183;&#183;&#183;&#183;&#183;</string>
+    <string name="str_welcome">欢迎使用校园自行车防盗系统</string>
+    <string name="str_dialog_prompt_need_bind_lock">您还没有绑定车锁，请先完成绑定！</string>
+    <string name="str_dialog_prompt_need_open_location">打开定位服务以提升定位准确性，是否现在开启？</string>
+    <string name="str_dialog_prompt_confirm_removeBind_lock">您确定要解除绑定的车锁吗？解除后将收不到该车锁的位置信息！</string>
+    <string name="str_dialog_prompt_need_login">您还没有登录，请先登录或注册！</string>
+    <string name="str_dialog_prompt_need_grant_permission">该程序需要位置授权，否则将无法使用。</string>
+    <string name="str_dialog_prompt_need_open_location_function">定位服务功能未开启，应用关闭。</string>
+    <string name="str_dialog_prompt_need_grant_permission_storage">该程序需要读写SD卡授权，否则将无法使用。</string>
+    <string name="str_dialog_prompt_token_expire">登录已过期，请重新登录。</string>
+    <string name="str_dialog_prompt_need_grant_permission_camera">摄像头权限被关闭，请打开相应权限</string>
+    <string name="str_dialog_prompt_need_confirm_logout">您确定退出登录状态吗？登出后将收不到信息推送。</string>
+    <string name="str_dialog_btn_cancel">取消</string>
+    <string name="str_dialog_btn_setting">设置</string>
+    <string name="str_dialog_btn_open_location">马上开启</string>
+    <string name="str_dialog_btn_confirm_removeBind">确认解除</string>
+    <string name="str_dialog_btn_comfirm_logout">确认登出</string>
+    <string name="str_dialog_btn_to_bind">马上绑定</string>
+    <string name="str_dialog_btn_to_login">马上登录</string>
+    <string name="str_dialog_btn_to_ok">确定</string>
+    <string name="str_dialog_btn_lookover">查看</string>
+    <string name="str_dialog_loading">请求处理中</string>
+    <string name="str_dialog_btn_remove_abnormal">解除异常</string>
+    <string name="str_dialog_btn_confirm_alert">确认报警</string>
+    <string name="str_dialog_prompt_confirm_alert">请确认是否需要提交报警！\n如是本人取出前忘记解锁，可点击解除异常按钮，取消异常状态。</string>
+    <string name="str_dialog_btn_remove_alarm">解除报警</string>
+    <string name="str_dialog_btn_continue_location">路径追踪</string>
+    <string name="str_dialog_btn_continue_location_detail">路径追踪</string>
+    <string name="str_dialog_prompt_continue_location">请确认是否需要继续追踪！\n如车已找回，请点击解除报警按钮，取消报警追踪。</string>
+    <string name="str_dialog_btn_using_close">关闭</string>
+    <string name="str_net_request_fail">网络连接失败</string>
+    <string name="str_network_closed">网络错误，请检查网络设置</string>
+    <string name="str_login">登&#160;&#160;&#160;&#160;录</string>
+    <string name="str_submit">提&#160;&#160;&#160;&#160;交</string>
+    <string name="str_payment">支&#160;&#160;&#160;&#160;付</string>
+    <string name="str_btn_save">保&#160;&#160;&#160;&#160;存</string>
+    <string name="str_time_replace">:&#160;&#160;</string>
+    <string name="str_btn_register">注&#160;&#160;册</string>
+    <string name="str_btn_back">返&#160;&#160;回</string>
+    <string name="str_btn_peruse_agree">我已阅读并同意</string>
+    <string name="str_input_mobile_hint">请输入手机号</string>
+    <string name="str_verify_code_hint">请输入验证码</string>
+    <string name="str_prompt_back_key_exit">再按一次返回键退出</string>
+    <string name="str_prompt_auto_login_fail">登录失败，请重新登录</string>
+    <string name="str_panel_bike_site_number">停车港：%1$d</string>
+    <string name="str_panel_to_bike_site_mode">放大校区</string>
+    <string name="str_panel_to_school_detail_view">查看详情</string>
+    <string name="str_please_wait">敬请期待</string>
+    <string name="str_navigation_drawer_open">open</string>
+    <string name="str_navigation_drawer_close">close</string>
+    <!--menu-->
+    <string name="str_menu_item_my_account">我的账户</string>
+    <string name="str_menu_item_my_lock">电子车牌</string>
+    <string name="str_menu_item_my_trips">租车历程</string>
+    <string name="str_menu_item_my_message">活动消息</string>
+    <string name="str_menu_item_about_us">关于</string>
+    <string name="str_title_main">主页</string>
+    <string name="str_title_personal">个人资料</string>
+    <string name="str_title_modify_pwd">修改密码</string>
+    <string name="str_title_forget_pwd">忘记密码</string>
+    <string name="str_title_settings">设置</string>
+    <string name="str_title_mall">商城</string>
+    <string name="str_menu_item_my_setting">系统设置</string>
+    <string name="str_menu_item_my_authentication">我的资料</string>
+    <string name="str_menu_item_my_authentication_info">认证信息</string>
+    <string name="str_copyright">&#160;版权所有\nCopyright © 2016 I-Shion Riding\nAll Rights Reserved</string>
+
+    <!--toast-->
+    <string name="str_toast_lock_success">车辆已锁定</string>
+    <string name="str_toast_unlock_success">解锁成功</string>
+    <string name="str_toast_removeBind_success">车锁已解绑</string>
+    <string name="str_toast_bind_success">绑定成功</string>
+    <string name="str_toast_release_abnormal_success">解除异常成功</string>
+    <string name="str_toast_release_alarm_success">解除报警成功</string>
+    <string name="str_toast_confirm_alert_success">报警成功</string>
+    <string name="title_activity_school_detail">SchoolDetailActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <!--school campus-->
+    <string name="str_bite_site_type_normal">普通&#160;&#160;%1$d</string>
+    <string name="str_bite_site_type_security">防盗&#160;&#160;%1$d</string>
+    <string name="str_bite_site_type_rent">可租车&#160;&#160;%1$d</string>
+    <string name="str_bite_site_type_guard">防盗停车点</string>
+    <string name="str_bite_site_type_normal_str">普通</string>
+    <string name="str_bite_site_type_security_str">防盗</string>
+    <string name="str_bite_site_type_rent_str">租车</string>
+    <string name="str_bite_site_type_normal_desc">普通停车港</string>
+    <string name="str_bite_site_type_security_desc">车位&#160;&#160;%1$s</string>
+    <string name="str_bite_site_type_rent_desc">可租车&#160;&#160;%1$d</string>
+
+    <!--update dialog-->
+    <string name="str_dialog_update_force_prompt">检测到有最新版本，请立即下载更新，否则应用将无法使用</string>
+    <string name="str_dialog_update_force_btn_cancel">取消</string>
+    <string name="str_dialog_update_force_btn_update">马上更新</string>
+
+    <string name="str_dialog_update_optional_prompt">检测到有最新版本，请下载更新</string>
+    <string name="str_dialog_update_optional_btn_cancel">稍后更新</string>
+    <string name="str_dialog_update_optional_btn_update">马上更新</string>
+
+    <string name="str_dialog_update_not_wifi_prompt">当前为wifi未连接，下载更新时将产生流量费用，是否仍然下载？</string>
+    <string name="str_dialog_update_not_wifi_btn_cancel">取消更新</string>
+    <string name="str_dialog_update_not_wifi_btn_update">立即更新</string>
+
+    <string name="str_prompt_need_apply_authentication">您需要先提交信息认证并通过认证后才能使用此功能！</string>
+    <string name="str_prompt_need_reApply_authentication">您认证信息未通过审核，请重新提交申请</string>
+    <string name="str_prompt_applying_authentication">您的认证申请正在审核中</string>
+    <string name="str_dialog_apply_authentication_now">现在认证</string>
+
+    <!--slide button-->
+    <string name="str_btn_prompt_open_lock">滑动解锁</string>
+    <string name="str_btn_prompt_do_lock">滑动锁车</string>
+
+    <!--bind bike-->
+    <string name="str_btn_upload_pic">点击上传</string>
+    <string name="str_btn_show_eg_pic">图片样例</string>
+
+    <!--action prompt-->
+    <string name="str_action_prompt_input_invalid">请填写正确的车牌号和校验码</string>
+    <string name="str_example_bike_pic">车辆全身照样张</string>
+    <string name="str_example_credentials_pic">请拍摄或上传清晰的学生证和学生卡照片，以供认证。</string>
+    <string name="str_example_btn_close">关闭</string>
+    <string name="str_map_zoom_in_max">已经放大至停车港模式！</string>
+    <string name="str_map_zoom_out_max">已经缩小至全国模式！</string>
+
+
+    <!--authentication info-->
+    <string name="str_label_nickname">昵称</string>
+    <string name="str_label_real_name">姓名</string>
+    <string name="str_label_identity">身份</string>
+    <string name="str_label_school_area">校区</string>
+    <string name="str_label_head_portrait">头像</string>
+    <string name="str_authentication_info_label_nickname_length">昵称最多16个字符</string>
+    <string name="str_authentication_info_label_nickname_length_prompt">昵称最多16个字符，一个汉字两个字符</string>
+    <string name="str_label_mobile_phone_number">手机号</string>
+    <string name="str_label_authentication_real_name">实名认证</string>
+    <string name="str_authentication_info_label_real_name">真实姓名</string>
+    <!--<string name="str_authentication_info_label_real_name_hint">请输入学生证上的姓名</string>-->
+    <string name="str_authentication_info_label_real_name_hint"><font size="12">请输入学生证上的姓名</font></string>
+    <string name="str_authentication_info_label_student_card">学生证</string>
+    <string name="str_authentication_info_label_student_card_prompt">请拍摄或上传清晰的学生证照片，以供认证。</string>
+    <string name="str_authentication_info_submit_btn">提交审核</string>
+    <string name="str_authentication_info_nickname_prompt">请填写昵称</string>
+    <string name="str_authentication_info_realname_prompt">请填写姓名</string>
+    <string name="str_authentication_info_pic_prompt">请上传图片</string>
+    <string name="str_authentication_info_no_modify">内容未修改</string>
+
+    <string name="str_upload_pic_fail">上传失败</string>
+    <string name="str_upload_bike_pic_success">车辆照片上传成功</string>
+    <string name="str_upload_user_pic_success">证件照片上传成功</string>
+    <string name="str_upload_head_portrait_pic_success">头像上传成功</string>
+    <string name="str_submit_user_apply_success">认证申请提交成功</string>
+    <string name="str_submit_user_apply_fail">认证申请提交失败</string>
+    <string name="str_update_bike_pic_success">车辆照片更新成功</string>
+    <string name="str_update_bike_pic_fail">车辆照片更新失败</string>
+    <string name="str_upload_bike_pic_bike_number_prompt">请填写正确的车牌号</string>
+
+    <string name="str_get_pic_from_camera">拍摄新照片</string>
+    <string name="str_get_pic_from_ablum">从照片库选取</string>
+    <string name="str_get_pic_choose_from_where">选择来源</string>
+    <string name="str_get_pic_add_sdcard">请插入SD卡</string>
+    <string name="str_get_pic_select_photo">选择图片</string>
+    <string name="str_get_pic_update_photo_prompt">请先上传新的图片</string>
+
+    <!--register-->
+    <string name="str_title_register">用户注册</string>
+    <string name="str_title_photo">拍&#160;照</string>
+    <string name="str_title_scan">切换到扫码</string>
+    <string name="str_register">新用户注册</string>
+    <string name="str_register_prompt">还没有账号？马上申请！</string>
+    <string name="str_register_mobile_phone_number">手机号</string>
+    <string name="str_register_mobile_validate_code">验证码</string>
+    <string name="str_register_mobile_phone_number_hint">请输入手机号</string>
+    <string name="str_register_agree_sth">我已阅读并同意</string>
+    <string name="str_register_agree_sth_prompt">请您先阅读并同意用户协议</string>
+    <string name="str_register_protocol">《瓦法注册用户协议》</string>
+    <string name="str_title_protocol">用户协议</string>
+    <string name="str_title_about_aishang">关于瓦法</string>
+
+    <string name="str_authentication_result_label_identity">身份</string>
+    <string name="str_authentication_result_label_real_name">姓名</string>
+    <string name="str_authentication_result_label_identity_id">身份证号</string>
+    <string name="str_authentication_result_label_campus">校区</string>
+    <string name="str_authentication_result_reApplyAuthentication">重新提交</string>
+
+    <!--租车-->
+    <string name="str_have_a_rent_not_finish">您有一个租车行程未完成/未支付，是否现在进入查看？</string>
+    <string name="str_dialog_rent_not_finish_left">稍后查看</string>
+    <string name="str_dialog_rent_not_finish_right">现在进入</string>
+    <string name="str_scan_title">选车</string>
+    <string name="str_scan_barcode_title">扫码</string>
+    <string name="str_scan_prompt">将条形码放入框中，即可自动扫描</string>
+    <string name="str_scan_barcode_success">扫码成功</string>
+    <string name="str_input_prompt">请输入车牌号，进行租车</string>
+    <string name="str_open_flashing_light">开闪光灯</string>
+    <string name="str_close_flashing_light">关闪光灯</string>
+    <string name="str_input_mode">手动输入</string>
+    <string name="str_input_btn_text">确定租车</string>
+    <string name="str_back_scan">返回扫码</string>
+    <string name="str_input_valid_prompt">请输入车牌号</string>
+
+    <string name="str_about_us_item_version_update">版本更新</string>
+    <string name="str_about_us_item_user_protocol">用户协议</string>
+    <string name="str_about_us_item_about_isr">关于爱尚</string>
+    <string name="str_about_us_item_logout">账号登出</string>
+    <string name="str_about_us_item_no_version_update_prompt">已经是最新版本</string>
+    <string name="str_about_us_copyright"><Data><![CDATA[<font color="#F58400"><b>&#160;版权所有</b></font><br/>Copyright © 2016 I-Shion Riding<br/>All Rights Reserved]]></Data></string>
+
+    <!--骑行历程-->
+    <string name="str_my_trips_pay_money">%1$s元</string>
+    <string name="str_my_trips_status_need_pay">未支付</string>
+    <string name="str_my_trips_status_need_sendback">未还车</string>
+    <string name="str_my_trips_status_can_evaluate">可评价</string>
+    <string name="str_my_trips_status_had_evaluate">已评价</string>
+    <string name="str_my_trips_no_record">您还没有租车记录，快去扫描体验一下！</string>
+    <string name="str_my_trips_no_more_record">没有更多租车记录</string>
+    <string name="str_payment_money">¥%1$s元</string>
+    <string name="str_payment_time_consuming">&#40;用时%1$d分钟&#41;</string>
+    <string name="str_payment_time_consuming_hour">&#40;用时%1$d小时%2$d分钟&#41;</string>
+    <string name="str_payment_time_consuming_day">&#40;用时%1$d天%2$d小时%3$d分钟&#41;</string>
+    <string name="str_payment_comment_text">评&#160;&#160;论</string>
+    <string name="str_payment_add_comment_text">追加评论</string>
+    <string name="str_payment_total_money">合计收费</string>
+    <string name="str_using_bike_can_not_stop">当前不在有效停车位置，不可还车</string>
+    <string name="str_month">月</string>
+    <string name="str_day">日</string>
+    <string name="str_refresh">刷新</string>
+    <string name="str_can_send_bike_back">当前停车港可以还车</string>
+    <string name="str_btn_send_back">确定还车</string>
+    <string name="str_payment_comment_label">我要评论</string>
+    <string name="str_payment_comment_label_2">我的评论</string>
+    <string name="str_payment_submit_comment">提交评论</string>
+    <string name="str_alipay_result_success">支付成功</string>
+    <string name="str_alipay_result_user_cancel">您已经取消支付</string>
+    <string name="str_alipay_result_network_error">网络连接出错</string>
+    <string name="str_alipay_result_in_confirmation">支付结果确认中</string>
+    <string name="str_alipay_result_fail">支付失败</string>
+    <string name="str_payment_type_label">支付类型</string>
+    <string name="str_payment_type_alipay">支付宝</string>
+    <string name="str_payment_type_weixin">微信支付</string>
+    <string name="str_photo_type_send">寄件拍照</string>
+    <string name="str_photo_type_receive">签收拍照</string>
+    <string name="str_payment_time">交易时间</string>
+    <string name="str_payment_trade_no">交易号</string>
+
+    <!--个人资料-->
+    <string name="str_please_input_nickname">请输入昵称</string>
+    <string name="str_input_nickname_no_empty">昵称不能为空</string>
+    <string name="str_modify_nickname_success">昵称修改成功</string>
+    <string name="str_submit_nickname_success">提交成功</string>
+    <string name="str_submit_comment_success">提交评论成功</string>
+    <string name="str_select_identity">请选择身份类型</string>
+    <string name="str_select_campus">请选择所属校区</string>
+    <string name="str_upload_pic_student">请上传学生证</string>
+    <string name="str_upload_pic_staff">请上传教职工证</string>
+    <string name="str_upload_bike_prompt">上传车辆照片</string>
+    <string name="str_re_upload_pic">点击重新上传</string>
+    <string name="str_re_upload_pic_prompt">请上传横置的证件，注意姓名、号码等字迹清晰可辨识，否则将影响认证结果，谢谢配合！</string>
+    <string name="str_upload_pic_from_camera">拍&#160;照</string>
+    <string name="str_upload_pic_from_album">相&#160;册</string>
+    <string name="str_please_select_user_type">请选择身份类型</string>
+    <string name="str_select_user_type_student">学生</string>
+    <string name="str_select_user_type_staff">教职工</string>
+    <string name="str_select_user_type_no_campus">非校园用户</string>
+    <string name="str_please_select_campus_id">请选择所属校区</string>
+    <string name="str_btn_watch_pwd">查看密码</string>
+    <string name="str_rent_prompt_1">您已于</string>
+    <string name="str_rent_prompt_2">租车成功，并开始计费。</string>
+    <string name="str_watch_pwd_prompt">您本次的开锁密码&#58;</string>
+    <string name="str_watch_pwd_close">关闭</string>
+    <string name="str_comment_not_empty">评论不能为空！</string>
+    <string name="str_please_grant_permission_of_camera">请授予瓦法使用相机的权限，以便扫描二维码！</string>
+    <string name="str_please_grant_permission_of_camera_photo">请授予瓦法使用相机的权限，以便拍摄照片！</string>
+    <string name="str_please_open_location">请开启定位功能，以便您可以租车！</string>
+    <string name="str_wait_location">定位中，请稍后再试！</string>
+    <string name="str_blank_space">&#160;</string>
+    <string name="str_nickname">昵称&#160;&#160;%1$s</string>
+    <string name="str_please_input_real_name">请输入姓名</string>
+    <string name="str_please_input_identity_id">请输入身份证号码</string>
+    <string name="str_please_input_identity_id_valid_length">请输入正确的身份证号码</string>
+    <string name="str_network_error">网络连接不可用</string>
+    <string name="str_please_landscape_take_a_picture">请横屏拍摄</string>
+    <string name="str_bike_status_exception">车辆状态异常&#160;</string>
+    <string name="str_version">V</string>
+    <string name="str_guest_prompt">没有账号，随便看看</string>
+    <string name="str_guest_enter">游客访问</string>
+    <string name="str_payment_prompt">请锁好车辆并复位密码，以免车辆被别人盗用，对您的用车造成影响。</string>
+
+    <!-- 我的快递 -->
+    <string name="str_my_express_place_order">下单</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_account">账号&#160;&#160;%1$s</string>
+    <string name="str_real_name">姓名&#160;&#160;%1$s</string>
+    <string name="str_title_about">关于我们</string>
+
+
+</resources>

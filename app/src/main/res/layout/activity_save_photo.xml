@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_save_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_white"
+                tools:context="com.express56.xq.activity.SavePhotoActivity">
+
+    <RelativeLayout
+        android:id="@+id/save_photo_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title"
+        android:background="@color/color_title_bg">
+
+        <ImageView
+            android:id="@+id/save_photo_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:padding="8dp"
+            android:src="@drawable/delete"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/str_title_photo"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_3"/>
+
+        <ImageView
+            android:id="@+id/save_photo_btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="6dp"
+            android:padding="8dp"
+            android:src="@drawable/select"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/save_photo_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/save_photo_title_part"
+        android:background="#cccccc"/>
+
+    <RelativeLayout
+        android:id="@+id/save_photo_info_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/save_photo_line1"
+        android:layout_marginBottom="@dimen/save_photo_margin_2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="@dimen/save_photo_margin_1">
+
+        <!--<TextView-->
+        <!--android:id="@+id/save_photo_label_number"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:maxEms="4"-->
+        <!--android:text="快递单号"-->
+        <!--android:textColor="@color/color_view_title_text"-->
+        <!--android:textSize="@dimen/font_content_size_4" />-->
+
+        <TextView
+            android:id="@+id/save_photo_textView_express_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/save_photo_margin_left_1"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_4"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/save_photo_editText_express_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/save_photo_margin_left_1"
+            android:hint="快递单号"
+            android:inputType="number"
+            android:textColor="@color/color_view_title_text"
+            android:textColorHint="#CCCCCC"
+            android:textSize="@dimen/font_content_size_4"
+            android:visibility="visible"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/save_photo_info_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/save_photo_info_1"
+        android:layout_marginBottom="@dimen/save_photo_margin_2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="@dimen/save_photo_margin_2">
+
+
+        <EditText
+            android:id="@+id/save_photo_editText_sender_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/save_photo_margin_left_1"
+            android:hint="寄件人手机号码"
+            android:inputType="number"
+            android:textColor="@color/color_view_title_text"
+            android:textColorHint="#CCCCCC"
+            android:textSize="@dimen/font_content_size_4"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/save_photo_info_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/save_photo_info_2"
+        android:layout_marginBottom="@dimen/save_photo_margin_1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="@dimen/save_photo_margin_2">
+
+        <EditText
+            android:id="@+id/save_photo_editText_receiver_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/save_photo_margin_left_1"
+            android:hint="收件人手机号码"
+            android:inputType="number"
+            android:textColor="@color/color_view_title_text"
+            android:textColorHint="#CCCCCC"
+            android:textSize="@dimen/font_content_size_4"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/save_photo_imageView_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/save_photo_info_3"
+        android:scaleType="center"
+        android:src="@drawable/default_pic"/>
+
+
+</RelativeLayout>

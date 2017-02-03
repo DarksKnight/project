@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<View
+    android:layout_width="0dp"
+    android:layout_height="1px"
+    android:layout_gravity="center_vertical"
+    android:layout_marginLeft="@dimen/margin_left"
+    android:layout_marginRight="@dimen/margin_right"
+    android:layout_weight="1"
+    android:background="#CCCCCC" />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:text="@string/str_my_trips_no_more_record"
+    android:textColor="#B9B9B9"
+    android:textSize="@dimen/font_content_size_7" />
+
+<View
+    android:layout_width="0dp"
+    android:layout_height="1px"
+    android:layout_gravity="center_vertical"
+    android:layout_marginLeft="@dimen/margin_left"
+    android:layout_marginRight="@dimen/margin_right"
+    android:layout_weight="1"
+    android:background="#CCCCCC" />
+
+</LinearLayout>

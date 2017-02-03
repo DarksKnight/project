@@ -1,0 +1,13 @@
+<resources>
+    <declare-styleable name="SlideButtonView">
+        <attr name="promptString" format="string" />
+        <attr name="textSizeInt" format="integer" />
+        <attr name="leftBtnMargin" format="integer" />
+        <attr name="rightBtnMargin" format="integer" />
+        <attr name="textColor" format="color" />
+        <attr name="leftButtonDrawable" format="color|reference" />
+        <attr name="leftButtonPressedDrawable" format="color|reference" />
+        <attr name="arrowDrawable" format="color|reference" />
+        <attr name="rightDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>

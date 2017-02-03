@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <View style="@style/list_item_cell_seperator_layout"/>
+
+        <TextView android:id="@+id/bike_number_text"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="6dip"
+            />
+
+        <View style="@style/list_item_cell_seperator_layout"/>
+
+        <TextView android:id="@+id/bike_status_text"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="6dip"
+            />
+
+        <View style="@style/list_item_cell_seperator_layout"/>
+
+        <TextView android:id="@+id/bike_monitor_text"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="6dip"
+            />
+
+        <View style="@style/list_item_cell_seperator_layout"/>
+    </LinearLayout>
+    <View style="@style/list_item_seperator_layout"/>
+</LinearLayout>

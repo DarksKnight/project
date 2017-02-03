@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#40000000">
+
+    <TextView
+        android:id="@+id/select_from_album"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/margin_right"
+        android:layout_marginRight="@dimen/margin_right"
+        android:background="@drawable/bg_btn_bind_lock"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="相册"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_content_size_2" />
+
+    <TextView
+        android:id="@+id/select_from_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/select_from_album"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/margin_right"
+        android:layout_marginRight="@dimen/margin_right"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_btn_bind_lock"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="拍照"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_content_size_2" />
+
+    <TextView
+        android:id="@+id/select_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/select_from_camera"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/margin_right"
+        android:layout_marginRight="@dimen/margin_right"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_select_pic_cancel"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="取消"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_content_size_2" />
+
+
+</RelativeLayout>

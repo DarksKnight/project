@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    tools:context="com.express56.xq.qzy.aishang.bms.activity.PaymentActivity">
+
+    <RelativeLayout
+        android:id="@+id/payment_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title"
+        android:background="@color/color_title_bg">
+
+        <ImageView
+            android:id="@+id/payment_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:padding="8dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/payment_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/str_title_trip_payment"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_2" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/title_division"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/payment_title_part"
+        android:background="#D3D4D8" />
+
+    <ScrollView android:id="@+id/payment_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_division">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/payment_info_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_marginRight="@dimen/margin_right"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp"
+                android:paddingLeft="@dimen/margin_left"
+                android:paddingTop="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/payment_bicycle_img" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/payment_school_area_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#8B8B8B"
+                        android:textSize="@dimen/font_content_size_4" />
+
+                    <TextView
+                        android:id="@+id/payment_bike_serial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="XM005"
+                        android:textColor="#F58400"
+                        android:textSize="@dimen/font_content_size_2_1" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/line_division_1"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/payment_info_1"
+                android:layout_marginLeft="@dimen/margin_left_3"
+                android:layout_marginRight="@dimen/margin_right_3"
+                android:background="#e7e7e7" />
+
+            <LinearLayout
+                android:id="@+id/payment_info_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_division_1"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_marginRight="@dimen/margin_right"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/margin_left"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:src="@drawable/travel_icon_start_normal" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_left_double"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/payment_trip_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#B9B9B9"
+                        android:textSize="@dimen/font_content_size_7" />
+
+                    <TextView
+                        android:id="@+id/payment_start_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#FF8B8B8B"
+                        android:textSize="@dimen/font_content_size_2_1" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/payment_info_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/payment_info_2"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_marginRight="@dimen/margin_right"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/margin_left"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:src="@drawable/travel_icon_end_normal" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_left_double"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/payment_trip_end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#B9B9B9"
+                        android:textSize="@dimen/font_content_size_7" />
+
+                    <TextView
+                        android:id="@+id/payment_end_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#FF8B8B8B"
+                        android:textSize="@dimen/font_content_size_2_1" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_division_2"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/payment_info_3"
+                android:layout_marginLeft="@dimen/margin_left_3"
+                android:layout_marginRight="@dimen/margin_right_3"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/payment_info_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_division_2"
+                android:layout_marginLeft="@dimen/margin_left_3"
+                android:layout_marginRight="@dimen/margin_right_3"
+                android:layout_marginTop="@dimen/margin_top_1">
+
+                <TextView
+                    android:id="@+id/title_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/str_payment_total_money"
+                    android:textColor="#B9B9B9"
+                    android:textSize="@dimen/font_content_size_4" />
+
+                <TextView
+                    android:id="@+id/payment_tatal_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_name"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#8B8B8B"
+                    android:textSize="@dimen/font_content_size_8" />
+
+                <TextView
+                    android:id="@+id/payment_time_consuming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/payment_tatal_money"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#B9B9B9"
+                    android:textSize="@dimen/font_content_size_5" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/pay_result_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/payment_info_4"
+                android:layout_marginLeft="@dimen/margin_left_3"
+                android:layout_marginRight="@dimen/margin_right_3"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:id="@+id/line_division_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/payment_info_3"
+                    android:background="#e7e7e7" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="6dp"
+                        android:text="@string/str_payment_type_label"
+                        android:textSize="@dimen/font_content_size_4" />
+
+                    <TextView
+                        android:id="@+id/payment_pay_type_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:text="@string/str_payment_type_alipay"
+                        android:textSize="@dimen/font_content_size_4" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="6dp"
+                        android:text="@string/str_payment_time"
+                        android:textSize="@dimen/font_content_size_4" />
+
+                    <TextView
+                        android:id="@+id/payment_pay_time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:textSize="@dimen/font_content_size_4" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="6dp"
+                        android:text="@string/str_payment_trade_no"
+                        android:textSize="@dimen/font_content_size_4" />
+
+                    <TextView
+                        android:id="@+id/payment_pay_trade_no_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:textSize="@dimen/font_content_size_4" />
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/line_division_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/payment_info_3"
+                    android:layout_marginTop="10dp"
+                    android:background="#e7e7e7" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/payment_add_comment_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pay_result_info"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_btn_comment"
+                android:paddingBottom="@dimen/margin_bottom_1"
+                android:paddingLeft="@dimen/margin_left_3"
+                android:paddingRight="@dimen/margin_right_3"
+                android:paddingTop="@dimen/margin_top_1"
+                android:text="@string/str_payment_comment_text"
+                android:textColor="@drawable/text_color_comment"
+                android:textSize="@dimen/font_content_size_4"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/payment_comment_input_part"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pay_result_info"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/margin_left_3"
+                android:layout_marginRight="@dimen/margin_right_3"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/payment_comment_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/str_payment_comment_label"
+                    android:textColor="#B9B9B9"
+                    android:textSize="@dimen/font_content_size_4" />
+
+                <com.express56.xq.widget.EditTextLinearLayout
+                    android:id="@+id/payment_comment_editText_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fadingEdge="none"
+                    android:scrollbars="none"
+                    android:visibility="visible">
+
+                    <EditText
+                        android:id="@+id/payment_comment_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_comment"
+                        android:gravity="top|left"
+                        android:maxLines="3"
+                        android:padding="2dp"
+                        android:textColor="#8B8B8B"
+                        android:textSize="@dimen/font_content_size_4" />
+                </com.express56.xq.widget.EditTextLinearLayout>
+
+                <TextView
+                    android:id="@+id/payment_comment_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:gravity="top|left"
+                    android:padding="2dp"
+                    android:textColor="#8B8B8B"
+                    android:textSize="@dimen/font_content_size_4"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/comment_submit_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/payment_comment_input_part"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="@dimen/margin_right_3"
+                android:background="@drawable/btn_login"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="4dp"
+                android:text="@string/str_payment_submit_comment"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/font_content_size_4"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/payment_pay_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_page_widget_height"
+                android:layout_below="@id/payment_comment_input_part"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_marginRight="@dimen/margin_right"
+                android:layout_marginTop="@dimen/login_page_vertical_margin"
+                android:background="@drawable/btn_login"
+                android:gravity="center"
+                android:text="@string/str_payment"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/font_content_size_1"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

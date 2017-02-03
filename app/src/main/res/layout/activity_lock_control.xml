@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/unlock_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title"
+        android:background="@color/color_title_bg">
+
+        <ImageView
+            android:id="@+id/unlock_bike_lock_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:padding="8dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/bind_title_textview_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/str_title_unlock_bike"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_2" />
+        <ImageView
+            android:id="@+id/removeBind_bike_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/btn_remove_bind" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/bg_lock_image_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/unlock_title_part"
+        android:background="@color/color_image_bg"
+        android:src="@drawable/unlock_bike" />
+
+    <TextView
+        android:id="@+id/lock_bike_device_number_str_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bg_lock_image_part"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginTop="@dimen/margin_top"
+        android:singleLine="true"
+        android:text="@string/str_label_device_number"
+        android:textColor="@color/color_dark_grey"
+        android:textSize="@dimen/font_content_size_3" />
+
+    <TextView
+        android:id="@+id/lock_bike_prompt_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/lock_bike_device_number_str_part"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_left_1"
+        android:layout_marginRight="@dimen/margin_left_1"
+        android:layout_marginTop="@dimen/margin_top"
+        android:background="@drawable/bg_unlock_textview_with_corner"
+        android:drawableLeft="@drawable/bike_site_position"
+        android:drawablePadding="6dp"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_content_size_3" />
+
+    <LinearLayout android:id="@+id/slide_btn_part"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lock_bike_prompt_part">
+
+        <com.express56.xq.widget.SlideButtonView
+            android:id="@+id/slide_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:arrowDrawable="@drawable/slide_openlock_arrow"
+            app:leftButtonDrawable="@drawable/bg_btn_openlock_slide_normal"
+            app:leftButtonPressedDrawable="@drawable/bg_btn_openlock_slide_pressed"
+            app:promptString="@string/str_btn_prompt_open_lock"
+            app:leftBtnMargin="12"
+            android:background="@drawable/bg_slide_button"
+            app:rightBtnMargin="12"
+            app:rightDrawable="@drawable/slide_openlock_target"
+            app:textColor="#59A236"
+            app:textSizeInt="18" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/trips_list_view_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/trip_listview_item_line" />
+
+    <RelativeLayout
+        android:id="@+id/trips_item_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_left"
+        android:paddingRight="@dimen/margin_left">
+
+        <TextView
+            android:id="@+id/trip_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="#B9B9B9"
+            android:textSize="@dimen/font_content_size_4" />
+
+        <TextView
+            android:id="@+id/trip_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#F58400"
+            android:textSize="@dimen/font_content_size_5" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/trips_item_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:layout_marginTop="@dimen/margin_top"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_left"
+        android:paddingRight="@dimen/margin_left">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/trip_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/trlistl_icon_start_normal"
+                android:drawablePadding="10dp"
+                android:textColor="#8B8B8B"
+                android:textSize="@dimen/font_content_size_4" />
+
+            <TextView
+                android:id="@+id/trip_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_1"
+                android:drawableLeft="@drawable/trlistl_icon_end_normal"
+                android:drawablePadding="10dp"
+                android:textColor="#8B8B8B"
+                android:textSize="@dimen/font_content_size_4"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/trip_item_expenses"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:gravity="bottom|right"
+            android:text="@string/str_my_trips_pay_money"
+            android:textColor="#8B8B8B"
+            android:textSize="@dimen/font_content_size_0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/trip_end_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <include layout="@layout/trip_listview_item_line" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/trip_no_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_image_bg"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <include layout="@layout/list_view_no_more" />
+
+    </LinearLayout>
+
+</LinearLayout>

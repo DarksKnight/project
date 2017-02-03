@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_image_bg">
+
+    <RelativeLayout
+        android:id="@+id/about_us_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title"
+        android:background="@color/color_title_bg">
+
+        <ImageView
+            android:id="@+id/about_us_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:onClick="goBack"
+            android:padding="8dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/about_us_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/str_menu_item_about_us"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_2" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/about_us_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/about_us_title_part"
+        android:background="#D3D4D8" />
+
+    <RelativeLayout
+        android:id="@+id/about_us_version_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_us_line_1"
+        android:background="@drawable/about_us_item_bg_color"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/about_us_version_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:paddingBottom="@dimen/about_us_item_bottom_margin"
+            android:paddingLeft="@dimen/about_us_item_left_margin"
+            android:paddingRight="@dimen/about_us_item_right_margin"
+            android:paddingTop="@dimen/about_us_item_top_margin"
+            android:text="@string/str_about_us_item_version_update"
+            android:background="@drawable/about_us_item_bg_color"
+            android:textColor="@drawable/menu_item_text_color"
+            android:textSize="@dimen/font_content_size_3" />
+
+        <TextView
+            android:id="@+id/about_us_textView_version_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/about_us_item_right_margin"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@drawable/menu_item_text_color"
+            android:textSize="@dimen/font_content_size_3" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/about_us_line_2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/about_us_version_part"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:background="#D3D4D8" />
+
+    <TextView
+        android:id="@+id/about_us_protocol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_us_line_2"
+        android:background="@drawable/about_us_item_bg_color"
+        android:clickable="true"
+        android:paddingBottom="@dimen/about_us_item_bottom_margin"
+        android:paddingLeft="@dimen/about_us_item_left_margin"
+        android:paddingRight="@dimen/about_us_item_right_margin"
+        android:paddingTop="@dimen/about_us_item_top_margin"
+        android:text="@string/str_about_us_item_user_protocol"
+        android:textColor="@drawable/menu_item_text_color"
+        android:textSize="@dimen/font_content_size_3" />
+
+    <View
+        android:id="@+id/about_us_line_3"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/about_us_protocol"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:background="#D3D4D8" />
+
+    <TextView
+        android:id="@+id/about_us_isr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_us_line_3"
+        android:background="@drawable/about_us_item_bg_color"
+        android:clickable="true"
+        android:paddingBottom="@dimen/about_us_item_bottom_margin"
+        android:paddingLeft="@dimen/about_us_item_left_margin"
+        android:paddingRight="@dimen/about_us_item_right_margin"
+        android:paddingTop="@dimen/about_us_item_top_margin"
+        android:text="@string/str_about_us_item_about_isr"
+        android:textColor="@drawable/menu_item_text_color"
+        android:textSize="@dimen/font_content_size_3" />
+
+    <View
+        android:id="@+id/about_us_line_4"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/about_us_isr"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:background="#D3D4D8" />
+
+    <TextView
+        android:id="@+id/about_us_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_us_line_4"
+        android:background="@drawable/about_us_item_bg_color"
+        android:clickable="true"
+        android:paddingBottom="@dimen/about_us_item_bottom_margin"
+        android:paddingLeft="@dimen/about_us_item_left_margin"
+        android:paddingRight="@dimen/about_us_item_right_margin"
+        android:paddingTop="@dimen/about_us_item_top_margin"
+        android:text="@string/str_about_us_item_logout"
+        android:textColor="@drawable/menu_item_text_color"
+        android:textSize="@dimen/font_content_size_3" />
+
+    <TextView
+        android:id="@+id/about_us_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/str_about_us_copyright"
+        android:textColor="#B9B9B9"
+        android:textSize="@dimen/font_content_size_4" />
+
+</RelativeLayout>
