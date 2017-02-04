@@ -120,4 +120,8 @@ public class RequestID {
     public static final int REQ_GET_ADVERTIZEMENTS = REQ_GET_SETTING_INFO_CLICK + 1;
 
     public static final int REQ_SETTING_SCAN = REQ_GET_ADVERTIZEMENTS + 1;
+
+    public static final int REQ_GET_AREA_PRICE = REQ_SETTING_SCAN + 1;
+
+    public static final int REQ_GET_AREA_PRICE_SAVE = REQ_GET_AREA_PRICE + 1;
 }

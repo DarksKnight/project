@@ -44,12 +44,20 @@
         android:layout_below="@id/search_title_part"
         android:background="#d3d4d8"/>
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/listView_my_express"
+
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/rv_my_express"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_line_1"
-        android:layout_marginTop="8dp"
-        android:scrollbars="none"/>
+        android:layout_below="@id/search_line_1">
+
+        <ListView
+            android:id="@+id/listView_my_express"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none"/>
+
+    </com.andview.refreshview.XRefreshView>
 
 </RelativeLayout>

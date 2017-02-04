@@ -33,6 +33,7 @@
     <string name="str_title_message_push">信息推送</string>
     <string name="str_title_express_search">快递单查询</string>
     <string name="str_title_my_express">我的快递</string>
+    <string name="str_title_area_price_set">区域价格设置</string>
     <string name="str_title_my_lock_card">我的车牌</string>
     <string name="str_title_rent_bike">用车中</string>
     <string name="str_title_alarm_route">报警追踪</string>
@@ -388,6 +389,12 @@
 
     <!-- 我的快递 -->
     <string name="str_my_express_place_order">下单</string>
+
+    <!-- 区域价格设置 -->
+    <string name="str_area_price_city">省份/市</string>
+    <string name="str_area_price_first_weight">首重（1KG）/元</string>
+    <string name="str_area_price_next_weight">续重（1KG）/元</string>
+    <string name="str_area_price_save">保存</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

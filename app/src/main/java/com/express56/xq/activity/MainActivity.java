@@ -773,8 +773,10 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
                 startActivity(new Intent(this, MyExpressActivity.class));
                 break;
             case 4:
+
                 break;
             case 5:
+                startActivity(new Intent(this, AreaPriceSetActivity.class));
                 break;
             default:
                 break;

@@ -132,7 +132,6 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                             String content = object.getString("result");
                             ToastUtil.showMessage(this, content, true);
                             finish();
-
                         }
                     } else if (code == 0) {
                         showReloginDialog();

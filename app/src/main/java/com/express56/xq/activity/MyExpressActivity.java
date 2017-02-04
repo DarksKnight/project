@@ -1,13 +1,13 @@
 package com.express56.xq.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ListView;
 
+import com.andview.refreshview.XRefreshView;
 import com.express56.xq.R;
 import com.express56.xq.adapter.MyExpressAdapter;
 import com.express56.xq.model.MyExpressInfo;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,8 @@ import java.util.List;
 
 public class MyExpressActivity extends BaseActivity {
 
-    private PullToRefreshListView mListView = null;
+    private ListView mListView = null;
+    private XRefreshView rv = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,9 @@ public class MyExpressActivity extends BaseActivity {
         super.initView();
 
         mListView = getView(R.id.listView_my_express);
-        mListView.setMode(PullToRefreshBase.Mode.BOTH);
+        rv = getView(R.id.rv_my_express);
+        rv.setPullLoadEnable(true);
+        rv.setAutoRefresh(false);
         List<MyExpressInfo> expressInfos = new ArrayList<>();
         for(int i = 0; i < 20; i++) {
             MyExpressInfo info = new MyExpressInfo();
@@ -46,14 +49,36 @@ public class MyExpressActivity extends BaseActivity {
         MyExpressAdapter adapter = new MyExpressAdapter(this, expressInfos);
         mListView.setAdapter(adapter);
 
-        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+        rv.setXRefreshViewListener(new XRefreshView.XRefreshViewListener() {
+
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        rv.stopRefresh();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onLoadMore(boolean isSilence) {
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        rv.stopLoadMore();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onRelease(float direction) {
 
             }
 
             @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onHeaderMove(double headerMovePercent, int offsetY) {
 
             }
         });
