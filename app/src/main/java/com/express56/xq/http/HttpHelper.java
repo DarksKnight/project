@@ -3888,11 +3888,13 @@ public class HttpHelper {
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
         String content = JSONArray.toJSONString(infos);
+        LogUtil.d("aaa", "content : " + content);
         OkHttpUtils
                 .postString()
                 .tag(page)
                 .url(URL_21 + "?token=" + token)
                 .content(content)
+                .mediaType(MEDIA_TYPE)
                 .build()
                 .execute(new StringCallback() {
                     @Override

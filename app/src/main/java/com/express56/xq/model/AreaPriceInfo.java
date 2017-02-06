@@ -8,15 +8,15 @@ import java.io.Serializable;
 
 public class AreaPriceInfo implements Serializable {
 
-    public String createDate = null;
+    public String createDate = "";
 
-    public String userId = null;
+    public String userId = "";
 
-    public String areaId = null;
+    public String areaId = "";
 
-    public String areaName = null;
+    public String areaName = "";
 
-    public String price1 = null;
+    public String price1 = "";
 
-    public String price2 = null;
+    public String price2 = "";
 }

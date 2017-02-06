@@ -84,4 +84,10 @@
 
     </ScrollView>
 
+    <com.express56.xq.widget.ChoosePlaceLayout
+        android:id="@+id/layout_choose_place"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
 </RelativeLayout>

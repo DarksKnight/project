@@ -15,6 +15,7 @@ import com.express56.xq.http.RequestID;
 import com.express56.xq.model.AreaPriceInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.util.SharedPreUtils;
+import com.express56.xq.widget.ChoosePlaceLayout;
 import com.express56.xq.widget.CustomListView;
 import com.express56.xq.widget.ToastUtil;
 
@@ -69,8 +70,7 @@ public class AreaPriceSetActivity extends BaseActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.d(TAG, "");
-//                HttpHelper.sendRequest_saveAreaPrice(context, RequestID.REQ_GET_AREA_PRICE_SAVE, sp.getUserInfo().token, infos, dialog);
+                HttpHelper.sendRequest_saveAreaPrice(context, RequestID.REQ_GET_AREA_PRICE_SAVE, sp.getUserInfo().token, infos, dialog);
             }
         });
     }
