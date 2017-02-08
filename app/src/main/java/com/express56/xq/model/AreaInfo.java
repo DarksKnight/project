@@ -13,4 +13,6 @@ public class AreaInfo {
     public String parentId = "";
 
     public String hasChild = "";
+
+    public boolean selected = false;
 }

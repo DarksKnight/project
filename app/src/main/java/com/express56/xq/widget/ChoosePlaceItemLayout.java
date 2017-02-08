@@ -92,8 +92,12 @@ public class ChoosePlaceItemLayout extends LinearLayout {
         resize(str);
     }
 
-    public void reset() {
-        SpannableStringBuilder style =new SpannableStringBuilder(tvInfo.getText());
+    public void reset(String... text) {
+        String str = tvInfo.getText().toString();
+        if (text.length > 0) {
+            str = text[0];
+        }
+        SpannableStringBuilder style =new SpannableStringBuilder(str);
         style.setSpan(new ForegroundColorSpan(Color.BLACK), 0, tvInfo.getText().length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         tvInfo.setText(style);
         vLine.setVisibility(View.GONE);

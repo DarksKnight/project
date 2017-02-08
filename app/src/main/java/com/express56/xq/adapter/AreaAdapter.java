@@ -1,7 +1,11 @@
 package com.express56.xq.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +44,13 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder
     @Override
     public void onBindViewHolder(AreaViewHolder holder, final int position) {
         holder.tvInfo.setText(infos.get(position).name);
+        SpannableStringBuilder style =new SpannableStringBuilder(infos.get(position).name);
+        if (!infos.get(position).selected) {
+            style.setSpan(new ForegroundColorSpan(Color.BLACK), 0, infos.get(position).name.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        } else {
+            style.setSpan(new ForegroundColorSpan(Color.RED), 0, infos.get(position).name.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        }
+        holder.tvInfo.setText(style);
         holder.llContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

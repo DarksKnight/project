@@ -19,12 +19,14 @@ import com.express56.xq.model.AreaInfo;
 import com.express56.xq.util.SharedPreUtils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONArray;
 import alibaba.fastjson.JSONObject;
+
 
 /**
  * Created by bojoy-sdk2 on 17/2/6.
@@ -75,7 +77,6 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
             @Override
             public void choose(AreaInfo info) {
                 item.setAreaInfo(info);
-                item.reset();
                 chooseAreaId.add(info.id);
 
                 HttpHelper.sendRequest_getArea(ChoosePlaceLayout.this, getContext(), RequestID.REQ_GET_AREA, info.id, sp.getUserInfo().token, dialog);
@@ -92,8 +93,8 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
             @Override
             public void choose(List<AreaInfo> listAreaInfos, int index) {
                 llContent.removeViews(index + 1, llContent.getChildCount() - (index + 1));
-                for(int i = index; i < chooseAreaId.size(); i++) {
-                    chooseAreaId.remove(i);
+                while(chooseAreaId.size() != index) {
+                    chooseAreaId.remove(index);
                 }
                 item = (ChoosePlaceItemLayout)llContent.getChildAt(llContent.getChildCount() - 1);
                 item.selected();
@@ -141,26 +142,45 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
                             Map<String, Object> map = JSON.parseObject(content, Map.class);
-                            JSONObject obj = (JSONObject) map.get("areas");
-                            for(String key : obj.keySet()) {
-                                parentId = key;
-                                List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
-                                infos.clear();
-                                infos.addAll(list);
-                                item = createItem(context);
-                                llContent.addView(item);
-                                item.setListAreaInfos((List<AreaInfo>) infos.clone());
-                                adapter.notifyDataSetChanged();
+                            JSONObject json = (JSONObject)map.get("areas");
+                            try {
+                                org.json.JSONObject obj = new org.json.JSONObject(json.toJSONString());
+                                for (Iterator<String> iterator = obj.keys(); iterator.hasNext();) {
+                                    String key = iterator.next();
+                                    parentId = key;
+                                    List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
+                                    infos.clear();
+                                    infos.addAll(list);
+                                    item = createItem(context);
+                                    llContent.addView(item);
+                                    item.setListAreaInfos((List<AreaInfo>) infos.clone());
+                                    adapter.notifyDataSetChanged();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
 
                             JSONArray str = (JSONArray)map.get("selectedAreas");
                             selectedArea = JSONArray.parseArray(str.toJSONString(), AreaInfo.class);
                             for(int i = 0; i < llContent.getChildCount(); i++) {
                                 ChoosePlaceItemLayout layout = (ChoosePlaceItemLayout)llContent.getChildAt(i);
-                                layout.setAreaInfo(selectedArea.get(i));
-                                layout.reset();
-                                if (i == llContent.getChildCount() - 1) {
-                                    layout.selected(selectedArea.get(i).name);
+                                if (selectedArea.size() > 0) {
+                                    layout.setAreaInfo(selectedArea.get(i));
+                                    layout.reset();
+                                    chooseAreaId.add(selectedArea.get(i).id);
+                                    if (i == llContent.getChildCount() - 1) {
+                                        layout.selected(selectedArea.get(i).name);
+                                        chooseAreaId.remove(i);
+                                        for(int j = 0; j < infos.size(); j++) {
+                                            if (selectedArea.get(i).name.equals(infos.get(j).name)) {
+                                                infos.get(j).selected = true;
+                                                adapter.notifyDataSetChanged();
+                                                break;
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    layout.selected();
                                 }
                             }
                         }
@@ -175,6 +195,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                             String content = object.getString("result");
                             List<AreaInfo> list = JSONArray.parseArray(content, AreaInfo.class);
                             if (list.size() > 0) {
+                                item.reset();
                                 item = createItem(context);
                                 item.selected();
                                 llContent.addView(item);
