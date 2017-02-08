@@ -1,6 +1,5 @@
 package com.express56.xq.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,7 +39,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder
 
     @Override
     public void onBindViewHolder(AreaViewHolder holder, final int position) {
-        holder.tvInfo.setText(infos.get(position).areaName);
+        holder.tvInfo.setText(infos.get(position).name);
         holder.llContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

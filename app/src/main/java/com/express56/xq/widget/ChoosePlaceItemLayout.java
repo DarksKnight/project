@@ -1,6 +1,11 @@
 package com.express56.xq.widget;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +24,7 @@ import java.util.List;
 public class ChoosePlaceItemLayout extends LinearLayout {
 
     private TextView tvInfo = null;
+    private View vLine = null;
     private LinearLayout llContent = null;
     private AreaInfo areaInfo = null;
     private List<AreaInfo> listAreaInfos = null;
@@ -38,18 +44,20 @@ public class ChoosePlaceItemLayout extends LinearLayout {
 
         tvInfo = (TextView)findViewById(R.id.tv_choose_place_item);
         llContent = (LinearLayout)findViewById(R.id.ll_choose_place_item);
+        vLine = findViewById(R.id.v_choose_place_item);
 
         llContent.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.choose(listAreaInfos);
+                listener.choose(listAreaInfos, getIndex());
             }
         });
     }
 
     public void setAreaInfo(AreaInfo areaInfo) {
         this.areaInfo = areaInfo;
-        tvInfo.setText(areaInfo.areaName);
+        tvInfo.setText(areaInfo.name);
+        resize(areaInfo.name);
     }
 
     public void setListAreaInfos(List<AreaInfo> listAreaInfos) {
@@ -61,7 +69,7 @@ public class ChoosePlaceItemLayout extends LinearLayout {
     }
 
     public interface ChoosePlaceItemListener{
-        void choose(List<AreaInfo> listAreaInfos);
+        void choose(List<AreaInfo> listAreaInfos, int index);
     }
 
     public void setIndex(int index) {
@@ -70,5 +78,32 @@ public class ChoosePlaceItemLayout extends LinearLayout {
 
     public int getIndex() {
         return index;
+    }
+
+    public void selected(String... text) {
+        String str = "请选择";
+        if (text.length > 0) {
+            str = text[0];
+        }
+        SpannableStringBuilder style =new SpannableStringBuilder(str);
+        style.setSpan(new ForegroundColorSpan(Color.RED), 0, str.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        tvInfo.setText(style);
+        vLine.setVisibility(View.VISIBLE);
+        resize(str);
+    }
+
+    public void reset() {
+        SpannableStringBuilder style =new SpannableStringBuilder(tvInfo.getText());
+        style.setSpan(new ForegroundColorSpan(Color.BLACK), 0, tvInfo.getText().length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        tvInfo.setText(style);
+        vLine.setVisibility(View.GONE);
+        resize(tvInfo.getText().toString());
+    }
+
+    private void resize(String text) {
+        TextPaint newPaint = new TextPaint();
+        newPaint.setTextSize(getContext().getResources().getDimension(R.dimen.text_14sp));
+        float textPaintWidth = newPaint.measureText(text) + getContext().getResources().getDimension(R.dimen.camera_edging_size_vertical);
+        setLayoutParams(new LinearLayout.LayoutParams((int)textPaintWidth, LinearLayout.LayoutParams.MATCH_PARENT));
     }
 }

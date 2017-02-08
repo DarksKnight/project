@@ -10,19 +10,18 @@ import android.widget.RelativeLayout;
 import com.express56.xq.R;
 import com.express56.xq.constant.ExpressConstant;
 import com.express56.xq.model.AreaPriceInfo;
+import com.express56.xq.model.BindInfo;
+import com.express56.xq.okhttp.OkHttpUtils;
 import com.express56.xq.okhttp.callback.BitmapCallback;
+import com.express56.xq.okhttp.callback.FileCallBack;
+import com.express56.xq.okhttp.callback.StringCallback;
 import com.express56.xq.util.BitmapUtils;
+import com.express56.xq.util.DialogUtils;
 import com.express56.xq.util.Digests;
 import com.express56.xq.util.DisplayUtil;
 import com.express56.xq.util.Encodes;
-import com.express56.xq.util.NetWorkUtil;
-import com.express56.xq.widget.CustomImageView;
-import com.express56.xq.model.BindInfo;
-import com.express56.xq.okhttp.OkHttpUtils;
-import com.express56.xq.okhttp.callback.FileCallBack;
-import com.express56.xq.okhttp.callback.StringCallback;
-import com.express56.xq.util.DialogUtils;
 import com.express56.xq.util.LogUtil;
+import com.express56.xq.util.NetWorkUtil;
 
 import java.io.File;
 import java.util.HashMap;
@@ -73,6 +72,8 @@ public class HttpHelper {
     public static final String URL_19 = HTTP + IP + "/express/rest/user/introduce";//推广扫码 post
     public static final String URL_20 = HTTP + IP + "/express/rest/user/area";//区域价格查询接口
     public static final String URL_21 = HTTP + IP + "/express/rest/user/area/save"; //区域价格设置接口
+    public static final String URL_22 = HTTP + IP + "/express/rest/config/area/get";//查询区域
+    public static final String URL_23 = HTTP + IP + "/express/rest/config/area/edit";//查询区域
 
 //    {"code":9,"result":{"version":"20161115.1.0beta","isRequire":"1","remarks":"测试","downloadPath":"app/android/express.apk"}}
 //    返回结果说明：isRequire 是否必须升级 remarks 升级内容 downloadPath:升级地址
@@ -3888,7 +3889,6 @@ public class HttpHelper {
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
         String content = JSONArray.toJSONString(infos);
-        LogUtil.d("aaa", "content : " + content);
         OkHttpUtils
                 .postString()
                 .tag(page)
@@ -3912,6 +3912,93 @@ public class HttpHelper {
                     @Override
                     public void onResponse(String response) {
                         printAPI_TimeConsuming("sendRequest_saveAreaPrice", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getArea(final IHttpResponse page, final Context context, final int requestID, String parentId, String token, final Dialog dialog) {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("parentId", parentId);
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .params(map)
+                .tag(page)
+                .url(URL_22)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getArea", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, context.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getArea", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_editArea(final IHttpResponse page, final Context context, final int requestID, String areaCode, String token, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("areaCode", areaCode);
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .params(map)
+                .tag(page)
+                .url(URL_23)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_editArea", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, context.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_editArea", requestTime);
 
                         if (dialog != null) {
                             dialog.dismiss();

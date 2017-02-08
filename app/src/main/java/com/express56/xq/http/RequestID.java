@@ -124,4 +124,8 @@ public class RequestID {
     public static final int REQ_GET_AREA_PRICE = REQ_SETTING_SCAN + 1;
 
     public static final int REQ_GET_AREA_PRICE_SAVE = REQ_GET_AREA_PRICE + 1;
+
+    public static final int REQ_GET_AREA = REQ_GET_AREA_PRICE_SAVE + 1;
+
+    public static final int REQ_GET_AREA_EDIT = REQ_GET_AREA + 1;
 }

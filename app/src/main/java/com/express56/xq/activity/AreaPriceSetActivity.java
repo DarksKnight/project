@@ -1,12 +1,8 @@
 package com.express56.xq.activity;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 
 import com.express56.xq.R;
 import com.express56.xq.adapter.AreaPriceAdapter;
@@ -15,7 +11,6 @@ import com.express56.xq.http.RequestID;
 import com.express56.xq.model.AreaPriceInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.util.SharedPreUtils;
-import com.express56.xq.widget.ChoosePlaceLayout;
 import com.express56.xq.widget.CustomListView;
 import com.express56.xq.widget.ToastUtil;
 

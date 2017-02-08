@@ -52,8 +52,6 @@ import com.express56.xq.widget.ToastUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONObject;
@@ -773,7 +771,7 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
                 startActivity(new Intent(this, MyExpressActivity.class));
                 break;
             case 4:
-
+                startActivity(new Intent(this, PlaceOrderActivity.class));
                 break;
             case 5:
                 startActivity(new Intent(this, AreaPriceSetActivity.class));

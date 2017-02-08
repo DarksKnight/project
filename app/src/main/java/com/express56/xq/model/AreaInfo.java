@@ -6,7 +6,11 @@ package com.express56.xq.model;
 
 public class AreaInfo {
 
-    public String areaId = "";
+    public String id = "";
 
-    public String areaName = "";
+    public String name = "";
+
+    public String parentId = "";
+
+    public String hasChild = "";
 }

@@ -1,5 +1,6 @@
 package com.express56.xq.widget;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,22 +10,44 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.express56.xq.R;
+import com.express56.xq.activity.InvokeStaticMethod;
 import com.express56.xq.adapter.AreaAdapter;
+import com.express56.xq.http.HttpHelper;
+import com.express56.xq.http.IHttpResponse;
+import com.express56.xq.http.RequestID;
 import com.express56.xq.model.AreaInfo;
+import com.express56.xq.util.SharedPreUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import alibaba.fastjson.JSON;
+import alibaba.fastjson.JSONArray;
+import alibaba.fastjson.JSONObject;
 
 /**
  * Created by bojoy-sdk2 on 17/2/6.
  */
 
-public class ChoosePlaceLayout extends LinearLayout {
+public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
 
+    private Context context = null;
     private LinearLayout llContent = null;
     private RecyclerView rvList = null;
     private ArrayList<AreaInfo> infos = null;
     private AreaAdapter adapter = null;
+
+    private ChooseListener listener = null;
+
+    private String parentId = "";
+    private ArrayList<String> chooseAreaId = new ArrayList<>();
+    private ArrayList<String> originalAreaId = new ArrayList<>();
+    private List<AreaInfo> selectedArea = null;
+    private SharedPreUtils sp = null;
+    private Dialog dialog = null;
+
+    private ChoosePlaceItemLayout item = null;
 
     public ChoosePlaceLayout(Context context) {
         this(context, null);
@@ -41,56 +64,159 @@ public class ChoosePlaceLayout extends LinearLayout {
     }
 
     private void initView(final Context context) {
+        this.context = context;
+
         llContent = (LinearLayout)findViewById(R.id.ll_choose_place);
         rvList = (RecyclerView)findViewById(R.id.rv_choose_place);
 
-        AreaInfo area = new AreaInfo();
-        area.areaName = "江苏省";
-        ChoosePlaceItemLayout item = createItem(context, area);
-        llContent.addView(item);
-
         infos = new ArrayList<>();
-        AreaInfo info = null;
-        for(int i = 0; i < 15; i++) {
-            info = new AreaInfo();
-            info.areaName = "苏州市" + i;
-            infos.add(info);
-        }
-        item.setListAreaInfos((List<AreaInfo>) infos.clone());
 
         adapter = new AreaAdapter(context, infos, new AreaAdapter.AreaAdapterListener() {
             @Override
             public void choose(AreaInfo info) {
-                ChoosePlaceItemLayout item = createItem(context, info);
-                llContent.addView(item);
+                item.setAreaInfo(info);
+                item.reset();
+                chooseAreaId.add(info.id);
 
-                infos.clear();
-                for(int i = 0; i < 15; i++) {
-                    info = new AreaInfo();
-                    info.areaName = "姑苏区" + i;
-                    infos.add(info);
-                }
-                item.setListAreaInfos((List<AreaInfo>) infos.clone());
-                adapter.notifyDataSetChanged();
+                HttpHelper.sendRequest_getArea(ChoosePlaceLayout.this, getContext(), RequestID.REQ_GET_AREA, info.id, sp.getUserInfo().token, dialog);
             }
         });
         rvList.setLayoutManager(new LinearLayoutManager(context));
         rvList.setAdapter(adapter);
     }
 
-    private ChoosePlaceItemLayout createItem(Context context, AreaInfo info) {
-        final ChoosePlaceItemLayout item = new ChoosePlaceItemLayout(context);
-        item.setIndex(item.getIndex() + 1);
-        item.setAreaInfo(info);
+    private ChoosePlaceItemLayout createItem(Context context) {
+        item = new ChoosePlaceItemLayout(context);
+        item.setIndex(llContent.getChildCount());
         item.setListener(new ChoosePlaceItemLayout.ChoosePlaceItemListener() {
             @Override
-            public void choose(List<AreaInfo> listAreaInfos) {
-                llContent.removeViews(item.getIndex() + 1, llContent.getChildCount() - (item.getIndex() + 1));
+            public void choose(List<AreaInfo> listAreaInfos, int index) {
+                llContent.removeViews(index + 1, llContent.getChildCount() - (index + 1));
+                for(int i = index; i < chooseAreaId.size(); i++) {
+                    chooseAreaId.remove(i);
+                }
+                item = (ChoosePlaceItemLayout)llContent.getChildAt(llContent.getChildCount() - 1);
+                item.selected();
                 infos.clear();
                 infos.addAll(listAreaInfos);
                 adapter.notifyDataSetChanged();
             }
         });
         return item;
+    }
+
+    public void show(String areaCode, Dialog dialog) {
+        this.dialog = dialog;
+        setVisibility(VISIBLE);
+
+        if (sp == null) sp = new SharedPreUtils(getContext());
+        HttpHelper.sendRequest_editArea(this, getContext(), RequestID.REQ_GET_AREA_EDIT, areaCode, sp.getUserInfo().token, dialog);
+
+    }
+
+    public void hide() {
+        reset();
+        setVisibility(GONE);
+    }
+
+    @Override
+    public void doHttpResponse(Object... param) {
+        String result = (String) param[0];
+        if (result == null) {
+            return;
+        }
+        if (InvokeStaticMethod.isNotJSONstring(getContext(), result)) {
+            return;
+        }
+        JSONObject object = JSON.parseObject(result);
+        if (object == null) {
+            ToastUtil.showMessage(getContext(), "返回数据异常", false);
+            return;
+        }
+        switch (Integer.parseInt(param[1].toString())) {
+            case RequestID.REQ_GET_AREA_EDIT:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            String content = object.getString("result");
+                            Map<String, Object> map = JSON.parseObject(content, Map.class);
+                            JSONObject obj = (JSONObject) map.get("areas");
+                            for(String key : obj.keySet()) {
+                                parentId = key;
+                                List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
+                                infos.clear();
+                                infos.addAll(list);
+                                item = createItem(context);
+                                llContent.addView(item);
+                                item.setListAreaInfos((List<AreaInfo>) infos.clone());
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            JSONArray str = (JSONArray)map.get("selectedAreas");
+                            selectedArea = JSONArray.parseArray(str.toJSONString(), AreaInfo.class);
+                            for(int i = 0; i < llContent.getChildCount(); i++) {
+                                ChoosePlaceItemLayout layout = (ChoosePlaceItemLayout)llContent.getChildAt(i);
+                                layout.setAreaInfo(selectedArea.get(i));
+                                layout.reset();
+                                if (i == llContent.getChildCount() - 1) {
+                                    layout.selected(selectedArea.get(i).name);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case RequestID.REQ_GET_AREA:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            String content = object.getString("result");
+                            List<AreaInfo> list = JSONArray.parseArray(content, AreaInfo.class);
+                            if (list.size() > 0) {
+                                item = createItem(context);
+                                item.selected();
+                                llContent.addView(item);
+                                infos.clear();
+                                infos.addAll(list);
+                                item.setListAreaInfos((List<AreaInfo>) infos.clone());
+                                adapter.notifyDataSetChanged();
+                            } else {
+                                originalAreaId = (ArrayList<String>)chooseAreaId.clone();
+                                listener.chooseCompelete(originalAreaId);
+                                hide();
+                            }
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void doHttpCanceled(Object... param) {
+
+    }
+
+    private void reset() {
+        llContent.removeAllViews();
+        parentId = "";
+        infos.clear();
+        chooseAreaId.clear();
+    }
+
+    public List<String> getChooseArea() {
+        return originalAreaId;
+    }
+
+    public void setListener(ChooseListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ChooseListener{
+        void chooseCompelete(List<String> areaIds);
     }
 }
