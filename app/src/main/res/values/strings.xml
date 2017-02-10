@@ -34,6 +34,7 @@
     <string name="str_title_express_search">快递单查询</string>
     <string name="str_title_my_express">我的快递</string>
     <string name="str_title_area_price_set">区域价格设置</string>
+    <string name="str_title_place_order_edit">下单编辑</string>
     <string name="str_title_my_lock_card">我的车牌</string>
     <string name="str_title_rent_bike">用车中</string>
     <string name="str_title_alarm_route">报警追踪</string>

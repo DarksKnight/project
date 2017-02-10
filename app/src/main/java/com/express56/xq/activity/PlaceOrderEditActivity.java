@@ -1,9 +1,6 @@
 package com.express56.xq.activity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.express56.xq.R;
 import com.express56.xq.widget.ChoosePlaceLayout;
@@ -14,13 +11,11 @@ import java.util.List;
  * Created by bojoy-sdk2 on 17/2/7.
  */
 
-public class PlaceOrderActivity extends BaseActivity {
+public class PlaceOrderEditActivity extends BaseActivity {
 
-    private static final String TAG = PlaceOrderActivity.class.getSimpleName();
-    private Button btn = null;
-    private TextView tv = null;
+    private static final String TAG = PlaceOrderEditActivity.class.getSimpleName();
     private ChoosePlaceLayout cpl = null;
-    private String str = "";
+    private String areaStr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +28,16 @@ public class PlaceOrderActivity extends BaseActivity {
     protected void initView() {
         super.initView();
 
-        btn = getView(R.id.btnClick);
         cpl = getView(R.id.cpl);
-        tv = getView(R.id.tv);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cpl.show(str, dialog);
-            }
-        });
 
         cpl.setListener(new ChoosePlaceLayout.ChooseListener() {
             @Override
             public void chooseCompelete(List<String> areaIds) {
-                str = "";
+                areaStr = "";
                 for(String s : areaIds) {
-                    str += s + "_";
+                    areaStr += s + "_";
                 }
-                str = str.substring(0, str.length() -1);
-                tv.setText(str);
+                areaStr = areaStr.substring(0, areaStr.length() -1);
             }
         });
     }
