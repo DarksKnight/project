@@ -2,6 +2,8 @@ package com.express56.xq.activity;
 
 import android.os.Bundle;
 
+import com.express56.xq.R;
+
 /**
  * Created by bojoy-sdk2 on 2017/2/9.
  */
@@ -11,6 +13,15 @@ public class PlaceOrderShowActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_place_order_show);
+
+        init();
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+
 
     }
 }

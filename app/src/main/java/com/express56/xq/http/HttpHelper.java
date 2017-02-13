@@ -4011,4 +4011,8 @@ public class HttpHelper {
                 });
     }
 
+    public static void sendRequest_saveOrder(final Context context, final int requestID, String submitType, Map<String, String> order, final Dialog dialog) {
+
+    }
+
 }
