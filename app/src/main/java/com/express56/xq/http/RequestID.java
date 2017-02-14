@@ -128,4 +128,8 @@ public class RequestID {
     public static final int REQ_GET_AREA = REQ_GET_AREA_PRICE_SAVE + 1;
 
     public static final int REQ_GET_AREA_EDIT = REQ_GET_AREA + 1;
+
+    public static final int REQ_GET_ORDER_INFO = REQ_GET_AREA_EDIT + 1;
+
+    public static final int REQ_PAY_SUCCESS = REQ_GET_ORDER_INFO + 1;
 }

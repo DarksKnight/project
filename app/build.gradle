@@ -130,7 +130,6 @@ dependencies {
     //    compile 'com.yalantis:ucrop:1.0.1'
     compile files('libs/locSDK_6.13.jar')
     compile files('libs/core-3.0.0.jar')
-    compile files('libs/alipaySdk-20160809.jar')
     compile files('libs/ucrop-1.0.1-sources.jar')
     compile files('libs/commons-codec-1.9.jar')
     compile files('libs/commons-lang3-3.3.2.jar')

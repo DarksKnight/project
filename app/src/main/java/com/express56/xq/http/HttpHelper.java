@@ -74,6 +74,9 @@ public class HttpHelper {
     public static final String URL_21 = HTTP + IP + "/express/rest/user/area/save"; //区域价格设置接口
     public static final String URL_22 = HTTP + IP + "/express/rest/config/area/get";//查询区域
     public static final String URL_23 = HTTP + IP + "/express/rest/config/area/edit";//查询区域
+    public static final String URL_24 = HTTP + IP + "/express/rest/order/save";//下单接口
+    public static final String URL_25 = HTTP + IP + "/express/rest/pay/alipay/get";//获取订单号
+    public static final String URL_26 = HTTP + IP + "/express/rest/pay/log/save";//支付成功
 
 //    {"code":9,"result":{"version":"20161115.1.0beta","isRequire":"1","remarks":"测试","downloadPath":"app/android/express.apk"}}
 //    返回结果说明：isRequire 是否必须升级 remarks 升级内容 downloadPath:升级地址
@@ -1242,19 +1245,6 @@ public class HttpHelper {
                 });
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -3845,7 +3835,7 @@ public class HttpHelper {
                 });
     }
 
-    public static void sendRequest_getAreaPrice(final Context page,final int requestID, String token, final Dialog dialog) {
+    public static void sendRequest_getAreaPrice(final Context page, final int requestID, String token, final Dialog dialog) {
         final long requestTime = System.currentTimeMillis();
 
         final IHttpResponse responsePage = (IHttpResponse) page;
@@ -4011,8 +4001,135 @@ public class HttpHelper {
                 });
     }
 
-    public static void sendRequest_saveOrder(final Context context, final int requestID, String submitType, Map<String, String> order, final Dialog dialog) {
+    public static void sendRequest_saveOrder(final Context page, final int requestID, String submitType, Map<String, String> order, String token, final Dialog dialog) {
+        final long requestTime = System.currentTimeMillis();
 
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("submitType", submitType);
+        map.put("order", JSON.toJSONString(order));
+        String content = JSON.toJSONString(map);
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .postString()
+                .tag(page)
+                .url(URL_24 + "?token=" + token)
+                .content(content)
+                .mediaType(MEDIA_TYPE)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_saveOrder", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_saveOrder", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getOrderInfo(final Context page, final int requestID, String token, final Dialog dialog) {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_25)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getOrderInfo", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getOrderInfo", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_payComplete(final Context page, final int requestID, String token, String info, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+        map.put("content", info);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_26)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_payComplete", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_payComplete", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
     }
 
 }
