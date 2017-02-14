@@ -8,13 +8,71 @@ import java.io.Serializable;
 
 public class MyExpressInfo implements Serializable {
 
-    public String expressNo = null;
+    public String id = "";
 
-    public String createDate = null;
+    public String createDate = "";
 
-    public String status = null;
+    public String orderNo = "";
 
-    public String address = null;
+    public String isPayed = "";
 
-    public String person = null;
+    public String orderStatus = "";
+
+    public String orderMoney = "";
+
+    public String quotationId = "";
+
+    public String serviceTime = "";
+
+    public String expressNo = "";
+
+    public String remarks = "";
+
+    public String isInsurance = "";
+
+    public String expressExpense = "";
+
+    public String insuranceExpense = "";
+
+    public String insuranceMoney = "";
+
+    public String isArrivePay = "";
+
+    public String payType = "";
+
+    public String payNo = "";
+
+    public String payStatus = "";
+
+    public String sendAddress = "";
+
+    public String sendDetailAddress = "";
+
+    public String sendAreaCode = "";
+
+    public String sender = "";
+
+    public String senderPhone = "";
+
+    public String receiveAddress = "";
+
+    public String receiveDetailAddress = "";
+
+    public String receiveAreaCode = "";
+
+    public String receiver = "";
+
+    public String receiverPhone = "";
+
+    public String isAgentPay = "";
+
+    public String agentMoney = "";
+
+    public String weight = "";
+
+    public String thingDesc = "";
+
+    public String expressCompany = "";
+
+    public String expressCompanyName = "";
 }

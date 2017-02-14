@@ -1,12 +1,17 @@
 package com.express56.xq.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.express56.xq.R;
+import com.express56.xq.activity.PlaceOrderEditActivity;
+import com.express56.xq.activity.PlaceOrderShowActivity;
 import com.express56.xq.model.MyExpressInfo;
 
 import java.util.List;
@@ -56,27 +61,51 @@ public class MyExpressAdapter extends BaseAdapter {
 
     private ViewHolder createHolder(View convertView) {
         final ViewHolder holder = new ViewHolder();
-        holder.tvOrderNumber = (TextView)convertView.findViewById(R.id.tv_order_number);
+        holder.rlBody = (RelativeLayout)convertView.findViewById(R.id.rl_order_express_body);
         holder.tvOrderStatus = (TextView)convertView.findViewById(R.id.tv_order_status);
         holder.tvOrderDate = (TextView)convertView.findViewById(R.id.tv_order_date);
         holder.tvOrderPerson = (TextView)convertView.findViewById(R.id.tv_order_person);
-        holder.tvOrderAddress = (TextView)convertView.findViewById(R.id.tv_order_address);
+        holder.tvOrderPersonAddress = (TextView)convertView.findViewById(R.id.tv_order_person_address);
+        holder.tvOrderPersonPhone = (TextView)convertView.findViewById(R.id.tv_order_person_phone);
         return holder;
     }
 
-    private void bindHolder(final ViewHolder viewHolder, int position) {
-        viewHolder.tvOrderNumber.setText(listMyExpress.get(position).expressNo);
-        viewHolder.tvOrderStatus.setText(listMyExpress.get(position).status);
+    private void bindHolder(final ViewHolder viewHolder, final int position) {
+        String status = listMyExpress.get(position).orderStatus;
+        if (listMyExpress.get(position).orderStatus.equals("1")) {
+            status = "未发布";
+        } else if (listMyExpress.get(position).orderStatus.equals("2")) {
+            status = "已发布";
+        }
+        viewHolder.tvOrderStatus.setText(status);
         viewHolder.tvOrderDate.setText(listMyExpress.get(position).createDate);
-        viewHolder.tvOrderPerson.setText(listMyExpress.get(position).person);
-        viewHolder.tvOrderAddress.setText(listMyExpress.get(position).address);
+        viewHolder.tvOrderPerson.setText("收货人:" + listMyExpress.get(position).receiver);
+        viewHolder.tvOrderPersonAddress.setText("收货人地址:" + listMyExpress.get(position).receiveDetailAddress);
+        viewHolder.tvOrderPersonPhone.setText("收货人联系电话:" + listMyExpress.get(position).receiverPhone);
+
+        viewHolder.rlBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("info", listMyExpress.get(position));
+                Intent intent = null;
+                if (listMyExpress.get(position).orderStatus.equals("1")) {
+                    intent = new Intent(activity, PlaceOrderEditActivity.class);
+                } else {
+                    intent = new Intent(activity, PlaceOrderShowActivity.class);
+                }
+                intent.putExtras(bundle);
+                activity.startActivity(intent);
+            }
+        });
     }
 
     private class ViewHolder {
-        public TextView tvOrderNumber = null;
         public TextView tvOrderStatus = null;
         public TextView tvOrderDate = null;
         public TextView tvOrderPerson = null;
-        public TextView tvOrderAddress = null;
+        public TextView tvOrderPersonAddress = null;
+        public TextView tvOrderPersonPhone = null;
+        public RelativeLayout rlBody = null;
     }
 }

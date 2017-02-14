@@ -77,6 +77,8 @@ public class HttpHelper {
     public static final String URL_24 = HTTP + IP + "/express/rest/order/save";//下单接口
     public static final String URL_25 = HTTP + IP + "/express/rest/pay/alipay/get";//获取订单号
     public static final String URL_26 = HTTP + IP + "/express/rest/pay/log/save";//支付成功
+    public static final String URL_27 = HTTP + IP + "/express/rest/order/find";//获取订单列表
+    public static final String URL_28 = HTTP + IP + "/express/rest/config/company";//获取快递公司
 
 //    {"code":9,"result":{"version":"20161115.1.0beta","isRequire":"1","remarks":"测试","downloadPath":"app/android/express.apk"}}
 //    返回结果说明：isRequire 是否必须升级 remarks 升级内容 downloadPath:升级地址
@@ -4120,6 +4122,92 @@ public class HttpHelper {
                     @Override
                     public void onResponse(String response) {
                         printAPI_TimeConsuming("sendRequest_payComplete", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getOrderList(final Context page, final int requestID, String token, String keyword, String pageNo, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+        map.put("keyword", keyword);
+        map.put("pageNo", pageNo);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_27)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getOrderList", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getOrderList", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getExpressCompany(final Context page, final int requestID, String token, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_28)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getExpressCompany", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getExpressCompany", requestTime);
 
                         if (dialog != null) {
                             dialog.dismiss();

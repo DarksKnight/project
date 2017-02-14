@@ -39,12 +39,15 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     private RecyclerView rvList = null;
     private ArrayList<AreaInfo> infos = null;
     private AreaAdapter adapter = null;
+    private String tag = "";
 
     private ChooseListener listener = null;
 
     private String parentId = "";
     private ArrayList<String> chooseAreaId = new ArrayList<>();
     private ArrayList<String> originalAreaId = new ArrayList<>();
+    private ArrayList<String> chooseAreaName = new ArrayList<>();
+    private ArrayList<String> originalAreaName = new ArrayList<>();
     private List<AreaInfo> selectedArea = null;
     private SharedPreUtils sp = null;
     private Dialog dialog = null;
@@ -68,8 +71,8 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     private void initView(final Context context) {
         this.context = context;
 
-        llContent = (LinearLayout)findViewById(R.id.ll_choose_place);
-        rvList = (RecyclerView)findViewById(R.id.rv_choose_place);
+        llContent = (LinearLayout) findViewById(R.id.ll_choose_place);
+        rvList = (RecyclerView) findViewById(R.id.rv_choose_place);
 
         infos = new ArrayList<>();
 
@@ -78,6 +81,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
             public void choose(AreaInfo info) {
                 item.setAreaInfo(info);
                 chooseAreaId.add(info.id);
+                chooseAreaName.add(info.name);
 
                 HttpHelper.sendRequest_getArea(ChoosePlaceLayout.this, getContext(), RequestID.REQ_GET_AREA, info.id, sp.getUserInfo().token, dialog);
             }
@@ -93,10 +97,11 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
             @Override
             public void choose(List<AreaInfo> listAreaInfos, int index) {
                 llContent.removeViews(index + 1, llContent.getChildCount() - (index + 1));
-                while(chooseAreaId.size() != index) {
+                while (chooseAreaId.size() != index) {
                     chooseAreaId.remove(index);
+                    chooseAreaName.remove(index);
                 }
-                item = (ChoosePlaceItemLayout)llContent.getChildAt(llContent.getChildCount() - 1);
+                item = (ChoosePlaceItemLayout) llContent.getChildAt(llContent.getChildCount() - 1);
                 item.selected();
                 infos.clear();
                 infos.addAll(listAreaInfos);
@@ -106,8 +111,9 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
         return item;
     }
 
-    public void show(String areaCode, Dialog dialog) {
+    public void show(String areaCode, Dialog dialog, String tag) {
         this.dialog = dialog;
+        this.tag = tag;
         setVisibility(VISIBLE);
 
         if (sp == null) sp = new SharedPreUtils(getContext());
@@ -142,10 +148,10 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
                             Map<String, Object> map = JSON.parseObject(content, Map.class);
-                            JSONObject json = (JSONObject)map.get("areas");
+                            JSONObject json = (JSONObject) map.get("areas");
                             try {
                                 org.json.JSONObject obj = new org.json.JSONObject(json.toJSONString());
-                                for (Iterator<String> iterator = obj.keys(); iterator.hasNext();) {
+                                for (Iterator<String> iterator = obj.keys(); iterator.hasNext(); ) {
                                     String key = iterator.next();
                                     parentId = key;
                                     List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
@@ -160,18 +166,20 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                                 e.printStackTrace();
                             }
 
-                            JSONArray str = (JSONArray)map.get("selectedAreas");
+                            JSONArray str = (JSONArray) map.get("selectedAreas");
                             selectedArea = JSONArray.parseArray(str.toJSONString(), AreaInfo.class);
-                            for(int i = 0; i < llContent.getChildCount(); i++) {
-                                ChoosePlaceItemLayout layout = (ChoosePlaceItemLayout)llContent.getChildAt(i);
+                            for (int i = 0; i < llContent.getChildCount(); i++) {
+                                ChoosePlaceItemLayout layout = (ChoosePlaceItemLayout) llContent.getChildAt(i);
                                 if (selectedArea.size() > 0) {
                                     layout.setAreaInfo(selectedArea.get(i));
                                     layout.reset();
                                     chooseAreaId.add(selectedArea.get(i).id);
+                                    chooseAreaName.add(selectedArea.get(i).name);
                                     if (i == llContent.getChildCount() - 1) {
                                         layout.selected(selectedArea.get(i).name);
                                         chooseAreaId.remove(i);
-                                        for(int j = 0; j < infos.size(); j++) {
+                                        chooseAreaName.remove(i);
+                                        for (int j = 0; j < infos.size(); j++) {
                                             if (selectedArea.get(i).name.equals(infos.get(j).name)) {
                                                 infos.get(j).selected = true;
                                                 adapter.notifyDataSetChanged();
@@ -204,8 +212,9 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                                 item.setListAreaInfos((List<AreaInfo>) infos.clone());
                                 adapter.notifyDataSetChanged();
                             } else {
-                                originalAreaId = (ArrayList<String>)chooseAreaId.clone();
-                                listener.chooseCompelete(originalAreaId);
+                                originalAreaId = (ArrayList<String>) chooseAreaId.clone();
+                                originalAreaName = (ArrayList<String>) chooseAreaName.clone();
+                                listener.chooseCompelete(originalAreaId, originalAreaName, tag);
                                 hide();
                             }
                         }
@@ -227,6 +236,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
         parentId = "";
         infos.clear();
         chooseAreaId.clear();
+        chooseAreaName.clear();
     }
 
     public List<String> getChooseArea() {
@@ -237,7 +247,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
         this.listener = listener;
     }
 
-    public interface ChooseListener{
-        void chooseCompelete(List<String> areaIds);
+    public interface ChooseListener {
+        void chooseCompelete(List<String> areaIds, List<String> areaNames, String tag);
     }
 }

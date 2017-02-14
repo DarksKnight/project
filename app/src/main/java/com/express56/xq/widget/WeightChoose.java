@@ -48,7 +48,7 @@ public class WeightChoose extends LinearLayout implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_weight_choose_minus:
-                if(weight < 0) {
+                if(weight <= 0) {
                     return;
                 }
                 weight = Float.parseFloat(etNumber.getText().toString()) - 0.5;

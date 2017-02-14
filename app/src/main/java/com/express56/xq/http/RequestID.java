@@ -132,4 +132,8 @@ public class RequestID {
     public static final int REQ_GET_ORDER_INFO = REQ_GET_AREA_EDIT + 1;
 
     public static final int REQ_PAY_SUCCESS = REQ_GET_ORDER_INFO + 1;
+
+    public static final int REQ_GET_ORDER_LIST = REQ_PAY_SUCCESS + 1;
+
+    public static final int REQ_GET_EXPRESS_COMPANY = REQ_GET_ORDER_LIST + 1;
 }

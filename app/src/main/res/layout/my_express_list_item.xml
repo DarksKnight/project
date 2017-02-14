@@ -1,45 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_order_express_body"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/padding_2"
     android:background="@color/color_bg">
 
     <TextView
-        android:id="@+id/tv_order_number"
+        android:id="@+id/tv_order_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12332423235234134123"/>
+        android:text="12332423235234134123"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv_order_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="已完成"
-        android:layout_alignParentRight="true"/>
-
-    <TextView
-        android:id="@+id/tv_order_date"
-        android:layout_below="@id/tv_order_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2016-12-01 17:55"
-        android:layout_marginTop="@dimen/padding_2"/>
+        android:layout_alignParentRight="true"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv_order_person"
-        android:layout_below="@id/tv_order_date"
+        android:layout_below="@id/tv_order_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="收货人名字  收货人联系方式"
-        android:layout_marginTop="@dimen/padding_2"/>
+        android:text="收货人:"
+        android:layout_marginTop="@dimen/padding_2"
+        android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_order_address"
+        android:id="@+id/tv_order_person_phone"
         android:layout_below="@id/tv_order_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="发货地址"
-        android:layout_marginTop="@dimen/padding_2"/>
+        android:text="收货人联系电话:"
+        android:layout_marginTop="@dimen/padding_2"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_order_person_address"
+        android:layout_below="@id/tv_order_person_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货地址:"
+        android:layout_marginTop="@dimen/padding_2"
+        android:textColor="@color/black"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_order_express_info"
+        android:layout_below="@id/tv_order_person_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_order_express_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快递公司:"
+            android:layout_marginTop="@dimen/padding_2"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_order_express_number"
+            android:layout_below="@id/tv_order_express_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快递单号:"
+            android:layout_marginTop="@dimen/padding_2"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_order_express_money"
+            android:layout_below="@id/tv_order_express_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快递费用:"
+            android:layout_marginTop="@dimen/padding_2"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_order_address"-->
+        <!--android:layout_below="@id/tv_order_person"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="发货地址"-->
+        <!--android:layout_marginTop="@dimen/padding_2"/>-->
 
 </RelativeLayout>

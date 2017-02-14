@@ -54,6 +54,15 @@ android {
 //            keyPassword System.console().readLine("\nKey password: ")
             storeFile file('express56.jks')
         }
+
+        debug {
+            storePassword "tianxia09"
+            keyAlias "express"
+            keyPassword "tianxia09"
+//            storePassword System.console().readLine("\nKeystore password: ")
+//            keyPassword System.console().readLine("\nKey password: ")
+            storeFile file('express56.jks')
+        }
     }
 
     sourceSets {
@@ -146,5 +155,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:support-v4:23.0.1'
     compile files('libs/alipaySingle-20161222.jar')
+    compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
 }
 

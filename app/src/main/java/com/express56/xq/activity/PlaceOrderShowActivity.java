@@ -38,6 +38,7 @@ public class PlaceOrderShowActivity extends BaseActivity {
                      */
                     String resultInfo = payResult.getResult();// 同步返回需要验证的信息
                     String resultStatus = payResult.getResultStatus();
+                    LogUtil.d(TAG, "resultInfo = " + resultInfo + " : resultStatus = " + resultStatus);
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         HttpHelper.sendRequest_payComplete(PlaceOrderShowActivity.this, RequestID.REQ_PAY_SUCCESS, sp.getUserInfo().token, resultInfo, dialog);
@@ -49,7 +50,9 @@ public class PlaceOrderShowActivity extends BaseActivity {
                 default:
                     break;
             }
-        };
+        }
+
+        ;
     };
 
     @Override
@@ -98,7 +101,8 @@ public class PlaceOrderShowActivity extends BaseActivity {
                                 @Override
                                 public void run() {
                                     PayTask alipay = new PayTask(PlaceOrderShowActivity.this);
-                                    Map<String, String> result = alipay.payV2(content,true);
+                                    Map<String, String> result = alipay.payV2(content, true);
+                                    LogUtil.d(TAG, "result = " + result.toString());
 
                                     Message msg = new Message();
                                     msg.what = SDK_PAY_FLAG;

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -47,7 +48,7 @@ import alibaba.fastjson.JSONObject;
 /**
  * Created by Administrator on 2016/5/22.
  */
-public class BaseActivity extends Activity implements IHttpResponse {
+public class BaseActivity extends FragmentActivity implements IHttpResponse {
 
     public Dialog getDialog() {
         return dialog;
