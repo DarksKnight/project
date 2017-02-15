@@ -136,4 +136,8 @@ public class RequestID {
     public static final int REQ_GET_ORDER_LIST = REQ_PAY_SUCCESS + 1;
 
     public static final int REQ_GET_EXPRESS_COMPANY = REQ_GET_ORDER_LIST + 1;
+
+    public static final int REQ_SAVE_ORDER = REQ_GET_EXPRESS_COMPANY + 1;
+
+    public static final int REQ_GET_ORDER = REQ_SAVE_ORDER + 1;
 }

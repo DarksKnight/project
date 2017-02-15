@@ -3,13 +3,15 @@ package com.express56.xq.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.express56.xq.R;
+import com.express56.xq.adapter.SpinnerAdapter;
 import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.ExpressCompany;
@@ -17,6 +19,7 @@ import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.widget.ChoosePlaceLayout;
 import com.express56.xq.widget.ToastUtil;
+import com.express56.xq.widget.WeightChoose;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -24,7 +27,9 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONObject;
@@ -33,9 +38,10 @@ import alibaba.fastjson.JSONObject;
  * Created by bojoy-sdk2 on 17/2/7.
  */
 
-public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetListener, View.OnClickListener {
+public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = PlaceOrderEditActivity.class.getSimpleName();
+
     private ChoosePlaceLayout cpl = null;
     private Spinner spExpressCompany = null;
     private Button btnChooseDate = null;
@@ -46,14 +52,42 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     private TextView tvSendItem = null;
     private TextView tvGetItem = null;
     private Button btnGetItem = null;
+    private TextView tvGetItemDate = null;
+    private WeightChoose wcWeight = null;
+    private Spinner spSupportValue = null;
+    private Spinner spSupportCharge = null;
+    private Spinner spArrive = null;
+    private LinearLayout llSupportValue = null;
+    private EditText etSupportValue = null;
+    private LinearLayout llSupportCharge = null;
+    private EditText etSupportCharge = null;
+    private Button btnSave = null;
+    private Button btnSaveRelease = null;
+    private EditText etSenderName = null;
+    private EditText etSenderPhone = null;
+    private EditText etReceiverName = null;
+    private EditText etReceiverPhone = null;
+    private EditText etRemark = null;
+    private EditText etDesc = null;
+    private EditText etSenderAddressDesc = null;
+    private EditText etReceiverAddressDesc = null;
+    private EditText etMoney = null;
 
+    private Map<String, String> order = new HashMap<>();
+    private String submitType = "1";
+    private String[] flags = new String[]{"0", "1"};
+    private String[] flagNames = new String[]{"否", "是"};
     private List<ExpressCompany> listCompany = new ArrayList<>();
     private String sendAreaId = "";
     private String sendAreaName = "";
-    private String getAreaId = "";
-    private String getAreaName = "";
+    private String receiverAreaId = "";
+    private String receiverAreaName = "";
     private String getItemDate = "";
+    private String expressCompanyId = "";
     private MyExpressInfo info = null;
+    private String supportValue = "";
+    private String supportCharge = "";
+    private String arrive = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +105,8 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
             info = (MyExpressInfo) bundle.getSerializable("info");
         }
 
+        btnSave = getView(R.id.btn_place_order_save);
+        btnSaveRelease = getView(R.id.btn_place_order_save_release);
         cpl = getView(R.id.cpl);
         rlNumberDate = getView(R.id.rl_place_order_number_date);
         tvOrderNumber = getView(R.id.tv_place_order_number);
@@ -80,11 +116,34 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         tvSendItem = getView(R.id.tv_place_order_send_item);
         btnGetItem = getView(R.id.btn_place_order_get_item);
         tvGetItem = getView(R.id.tv_place_order_get_item);
+        tvGetItemDate = getView(R.id.tv_place_order_get_item_date);
+        wcWeight = getView(R.id.wc_place_order);
+        spSupportValue = getView(R.id.sp_place_order_support_value);
+        spSupportCharge = getView(R.id.sp_place_order_support_charge);
+        spArrive = getView(R.id.sp_place_order_arrive);
+        llSupportValue = getView(R.id.ll_place_order_support_value);
+        etSupportValue = getView(R.id.et_place_order_support_value);
+        llSupportCharge = getView(R.id.ll_place_order_support_charge);
+        etSupportCharge = getView(R.id.et_place_order_support_charge);
+        etSenderName = getView(R.id.et_place_order_sender_name);
+        etSenderPhone = getView(R.id.et_place_order_sender_phone);
+        etReceiverName = getView(R.id.et_place_order_receiver_name);
+        etReceiverPhone = getView(R.id.et_place_order_receiver_phone);
+        etRemark = getView(R.id.et_place_order_remark);
+        etDesc = getView(R.id.et_place_order_desc);
+        etSenderAddressDesc = getView(R.id.et_place_order_sender_address);
+        etReceiverAddressDesc = getView(R.id.et_place_order_receiver_address);
+        etMoney = getView(R.id.et_place_order_express_money);
+
+        SpinnerAdapter sa = new SpinnerAdapter(this, flagNames);
+        spSupportValue.setAdapter(sa);
+        spSupportCharge.setAdapter(sa);
+        spArrive.setAdapter(sa);
+
         dateDialog = new TimePickerDialog.Builder()
                 .setCallBack(this)
                 .setCyclic(false)
                 .setMinMillseconds(System.currentTimeMillis())
-                .setMaxMillseconds(System.currentTimeMillis() + 60 * 60 * 24 * 365)
                 .setCurrentMillseconds(System.currentTimeMillis())
                 .setThemeColor(getResources().getColor(R.color.timepicker_dialog_bg))
                 .setType(Type.ALL)
@@ -102,18 +161,12 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         btnSendItem.setOnClickListener(this);
         btnGetItem.setOnClickListener(this);
         tvGetItem.setOnClickListener(this);
+        btnSave.setOnClickListener(this);
+        btnSaveRelease.setOnClickListener(this);
 
-        spExpressCompany.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        spSupportValue.setOnItemSelectedListener(this);
+        spSupportCharge.setOnItemSelectedListener(this);
+        spExpressCompany.setOnItemSelectedListener(this);
 
         cpl.setListener(new ChoosePlaceLayout.ChooseListener() {
             @Override
@@ -130,16 +183,16 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
                     }
                     tvSendItem.setText(sendAreaName);
                 } else if (tag.equals("get_item")) {
-                    getAreaId = "";
+                    receiverAreaId = "";
                     for (String s : areaIds) {
-                        getAreaId += s + "_";
+                        receiverAreaId += s + "_";
                     }
-                    getAreaId = getAreaId.substring(0, getAreaId.length() - 1);
-                    getAreaName = "";
+                    receiverAreaId = receiverAreaId.substring(0, receiverAreaId.length() - 1);
+                    receiverAreaName = "";
                     for (String s : areaNames) {
-                        getAreaName += s;
+                        receiverAreaName += s;
                     }
-                    tvGetItem.setText(getAreaName);
+                    tvGetItem.setText(receiverAreaName);
                 }
             }
         });
@@ -184,9 +237,21 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
                             for (int i = 0; i < listCompany.size(); i++) {
                                 arrayCompany[i] = listCompany.get(i).name;
                             }
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayCompany);
+                            SpinnerAdapter adapter = new SpinnerAdapter(this, arrayCompany);
                             spExpressCompany.setAdapter(adapter);
                         }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
+            case RequestID.REQ_SAVE_ORDER:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        finish();
                     } else if (code == 0) {
                         showReloginDialog();
                     } else {
@@ -204,6 +269,7 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(millseconds);
         getItemDate = simpleDateFormat.format(date);
+        tvGetItemDate.setText(getItemDate);
     }
 
     @Override
@@ -213,7 +279,70 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         } else if (v == btnSendItem) {
             cpl.show(sendAreaId, dialog, "send_item");
         } else if (v == btnGetItem) {
-            cpl.show(getAreaId, dialog, "get_item");
+            cpl.show(receiverAreaId, dialog, "get_item");
+        } else if (v == btnSave) {
+            submitType = "1";
+            save();
+        } else if (v == btnSaveRelease) {
+            submitType = "2";
+            save();
         }
+    }
+
+    private void save() {
+        if (null != info) {
+            order.put("id", info.id);
+        }
+        order.put("serviceTime", getItemDate);
+        order.put("remarks", etRemark.getText().toString());
+        order.put("isInsurance", supportValue);
+        order.put("insuranceMoney", etSupportValue.getText().toString().length() == 0 ? "0" : etSupportValue.getText().toString());
+        order.put("isArrivePay", arrive);
+        order.put("sendAddress", sendAreaName);
+        order.put("sendDetailAddress", etSenderAddressDesc.getText().toString());
+        order.put("sendAreaCode", sendAreaId);
+        order.put("sender", etSenderName.getText().toString());
+        order.put("senderPhone", etSenderPhone.getText().toString());
+        order.put("receiveAddress", receiverAreaName);
+        order.put("receiveDetailAddress", etReceiverAddressDesc.getText().toString());
+        order.put("receiveAreaCode", receiverAreaId);
+        order.put("receiver", etReceiverName.getText().toString());
+        order.put("receiverPhone", etReceiverPhone.getText().toString());
+        order.put("isAgentPay", supportCharge);
+        order.put("agentMoney", etSupportCharge.getText().toString().length() == 0 ? "0" : etSupportCharge.getText().toString());
+        order.put("expressCompany", expressCompanyId);
+        order.put("weight", wcWeight.getWeight() + "");
+        order.put("thingDesc", etDesc.getText().toString());
+        order.put("orderMoney", etMoney.getText().toString());
+
+        HttpHelper.sendRequest_saveOrder(context, RequestID.REQ_SAVE_ORDER, submitType, order, sp.getUserInfo().token, dialog);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (parent == spExpressCompany) {
+            expressCompanyId = listCompany.get(position).id;
+        } else if (parent == spSupportValue) {
+            supportValue = flags[position];
+            if (supportValue.equals("1")) {
+                llSupportValue.setVisibility(View.VISIBLE);
+            } else {
+                llSupportValue.setVisibility(View.GONE);
+            }
+        } else if (parent == spSupportCharge) {
+            supportCharge = flags[position];
+            if (supportCharge.equals("1")) {
+                llSupportCharge.setVisibility(View.VISIBLE);
+            } else {
+                llSupportCharge.setVisibility(View.GONE);
+            }
+        } else if (parent == spArrive) {
+            arrive = flags[position];
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
