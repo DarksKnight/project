@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="12332423235234134123"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tv_order_status"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:text="已完成"
         android:layout_alignParentRight="true"
-        android:textColor="@color/black"/>
+        android:textColor="@color/color_red"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tv_order_person"
@@ -28,7 +30,8 @@
         android:layout_height="wrap_content"
         android:text="收货人:"
         android:layout_marginTop="@dimen/padding_2"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tv_order_person_phone"
@@ -37,7 +40,8 @@
         android:layout_height="wrap_content"
         android:text="收货人联系电话:"
         android:layout_marginTop="@dimen/padding_2"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tv_order_person_address"
@@ -46,7 +50,8 @@
         android:layout_height="wrap_content"
         android:text="收货地址:"
         android:layout_marginTop="@dimen/padding_2"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
     <RelativeLayout
         android:id="@+id/rl_order_express_info"
@@ -61,7 +66,8 @@
             android:layout_height="wrap_content"
             android:text="快递公司:"
             android:layout_marginTop="@dimen/padding_2"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tv_order_express_number"
@@ -70,7 +76,8 @@
             android:layout_height="wrap_content"
             android:text="快递单号:"
             android:layout_marginTop="@dimen/padding_2"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tv_order_express_money"
@@ -79,7 +86,8 @@
             android:layout_height="wrap_content"
             android:text="快递费用:"
             android:layout_marginTop="@dimen/padding_2"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
 
     </RelativeLayout>
 

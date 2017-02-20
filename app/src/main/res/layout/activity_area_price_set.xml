@@ -30,16 +30,24 @@
 
     </RelativeLayout>
 
+    <View
+        android:id="@+id/search_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/search_title_part"
+        android:background="#d3d4d8"/>
+
     <ScrollView
         android:id="@+id/sl_area_price"
-        android:layout_below="@id/search_title_part"
+        android:layout_below="@id/search_line_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/color_title_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,21 +58,30 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/str_area_price_city"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/str_area_price_first_weight"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/str_area_price_next_weight"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 

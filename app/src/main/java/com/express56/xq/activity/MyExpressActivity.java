@@ -2,7 +2,6 @@ package com.express56.xq.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -126,13 +125,7 @@ public class MyExpressActivity extends BaseActivity {
 
             @Override
             public void onLoadMore(boolean isSilence) {
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        rv.stopLoadMore();
-                    }
-                }, 2000);
+                rv.stopLoadMore();
             }
 
             @Override

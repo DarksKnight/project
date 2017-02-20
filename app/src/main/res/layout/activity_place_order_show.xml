@@ -30,21 +30,28 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <View
+        android:id="@+id/search_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:layout_below="@id/search_title_part"
+        android:background="#d3d4d8"/>
+
+    <ScrollView
+        android:layout_below="@id/search_line_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -58,12 +65,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="单号："/>
+                            android:text="单号："
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
 
                         <TextView
                             android:id="@+id/tv_place_order_show_number"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
 
                     </LinearLayout>
 
@@ -72,7 +83,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2016-01-01 17:00"/>
+                        android:text="2016-01-01 17:00"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </RelativeLayout>
 
@@ -85,12 +98,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="取件时间："/>
+                        android:text="取件时间："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_serviceTime"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
@@ -100,25 +117,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="快递信息"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/color_red"/>
 
             <RelativeLayout
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/tv_place_order_edit_express_company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="快递公司："
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/tv_place_order_show_company"
                     android:layout_toRightOf="@id/tv_place_order_edit_express_company"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
 
             </RelativeLayout>
 
@@ -126,12 +150,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="寄件人信息"
-                android:layout_marginTop="10dp"/>
+                android:textSize="16sp"
+                android:textColor="@color/color_red"
+                android:layout_marginLeft="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -141,47 +168,61 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="寄件人："/>
+                        android:text="寄件人："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_sender"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="寄件人电话："/>
+                        android:text="寄件人电话："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_sender_phone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="发货地址："/>
+                        android:text="发货地址："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_sender_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="江苏省苏州市"/>
+                        android:text="江苏省苏州市"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
@@ -191,12 +232,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="收件人信息"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/color_red"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -206,47 +250,61 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="收件人："/>
+                        android:text="收件人："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_receiver"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="收件人电话："/>
+                        android:text="收件人电话："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_receiver_phone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="收件人地址："/>
+                        android:text="收件人地址："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_receiver_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="江苏省苏州市"/>
+                        android:text="江苏省苏州市"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
@@ -256,13 +314,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="货物信息"
-                android:layout_marginTop="10dp"/>
+                android:textSize="16sp"
+                android:textColor="@color/color_red"
+                android:layout_marginLeft="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="5dp">
+                android:layout_margin="10dp">
                 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -272,81 +332,106 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="重量："/>
+                        android:text="重量："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_weight"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="KG"/>
+                        android:text="KG"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="备注："
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_remark"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="是否保价："/>
+                        android:text="是否保价："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_support_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="元"/>
+                        android:text="元"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="是否代收货款："/>
+                        android:text="是否代收货款："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_support_charge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="元"/>
+                        android:text="元"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="描述："/>
+                        android:text="描述："
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/tv_place_order_show_desc"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
                 
@@ -355,34 +440,47 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="快递费用"/>
+                android:text="快递费用"
+                android:textSize="16sp"
+                android:textColor="@color/color_red"
+                android:layout_marginLeft="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="快递费："/>
+                    android:text="快递费："
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
                 
                 <TextView
                     android:id="@+id/tv_place_order_show_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="元"/>
+                    android:text="元"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保价费："/>
+                    android:text="保价费："
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="10dp"/>
 
                 <TextView
                     android:id="@+id/tv_place_order_show_support_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="元"/>
+                    android:text="元"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 

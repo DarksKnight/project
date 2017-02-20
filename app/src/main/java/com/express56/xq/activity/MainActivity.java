@@ -777,7 +777,7 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
                 startActivity(new Intent(this, AreaPriceSetActivity.class));
                 break;
             case 6:
-                startActivity(new Intent(this, PlaceOrderShowActivity.class));
+                startActivity(new Intent(this, ReceivingOrderActivity.class));
                 break;
             default:
                 break;

@@ -34,6 +34,8 @@
     <string name="str_title_express_search">快递单查询</string>
     <string name="str_title_my_express">我的快递</string>
     <string name="str_title_area_price_set">区域价格设置</string>
+    <string name="str_title_receiving_order">接单</string>
+    <string name="str_title_info_set">信息设置</string>
     <string name="str_title_place_order_edit">下单编辑</string>
     <string name="str_title_my_lock_card">我的车牌</string>
     <string name="str_title_rent_bike">用车中</string>
@@ -393,8 +395,8 @@
 
     <!-- 区域价格设置 -->
     <string name="str_area_price_city">省份/市</string>
-    <string name="str_area_price_first_weight">首重（1KG）/元</string>
-    <string name="str_area_price_next_weight">续重（1KG）/元</string>
+    <string name="str_area_price_first_weight">首重(1KG)/元</string>
+    <string name="str_area_price_next_weight">续重(1KG)/元</string>
     <string name="str_area_price_save">保存</string>
 
     <!-- TODO: Remove or change this placeholder text -->

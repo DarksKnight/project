@@ -1,8 +1,6 @@
 package com.express56.xq.adapter;
 
 import android.app.Activity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,7 +9,6 @@ import android.widget.TextView;
 
 import com.express56.xq.R;
 import com.express56.xq.model.AreaPriceInfo;
-import com.express56.xq.util.LogUtil;
 
 import java.util.List;
 
@@ -70,8 +67,8 @@ public class AreaPriceAdapter extends BaseAdapter {
 
     private void bindHolder(final ViewHolder viewHolder, final int position) {
         viewHolder.tvArea.setText(listAreaPriceInfos.get(position).areaName);
-        viewHolder.etFirstPrice.setText(listAreaPriceInfos.get(position).price1);
-        viewHolder.etNextPrice.setText(listAreaPriceInfos.get(position).price2);
+        viewHolder.etFirstPrice.setText(listAreaPriceInfos.get(position).price1.equals("") ? "0.00" : listAreaPriceInfos.get(position).price1);
+        viewHolder.etNextPrice.setText(listAreaPriceInfos.get(position).price2.equals("") ? "0.00" : listAreaPriceInfos.get(position).price2);
 
         viewHolder.etFirstPrice.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg">
+
+    <RelativeLayout
+        android:id="@+id/search_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title"
+        android:background="@color/color_title_bg">
+
+        <ImageView
+            android:id="@+id/search_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:padding="8dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/str_title_info_set"
+            android:textColor="@color/color_view_title_text"
+            android:textSize="@dimen/font_content_size_2" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_info_setting_company"
+        android:layout_below="@id/search_title_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快递公司："/>
+
+        <Spinner
+            android:id="@+id/sp_info_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_info_setting_area"
+        android:layout_below="@id/ll_info_setting_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="服务区域："/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="苏州市工业园区"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_below="@id/ll_info_setting_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.express56.xq.R;
 import com.express56.xq.constant.ExpressConstant;
@@ -74,7 +75,7 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
     protected long clickFirstTime = 0;
     private static String TAG = BaseActivity.class.getSimpleName();
 
-
+    protected ImageView btnBack = null;
 
     public void setBackKeyActionEnable(boolean canBackKeyAction) {
         this.canBackKeyAction = canBackKeyAction;
@@ -131,7 +132,16 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
     }
 
     protected void initView() {
+        btnBack = getView(R.id.search_back_btn);
 
+        if (null != btnBack) {
+            btnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        }
     }
 
     /**
@@ -274,9 +284,9 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
         return onTouchEvent(ev);
     }
 
-    public  boolean isShouldHideInput(View v, MotionEvent event) {
+    public boolean isShouldHideInput(View v, MotionEvent event) {
         if (v != null && (v instanceof EditText)) {
-            int[] leftTop = { 0, 0 };
+            int[] leftTop = {0, 0};
             //获取输入框当前的location位置
             v.getLocationInWindow(leftTop);
             int left = leftTop[0];
@@ -299,7 +309,7 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
 
         // Verify that all required contact permissions have been granted.
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                !=  PackageManager.PERMISSION_GRANTED
+                != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED
 //                || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
@@ -310,7 +320,7 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
             requestContactsPermissions();
         } else {
             // Contact permissions have been granted. Show the contacts fragment.
-            LogUtil.i(TAG,  "Contact permissions have already been granted. Displaying contact details.");
+            LogUtil.i(TAG, "Contact permissions have already been granted. Displaying contact details.");
             downloadApk();
         }
     }
@@ -375,6 +385,7 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
 
     /**
      * 创建文件夹
+     *
      * @param dir
      */
     protected void makeDir(String dir) {
@@ -438,7 +449,7 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
         });
     }
 
-    protected final <E extends View> E getView (int id) {
+    protected final <E extends View> E getView(int id) {
         return (E) findViewById(id);
     }
 }
