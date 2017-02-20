@@ -39,7 +39,8 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         tvSetting = getView(R.id.tv_receiving_order_setting);
         rvList = getView(R.id.rv_receiving_order);
 
-        rvList.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        rvList.setLayoutManager(manager);
         infos = new ArrayList<>();
         for(int i = 0; i < 10; i++) {
             ReceivingOrderInfo info = new ReceivingOrderInfo();

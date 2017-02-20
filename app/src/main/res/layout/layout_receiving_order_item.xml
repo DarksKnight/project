@@ -6,125 +6,175 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/tv_receiving_order_item_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="订单编号："/>
+            android:text="订单编号："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_toRightOf="@id/tv_receiving_order_item_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="123123123123"/>
+            android:text="123123123123"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="状态"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/color_red"/>
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发布时间："/>
+            android:text="发布时间："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2016-09-09 12:10"/>
+            android:text="2016-09-09 12:10"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="快递单号："/>
+            android:text="快递单号："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="123123123123123"/>
+            android:text="123123123123123"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发货人："/>
+            android:text="发货人："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="你好"/>
+            android:text="你好"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发货人联系电话："/>
+            android:text="发货人联系电话："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="123123123123123"/>
+            android:text="123123123123123"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发货地址："/>
+            android:text="发货地址："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="阿斯蒂芬阿斯蒂芬阿斯蒂芬"/>
+            android:text="阿斯蒂芬阿斯蒂芬阿斯蒂芬"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
     
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
         
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="费用：18"/>
+            android:text="费用：18"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
         
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_dark_grey"/>
 
 </LinearLayout>

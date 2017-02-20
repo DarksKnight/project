@@ -30,23 +30,37 @@
 
     </RelativeLayout>
 
+    <View
+        android:id="@+id/search_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/search_title_part"
+        android:background="#d3d4d8"/>
+
     <LinearLayout
         android:id="@+id/ll_info_setting_company"
-        android:layout_below="@id/search_title_part"
+        android:layout_below="@id/search_line_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="快递公司："/>
+            android:text="快递公司："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <Spinner
             android:id="@+id/sp_info_setting"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:background="@color/color_bg"/>
 
     </LinearLayout>
 
@@ -56,17 +70,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="服务区域："/>
+            android:text="服务区域："
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="苏州市工业园区"/>
+            android:text="苏州市工业园区"
+            android:textSize="14sp"
+            android:textColor="@color/color_red"/>
 
     </LinearLayout>
 
