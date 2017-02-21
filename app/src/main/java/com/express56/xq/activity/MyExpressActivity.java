@@ -14,6 +14,7 @@ import com.express56.xq.http.RequestID;
 import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.widget.ToastUtil;
+import com.express56.xq.widget.TypeChooseLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class MyExpressActivity extends BaseActivity {
     private ListView mListView = null;
     private Button btnPlaceOrder = null;
     private XRefreshView rv = null;
+    private TypeChooseLayout tcl = null;
+
     private List<MyExpressInfo> expressInfos = new ArrayList<>();
     private MyExpressAdapter adapter = null;
     private boolean isRefresh = false;
@@ -103,6 +106,23 @@ public class MyExpressActivity extends BaseActivity {
         mListView = getView(R.id.listView_my_express);
         btnPlaceOrder = getView(R.id.btn_place_order);
         rv = getView(R.id.rv_my_express);
+        tcl = getView(R.id.tcl_myexpress);
+
+        List<String> list = new ArrayList<>();
+        list.add("全部");
+        list.add("待发布");
+        list.add("待付款");
+        list.add("待评价");
+        list.add("退款");
+        tcl.setList(list);
+        tcl.select(0);
+        tcl.setListener(new TypeChooseLayout.ItemListener() {
+            @Override
+            public void onClick() {
+
+            }
+        });
+
         rv.setPullLoadEnable(true);
         rv.setAutoRefresh(false);
         adapter = new MyExpressAdapter(this, expressInfos);

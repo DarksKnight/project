@@ -241,7 +241,7 @@
                             android:id="@+id/tv_place_order_send_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="江苏省苏州市"
+                            android:text="请选择"
                             android:textSize="14sp"
                             android:textColor="@color/color_red"/>
 
@@ -359,7 +359,7 @@
                             android:id="@+id/tv_place_order_get_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="江苏省苏州市"
+                            android:text="请选择"
                             android:textSize="14sp"
                             android:textColor="@color/color_red"/>
 
@@ -654,7 +654,7 @@
     <com.express56.xq.widget.ChoosePlaceLayout
         android:id="@+id/cpl"
         android:layout_width="match_parent"
-        android:layout_height="201dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:visibility="gone"/>
 

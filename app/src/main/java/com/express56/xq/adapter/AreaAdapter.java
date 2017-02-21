@@ -44,7 +44,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder
     @Override
     public void onBindViewHolder(AreaViewHolder holder, final int position) {
         holder.tvInfo.setText(infos.get(position).name);
-        SpannableStringBuilder style =new SpannableStringBuilder(infos.get(position).name);
+        SpannableStringBuilder style = new SpannableStringBuilder(infos.get(position).name);
         if (!infos.get(position).selected) {
             style.setSpan(new ForegroundColorSpan(Color.BLACK), 0, infos.get(position).name.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         } else {
@@ -72,8 +72,8 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.AreaViewHolder
         public AreaViewHolder(View itemView) {
             super(itemView);
 
-            llContent = (LinearLayout)itemView.findViewById(R.id.ll_choose_place_list_item);
-            tvInfo = (TextView)itemView.findViewById(R.id.tv_choose_place_list_item);
+            llContent = (LinearLayout) itemView.findViewById(R.id.ll_choose_place_list_item);
+            tvInfo = (TextView) itemView.findViewById(R.id.tv_choose_place_list_item);
         }
     }
 

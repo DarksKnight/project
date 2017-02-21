@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.express56.xq.R;
 import com.express56.xq.adapter.ReceivingOrderAdapter;
 import com.express56.xq.model.ReceivingOrderInfo;
+import com.express56.xq.widget.TypeChooseLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,8 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
 
     private TextView tvSetting = null;
     private RecyclerView rvList = null;
+    private TypeChooseLayout tcl = null;
+
     private ReceivingOrderAdapter adapter = null;
     private List<ReceivingOrderInfo> infos = null;
 
@@ -38,6 +41,22 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
 
         tvSetting = getView(R.id.tv_receiving_order_setting);
         rvList = getView(R.id.rv_receiving_order);
+        tcl = getView(R.id.tcl_receiving_order);
+
+        List<String> list = new ArrayList<>();
+        list.add("全部");
+        list.add("待报价");
+        list.add("待取件");
+        list.add("待退款");
+        list.add("已完成");
+        tcl.setList(list);
+        tcl.select(0);
+        tcl.setListener(new TypeChooseLayout.ItemListener() {
+            @Override
+            public void onClick() {
+
+            }
+        });
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rvList.setLayoutManager(manager);

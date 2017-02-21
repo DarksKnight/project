@@ -68,5 +68,8 @@
     <dimen name="save_photo_margin_left_1">10dp</dimen>
     <dimen name="save_photo_margin_2">10dp</dimen>
 
+    <dimen name="dp_202">202dp</dimen>
+
+
     <dimen name="text_14sp">14sp</dimen>
 </resources>

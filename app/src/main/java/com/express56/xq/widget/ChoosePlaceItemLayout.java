@@ -49,7 +49,7 @@ public class ChoosePlaceItemLayout extends LinearLayout {
         llContent.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.choose(listAreaInfos, getIndex());
+                listener.choose(getListAreaInfos(), getIndex());
             }
         });
     }
@@ -62,6 +62,10 @@ public class ChoosePlaceItemLayout extends LinearLayout {
 
     public void setListAreaInfos(List<AreaInfo> listAreaInfos) {
         this.listAreaInfos = listAreaInfos;
+    }
+
+    public List<AreaInfo> getListAreaInfos() {
+        return listAreaInfos;
     }
 
     public void setListener(ChoosePlaceItemListener listener) {

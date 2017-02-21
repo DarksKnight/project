@@ -1,12 +1,17 @@
 package com.express56.xq.widget;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Point;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.express56.xq.R;
@@ -40,6 +45,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     private ArrayList<AreaInfo> infos = null;
     private AreaAdapter adapter = null;
     private String tag = "";
+    private boolean isShow = false;
 
     private ChooseListener listener = null;
 
@@ -90,9 +96,13 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
         rvList.setAdapter(adapter);
     }
 
-    private ChoosePlaceItemLayout createItem(Context context) {
+    private ChoosePlaceItemLayout createItem(Context context, int... index) {
         item = new ChoosePlaceItemLayout(context);
-        item.setIndex(llContent.getChildCount());
+        if (index.length > 0) {
+            item.setIndex(index[0]);
+        } else {
+            item.setIndex(llContent.getChildCount());
+        }
         item.setListener(new ChoosePlaceItemLayout.ChoosePlaceItemListener() {
             @Override
             public void choose(List<AreaInfo> listAreaInfos, int index) {
@@ -112,6 +122,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     }
 
     public void show(String areaCode, Dialog dialog, String tag) {
+        isShow = true;
         this.dialog = dialog;
         this.tag = tag;
         setVisibility(VISIBLE);
@@ -122,6 +133,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     }
 
     public void hide() {
+        isShow = false;
         reset();
         setVisibility(GONE);
     }
@@ -151,16 +163,26 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                             JSONObject json = (JSONObject) map.get("areas");
                             try {
                                 org.json.JSONObject obj = new org.json.JSONObject(json.toJSONString());
+                                int i = 0;
+                                List<List<AreaInfo>> listArray = new ArrayList<>();
                                 for (Iterator<String> iterator = obj.keys(); iterator.hasNext(); ) {
                                     String key = iterator.next();
                                     parentId = key;
                                     List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
-                                    infos.clear();
-                                    infos.addAll(list);
                                     item = createItem(context);
                                     llContent.addView(item);
-                                    item.setListAreaInfos((List<AreaInfo>) infos.clone());
-                                    adapter.notifyDataSetChanged();
+                                    listArray.add(list);
+                                    if (i == 0) {
+                                        infos.clear();
+                                        infos.addAll(list);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                    i++;
+                                }
+                                for (int j = 0; j < listArray.size(); j++) {
+                                    ChoosePlaceItemLayout layout = (ChoosePlaceItemLayout) llContent.getChildAt(listArray.size() - j - 1);
+                                    layout.setListAreaInfos(listArray.get(j));
+
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -249,5 +271,35 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
 
     public interface ChooseListener {
         void chooseCompelete(List<String> areaIds, List<String> areaNames, String tag);
+    }
+
+    public boolean isShow() {
+        return isShow;
+    }
+
+    public void dispatchTouchEventA(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = ((Activity) context).getCurrentFocus();
+            if (isShow()) {
+                if (isShouldHide(v, ev)) {
+                    hide();
+                }
+            }
+        }
+    }
+
+    private boolean isShouldHide(View v, MotionEvent event) {
+        if (v != null) {
+            WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            if (event.getY() < size.y - getContext().getResources().getDimension(R.dimen.dp_202)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 }

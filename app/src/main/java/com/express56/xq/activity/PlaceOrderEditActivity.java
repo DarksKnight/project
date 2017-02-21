@@ -1,6 +1,8 @@
 package com.express56.xq.activity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -344,5 +346,23 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+            if (cpl.isShow()) {
+                cpl.hide();
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        cpl.dispatchTouchEventA(ev);
+        return super.dispatchTouchEvent(ev);
     }
 }
