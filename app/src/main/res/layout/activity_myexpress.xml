@@ -52,24 +52,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
+    <com.express56.xq.widget.SearchBarLayout
         android:id="@+id/ll_myexpress_search"
         android:layout_below="@id/tcl_myexpress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_image_bg"
-        android:padding="10dp">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:hint="输入信息"
-            android:padding="5dp"
-            android:background="@android:color/white"/>
-
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 
     <com.andview.refreshview.XRefreshView
         android:id="@+id/rv_my_express"

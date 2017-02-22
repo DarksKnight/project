@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_myexpress_search"
+    android:layout_below="@id/tcl_myexpress"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_image_bg"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/et_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:hint="输入信息"
+        android:padding="5dp"
+        android:background="@android:color/white"/>
+
+</LinearLayout>

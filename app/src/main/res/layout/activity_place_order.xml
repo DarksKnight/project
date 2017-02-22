@@ -505,7 +505,9 @@
                             android:textSize="14sp"
                             android:textColor="@color/black"
                             android:background="@drawable/bg_login_input_with_corner"
-                            android:padding="8dp"/>
+                            android:padding="8dp"
+                            android:text="0.0"
+                            android:inputType="number"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -549,7 +551,13 @@
                         <EditText
                             android:id="@+id/et_place_order_support_charge"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:background="@drawable/bg_login_input_with_corner"
+                            android:padding="8dp"
+                            android:text="0.0"
+                            android:inputType="number"/>
 
                         <TextView
                             android:layout_width="wrap_content"

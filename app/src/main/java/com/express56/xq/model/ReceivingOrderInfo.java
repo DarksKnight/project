@@ -1,24 +1,19 @@
 package com.express56.xq.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by bojoy-sdk2 on 2017/2/20.
  */
 
-public class ReceivingOrderInfo {
+public class ReceivingOrderInfo implements Serializable {
 
-    public String orderNo = "";
+    public String pushFlag = "";
 
-    public String createDate = "";
+    public String areaName = "";
 
-    public String sendNo = "";
+    public String companyName = "";
 
-    public String sender = "";
-
-    public String senderPhone = "";
-
-    public String sendAddress = "";
-
-    public String status = "";
-
-    public String money = "";
+    public List<ReceivingOrderItemInfo> orders = null;
 }

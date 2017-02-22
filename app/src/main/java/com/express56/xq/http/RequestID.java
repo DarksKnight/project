@@ -140,4 +140,6 @@ public class RequestID {
     public static final int REQ_SAVE_ORDER = REQ_GET_EXPRESS_COMPANY + 1;
 
     public static final int REQ_GET_ORDER = REQ_SAVE_ORDER + 1;
+
+    public static final int REQ_GET_RECEIVING_ORDER = REQ_GET_ORDER + 1;
 }

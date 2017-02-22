@@ -80,6 +80,11 @@ public class HttpHelper {
     public static final String URL_27 = HTTP + IP + "/express/rest/order/find";//获取订单列表
     public static final String URL_28 = HTTP + IP + "/express/rest/config/company";//获取快递公司
     public static final String URL_29 = HTTP + IP + "/express/rest/order/get";//获取快递单数据
+    public static final String URL_30 = HTTP + IP + "/express/rest/quotation/init";//下单页面初始化
+    public static final String URL_31 = HTTP + IP + "/express/rest/user/push/open";//推送开
+    public static final String URL_32 = HTTP + IP + "/express/rest/user/push/close";//推送关
+    public static final String URL_33 = HTTP + IP + "/express/rest/user/service/get";//获取快递公司
+    public static final String URL_34 = HTTP + IP + "/express/rest/user/service/save";//快递公司保存
 
 //    {"code":9,"result":{"version":"20161115.1.0beta","isRequire":"1","remarks":"测试","downloadPath":"app/android/express.apk"}}
 //    返回结果说明：isRequire 是否必须升级 remarks 升级内容 downloadPath:升级地址
@@ -4252,6 +4257,220 @@ public class HttpHelper {
                     @Override
                     public void onResponse(String response) {
                         printAPI_TimeConsuming("sendRequest_getOrder", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getReceivingOrder(final Context page, final int requestID, String token, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_30)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getReceivingOrder", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getReceivingOrder", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_pushOpen(final Context page, final int requestID, String token, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_31)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_pushOpen", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_pushOpen", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_pushClose(final Context page, final int requestID, String token, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_32)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_pushClose", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_pushClose", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getExpressCompanyList(final Context page, final int requestID, String token, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_33)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getExpressCompany", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getExpressCompany", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_saveExpressCompany(final Context page, final int requestID, String companyId, String areaCode, String areaName, String token, final Dialog dialog) {
+        final long requestTime = System.currentTimeMillis();
+
+        Map<String, String> map = new HashMap<>();
+        map.put("companyId", companyId);
+        map.put("areaCode", areaCode);
+        map.put("areaName", areaName);
+        String content = JSON.toJSONString(map);
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .postString()
+                .tag(page)
+                .url(URL_34 + "?token=" + token)
+                .content(content)
+                .mediaType(MEDIA_TYPE)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_saveExpressCompany", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_saveExpressCompany", requestTime);
 
                         if (dialog != null) {
                             dialog.dismiss();
