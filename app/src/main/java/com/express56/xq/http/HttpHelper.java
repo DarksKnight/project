@@ -4312,18 +4312,16 @@ public class HttpHelper {
     }
 
     public static void sendRequest_pushOpen(final Context page, final int requestID, String token, final Dialog dialog) {
-        Map<String, String> map = new HashMap<>();
-        map.put("token", token);
-
         final long requestTime = System.currentTimeMillis();
 
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
         OkHttpUtils
-                .get()
+                .postString()
                 .tag(page)
-                .params(map)
-                .url(URL_31)
+                .url(URL_31 + "?token=" + token)
+                .content("")
+                .mediaType(MEDIA_TYPE)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -4354,18 +4352,16 @@ public class HttpHelper {
     }
 
     public static void sendRequest_pushClose(final Context page, final int requestID, String token, final Dialog dialog) {
-        Map<String, String> map = new HashMap<>();
-        map.put("token", token);
-
         final long requestTime = System.currentTimeMillis();
 
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
         OkHttpUtils
-                .get()
+                .postString()
                 .tag(page)
-                .params(map)
-                .url(URL_32)
+                .url(URL_32 + "?token=" + token)
+                .content("")
+                .mediaType(MEDIA_TYPE)
                 .build()
                 .execute(new StringCallback() {
                     @Override

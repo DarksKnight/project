@@ -58,6 +58,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_receiving_order_company_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tv_receiving_order_company"
@@ -95,6 +96,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_receiving_order_area_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="江苏省苏州市工业园区"
@@ -112,7 +114,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -122,6 +125,7 @@
             android:textSize="14sp" />
 
         <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/sb_push"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

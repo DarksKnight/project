@@ -142,4 +142,12 @@ public class RequestID {
     public static final int REQ_GET_ORDER = REQ_SAVE_ORDER + 1;
 
     public static final int REQ_GET_RECEIVING_ORDER = REQ_GET_ORDER + 1;
+
+    public static final int REQ_OPEN_PUSH = REQ_GET_RECEIVING_ORDER + 1;
+
+    public static final int REQ_CLOSE_PUSH = REQ_OPEN_PUSH + 1;
+
+    public static final int REQ_GET_EXPRESS = REQ_CLOSE_PUSH + 1;
+
+    public static final int REQ_SAVE_COMPANY = REQ_GET_EXPRESS + 1;
 }

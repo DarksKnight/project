@@ -36,7 +36,8 @@
     <string name="str_title_area_price_set">区域价格设置</string>
     <string name="str_title_receiving_order">接单</string>
     <string name="str_title_info_set">信息设置</string>
-    <string name="str_title_place_order_edit">下单编辑</string>
+    <string name="str_title_payment_express">充值</string>
+    <string name="str_title_place_order_edit">下单</string>
     <string name="str_title_my_lock_card">我的车牌</string>
     <string name="str_title_rent_bike">用车中</string>
     <string name="str_title_alarm_route">报警追踪</string>

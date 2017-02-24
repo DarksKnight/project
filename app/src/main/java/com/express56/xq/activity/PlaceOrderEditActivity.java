@@ -27,9 +27,9 @@ import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -79,7 +79,7 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     private String submitType = "1";
     private String[] flags = new String[]{"0", "1"};
     private String[] flagNames = new String[]{"否", "是"};
-    private List<ExpressCompany> listCompany = new ArrayList<>();
+    private LinkedList<ExpressCompany> listCompany = new LinkedList<>();
     private String sendAreaId = "";
     private String sendAreaName = "";
     private String receiverAreaId = "";
@@ -235,6 +235,9 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
                             final String content = object.getString("result");
                             listCompany.clear();
                             listCompany.addAll(JSON.parseArray(content, ExpressCompany.class));
+                            ExpressCompany company = new ExpressCompany();
+                            company.name = "不限";
+                            listCompany.addFirst(company);
                             String[] arrayCompany = new String[listCompany.size()];
                             for (int i = 0; i < listCompany.size(); i++) {
                                 arrayCompany[i] = listCompany.get(i).name;

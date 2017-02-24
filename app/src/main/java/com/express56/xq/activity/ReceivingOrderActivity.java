@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.express56.xq.R;
@@ -15,6 +16,7 @@ import com.express56.xq.model.ReceivingOrderInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.widget.ToastUtil;
 import com.express56.xq.widget.TypeChooseLayout;
+import com.kyleduo.switchbutton.SwitchButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +35,13 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
     private TextView tvSetting = null;
     private RecyclerView rvList = null;
     private TypeChooseLayout tcl = null;
+    private TextView tvCompanyName = null;
+    private TextView tvAreaName = null;
+    private SwitchButton sbPush = null;
 
     private ReceivingOrderAdapter adapter = null;
     private List<ReceivingOrderInfo> infos = null;
+    private ReceivingOrderInfo info = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,20 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         tvSetting = getView(R.id.tv_receiving_order_setting);
         rvList = getView(R.id.rv_receiving_order);
         tcl = getView(R.id.tcl_receiving_order);
+        tvCompanyName = getView(R.id.tv_receiving_order_company_name);
+        tvAreaName = getView(R.id.tv_receiving_order_area_name);
+        sbPush = getView(R.id.sb_push);
+
+        sbPush.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    HttpHelper.sendRequest_pushOpen(ReceivingOrderActivity.this, RequestID.REQ_OPEN_PUSH, sp.getUserInfo().token, dialog);
+                } else {
+                    HttpHelper.sendRequest_pushClose(ReceivingOrderActivity.this, RequestID.REQ_CLOSE_PUSH, sp.getUserInfo().token, dialog);
+                }
+            }
+        });
 
         List<String> list = new ArrayList<>();
         list.add("全部");
@@ -70,10 +90,6 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rvList.setLayoutManager(manager);
         infos = new ArrayList<>();
-        for(int i = 0; i < 10; i++) {
-            ReceivingOrderInfo info = new ReceivingOrderInfo();
-            infos.add(info);
-        }
         adapter = new ReceivingOrderAdapter(this, infos);
         rvList.setAdapter(adapter);
 
@@ -120,9 +136,28 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                     if (code == 9) {
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
-                            ReceivingOrderInfo tempData = JSONObject.parseObject(content, ReceivingOrderInfo.class);
-                            String a = "";
+                            info = JSONObject.parseObject(content, ReceivingOrderInfo.class);
+                            tvCompanyName.setText(info.companyName);
+                            tvAreaName.setText(info.areaName);
+                            if (info.pushFlag.equals("0")) {
+                                sbPush.setChecked(false);
+                            } else {
+                                sbPush.setChecked(true);
+                            }
                         }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
+            case RequestID.REQ_OPEN_PUSH:
+            case RequestID.REQ_CLOSE_PUSH:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+
                     } else if (code == 0) {
                         showReloginDialog();
                     } else {

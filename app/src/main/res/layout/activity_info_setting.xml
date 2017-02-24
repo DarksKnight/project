@@ -45,7 +45,8 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,10 +58,7 @@
         <Spinner
             android:id="@+id/sp_info_setting"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:background="@color/color_bg"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
@@ -81,6 +79,7 @@
             android:textColor="@color/black"/>
 
         <TextView
+            android:id="@+id/tv_info_setting_area_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="苏州市工业园区"
@@ -90,10 +89,17 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_info_setting_save"
         android:layout_below="@id/ll_info_setting_area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="保存"
         android:layout_centerHorizontal="true"/>
+
+    <com.express56.xq.widget.ChoosePlaceLayout
+        android:id="@+id/cpl_info_setting"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="202dp"/>
 
 </RelativeLayout>
