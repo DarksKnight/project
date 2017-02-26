@@ -4273,9 +4273,12 @@ public class HttpHelper {
                 });
     }
 
-    public static void sendRequest_getReceivingOrder(final Context page, final int requestID, String token, final Dialog dialog) {
+    public static void sendRequest_getReceivingOrder(final Context page, final int requestID, String token, String orderStatus, String keyword, String pageNo, final Dialog dialog) {
         Map<String, String> map = new HashMap<>();
         map.put("token", token);
+        map.put("keyword", keyword);
+        map.put("pageNo", pageNo);
+        map.put("orderStatus", orderStatus);
 
         final long requestTime = System.currentTimeMillis();
 
@@ -4534,6 +4537,7 @@ public class HttpHelper {
         map.put("orderId", orderId);
         map.put("remarks", remarks);
         String content = JSON.toJSONString(map);
+        LogUtil.d("aaa", content);
 
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);

@@ -410,7 +410,7 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         int selectIndex = -1;
         for (int i = 0; i < listCompany.size(); i++) {
             arrayCompany[i] = listCompany.get(i).name;
-            if (listCompany.get(i).selected) {
+            if (listCompany.get(i).id.equals(info.order.expressCompany)) {
                 selectIndex = i;
             }
         }

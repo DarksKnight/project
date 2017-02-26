@@ -1,5 +1,6 @@
 package com.express56.xq.activity;
 
+import com.andview.refreshview.XRefreshView;
 import com.express56.xq.R;
 import com.express56.xq.adapter.ReceivingOrderAdapter;
 import com.express56.xq.http.HttpHelper;
@@ -7,6 +8,7 @@ import com.express56.xq.http.RequestID;
 import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.model.ReceivingOrderInfo;
 import com.express56.xq.util.LogUtil;
+import com.express56.xq.widget.SearchBarLayout;
 import com.express56.xq.widget.ToastUtil;
 import com.express56.xq.widget.TypeChooseLayout;
 import com.kyleduo.switchbutton.SwitchButton;
@@ -34,15 +36,36 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
     private final String TAG = ReceivingOrderActivity.class.getSimpleName();
 
     private TextView tvSetting = null;
+
     private RecyclerView rvList = null;
+
     private TypeChooseLayout tcl = null;
+
     private TextView tvCompanyName = null;
+
     private TextView tvAreaName = null;
+
     private SwitchButton sbPush = null;
 
+    private XRefreshView xr = null;
+
     private ReceivingOrderAdapter adapter = null;
+
     private List<MyExpressInfo> infos = new ArrayList<>();
+
     private ReceivingOrderInfo info = null;
+
+    private boolean isRefresh = false;
+
+    private boolean isLoadMore = false;
+
+    private String orderStatus = "";
+
+    private String pageNo = "1";
+
+    private String keyword = "";
+
+    private SearchBarLayout sbl = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,21 +84,39 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         tvCompanyName = getView(R.id.tv_receiving_order_company_name);
         tvAreaName = getView(R.id.tv_receiving_order_area_name);
         sbPush = getView(R.id.sb_push);
+        xr = getView(R.id.xr_receiving_order);
+        sbl = getView(R.id.ll_receiving_order_search);
+
+        xr.setPullLoadEnable(true);
+        xr.setAutoRefresh(false);
+
+        sbl.setListener(new SearchBarLayout.Listener() {
+            @Override
+            public void onSearch(String key) {
+                keyword = key;
+                infos.clear();
+                HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this, RequestID.REQ_GET_RECEIVING_ORDER,
+                        sp.getUserInfo().token, orderStatus, keyword,
+                        pageNo, dialog);
+            }
+        });
 
         sbPush.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    HttpHelper.sendRequest_pushOpen(ReceivingOrderActivity.this, RequestID.REQ_OPEN_PUSH, sp.getUserInfo().token, dialog);
+                    HttpHelper.sendRequest_pushOpen(ReceivingOrderActivity.this,
+                            RequestID.REQ_OPEN_PUSH, sp.getUserInfo().token, dialog);
                 } else {
-                    HttpHelper.sendRequest_pushClose(ReceivingOrderActivity.this, RequestID.REQ_CLOSE_PUSH, sp.getUserInfo().token, dialog);
+                    HttpHelper.sendRequest_pushClose(ReceivingOrderActivity.this,
+                            RequestID.REQ_CLOSE_PUSH, sp.getUserInfo().token, dialog);
                 }
             }
         });
 
         List<String> list = new ArrayList<>();
-        list.add("已报价");
         list.add("待报价");
+        list.add("已报价");
         list.add("待取件");
         list.add("待退款");
         list.add("已完成");
@@ -84,7 +125,21 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         tcl.setListener(new TypeChooseLayout.ItemListener() {
             @Override
             public void onClick(int index) {
-
+                switch (index) {
+                    case 0:
+                        orderStatus = "2";
+                        break;
+                    case 1:
+                        orderStatus = "3";
+                        break;
+                    default:
+                        break;
+                }
+                pageNo = "1";
+                infos.clear();
+                HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this, RequestID.REQ_GET_RECEIVING_ORDER,
+                        sp.getUserInfo().token, orderStatus, keyword,
+                        pageNo, dialog);
             }
         });
 
@@ -93,7 +148,8 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         adapter = new ReceivingOrderAdapter(this, infos, new ReceivingOrderAdapter.Listener() {
             @Override
             public void onClick(String orderId) {
-                Intent intent = new Intent(ReceivingOrderActivity.this, ReceivingOrderShowActivity.class);
+                Intent intent = new Intent(ReceivingOrderActivity.this,
+                        ReceivingOrderShowActivity.class);
                 intent.putExtra("orderId", orderId);
                 startActivityForResult(intent, 1000);
             }
@@ -101,13 +157,47 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         rvList.setAdapter(adapter);
 
         tvSetting.setOnClickListener(this);
+
+        xr.setXRefreshViewListener(new XRefreshView.XRefreshViewListener() {
+
+            @Override
+            public void onRefresh() {
+                isRefresh = true;
+                pageNo = "1";
+                infos.clear();
+                HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this,
+                        RequestID.REQ_GET_RECEIVING_ORDER, sp.getUserInfo().token, orderStatus, keyword,
+                        pageNo, dialog);
+            }
+
+            @Override
+            public void onLoadMore(boolean isSilence) {
+                isLoadMore = true;
+                pageNo = String.valueOf(Integer.parseInt(pageNo) + 1);
+                HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this,
+                        RequestID.REQ_GET_RECEIVING_ORDER, sp.getUserInfo().token, orderStatus, keyword,
+                        pageNo, dialog);
+            }
+
+            @Override
+            public void onRelease(float direction) {
+
+            }
+
+            @Override
+            public void onHeaderMove(double headerMovePercent, int offsetY) {
+
+            }
+        });
     }
 
     @Override
     protected void initData() {
         super.initData();
 
-        HttpHelper.sendRequest_getReceivingOrder(this, RequestID.REQ_GET_RECEIVING_ORDER, sp.getUserInfo().token, dialog);
+        HttpHelper.sendRequest_getReceivingOrder(this, RequestID.REQ_GET_RECEIVING_ORDER,
+                sp.getUserInfo().token, orderStatus, keyword,
+                pageNo, dialog);
     }
 
     @Override
@@ -138,6 +228,12 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         }
         switch (Integer.parseInt(param[1].toString())) {
             case RequestID.REQ_GET_RECEIVING_ORDER:
+                if (isRefresh) {
+                    xr.stopRefresh();
+                }
+                if (isLoadMore) {
+                    xr.stopLoadMore();
+                }
                 if (object.containsKey("code")) {
                     int code = object.getIntValue("code");
                     if (code == 9) {
@@ -146,11 +242,12 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                             info = JSONObject.parseObject(content, ReceivingOrderInfo.class);
                             tvCompanyName.setText(info.companyName);
                             tvAreaName.setText(info.areaName);
-                            infos.clear();
-                            if (info.orders != null || info.orders.size() > 0) {
-                                infos.addAll(info.orders);
+                            if (info.orders != null) {
+                                if (info.orders.size() > 0) {
+                                    infos.addAll(info.orders);
+                                }
                             }
-                            if (info.companyName.equals("null")) {
+                            if (info.companyName.equals("null") || info.companyName.equals("")) {
                                 tvCompanyName.setText("不限");
                             }
                             if (info.pushFlag.equals("0")) {
@@ -189,7 +286,10 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == 1000) {
-            HttpHelper.sendRequest_getReceivingOrder(this, RequestID.REQ_GET_RECEIVING_ORDER, sp.getUserInfo().token, dialog);
+            infos.clear();
+            HttpHelper.sendRequest_getReceivingOrder(this, RequestID.REQ_GET_RECEIVING_ORDER,
+                    sp.getUserInfo().token, orderStatus, keyword,
+                    pageNo, dialog);
         }
     }
 }

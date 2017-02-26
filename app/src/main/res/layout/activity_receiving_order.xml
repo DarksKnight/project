@@ -1,159 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/color_bg">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_bg">
 
     <RelativeLayout
-        android:id="@+id/search_title_part"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_title"
-        android:background="@color/color_title_bg">
+            android:id="@+id/search_title_part"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title"
+            android:background="@color/color_title_bg">
 
         <ImageView
-            android:id="@+id/search_back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:padding="8dp"
-            android:src="@drawable/btn_back" />
+                android:id="@+id/search_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:padding="8dp"
+                android:src="@drawable/btn_back"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/str_title_receiving_order"
-            android:textColor="@color/color_view_title_text"
-            android:textSize="@dimen/font_content_size_2" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/str_title_receiving_order"
+                android:textColor="@color/color_view_title_text"
+                android:textSize="@dimen/font_content_size_2"/>
 
     </RelativeLayout>
 
     <View
-        android:id="@+id/search_line_1"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@id/search_title_part"
-        android:background="#d3d4d8" />
+            android:id="@+id/search_line_1"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/search_title_part"
+            android:background="#d3d4d8"/>
 
     <RelativeLayout
-        android:id="@+id/rl_receiving_order_company"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_line_1"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
+            android:id="@+id/rl_receiving_order_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_line_1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
 
         <TextView
-            android:id="@+id/tv_receiving_order_company"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="快递公司："
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+                android:id="@+id/tv_receiving_order_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="快递公司："
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/tv_receiving_order_company_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_receiving_order_company"
-            android:text="顺丰快递"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+                android:id="@+id/tv_receiving_order_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_receiving_order_company"
+                android:text="顺丰快递"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/tv_receiving_order_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="设置"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+                android:id="@+id/tv_receiving_order_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="设置"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/ll_receiving_order_area"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rl_receiving_order_company"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+            android:id="@+id/ll_receiving_order_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_receiving_order_company"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="服务区域："
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务区域："
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/tv_receiving_order_area_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="江苏省苏州市工业园区"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+                android:id="@+id/tv_receiving_order_area_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="江苏省苏州市工业园区"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_receiving_order_push"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll_receiving_order_area"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+            android:id="@+id/ll_receiving_order_push"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_receiving_order_area"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="推送信息："
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="推送信息："
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
         <com.kyleduo.switchbutton.SwitchButton
-            android:id="@+id/sb_push"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:id="@+id/sb_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
     <View
-        android:id="@+id/search_line_2"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@id/ll_receiving_order_push"
-        android:background="#d3d4d8" />
+            android:id="@+id/search_line_2"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/ll_receiving_order_push"
+            android:background="#d3d4d8"/>
 
     <com.express56.xq.widget.TypeChooseLayout
-        android:id="@+id/tcl_receiving_order"
-        android:layout_below="@id/search_line_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            android:id="@+id/tcl_receiving_order"
+            android:layout_below="@id/search_line_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     <com.express56.xq.widget.SearchBarLayout
-        android:id="@+id/ll_receiving_order_search"
-        android:layout_below="@id/tcl_receiving_order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            android:id="@+id/ll_receiving_order_search"
+            android:layout_below="@id/tcl_receiving_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_receiving_order"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ll_receiving_order_search" />
+    <com.andview.refreshview.XRefreshView
+            android:id="@+id/xr_receiving_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_receiving_order_search"
+            android:background="@color/color_title_bg">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_receiving_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll_receiving_order_search"/>
+
+    </com.andview.refreshview.XRefreshView>
+
 
 </RelativeLayout>

@@ -33,7 +33,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private final String TAG = PlaceOrderShowActivity.class.getSimpleName();
 
-    private MyExpressInfo info = null;
+    private String orderId = "";
 
     private MyExpressInfo currentInfo = null;
 
@@ -136,10 +136,10 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
         Bundle bundle = getIntent().getExtras();
         if (null != bundle) {
-            info = (MyExpressInfo) bundle.getSerializable("info");
+            orderId = bundle.getString("orderId");
         }
 
-        HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, info.id,
+        HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, orderId,
                 sp.getUserInfo().token, dialog);
     }
 
@@ -229,6 +229,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         double totalMoney = Double.parseDouble(currentInfo.orderMoney) + Double
                 .parseDouble(currentInfo.insuranceMoney);
         tvTotalMoney.setText(totalMoney + "元");
+        tvOffer.setText(currentInfo.guotationCount + "个报价");
         if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_NOT_RELEASE)) {
             tvTitleExpressMoney.setVisibility(GONE);
             llExpressMoney.setVisibility(GONE);

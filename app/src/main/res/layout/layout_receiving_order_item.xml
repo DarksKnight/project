@@ -27,6 +27,7 @@
                 android:textColor="@color/black"/>
 
         <TextView
+                android:id="@+id/tv_receiving_order_item_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="状态"
@@ -53,6 +54,7 @@
                 android:textColor="@color/black"/>
 
         <TextView
+                android:id="@+id/tv_receiving_order_item_createdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2016-09-09 12:10"
@@ -105,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:text="你好"
                 android:textSize="14sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:id="@+id/tv_receiving_order_item_sender"/>
 
     </LinearLayout>
 
@@ -129,7 +132,8 @@
                 android:layout_height="wrap_content"
                 android:text="123123123123123"
                 android:textSize="14sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:id="@+id/tv_receiving_order_item_sender_phone"/>
 
     </LinearLayout>
 
@@ -153,7 +157,8 @@
                 android:layout_height="wrap_content"
                 android:text="阿斯蒂芬阿斯蒂芬阿斯蒂芬"
                 android:textSize="14sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:id="@+id/tv_receiving_order_item_sender_address"/>
 
     </LinearLayout>
 
@@ -169,7 +174,8 @@
                 android:layout_marginRight="10dp"
                 android:text="费用：18"
                 android:textSize="14sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:id="@+id/tv_receiving_order_item_money"/>
 
     </RelativeLayout>
 

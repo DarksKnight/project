@@ -123,7 +123,7 @@ public class InfoSettingActivity extends BaseActivity implements View.OnClickLis
                             String content = object.getString("result");
                             info = JSONObject.parseObject(content, CompanyInfo.class);
                             CompanyItemInfo itemInfo = new CompanyItemInfo();
-                            itemInfo.name = "不限";
+                            itemInfo.name = "请选择";
                             info.companys.addFirst(itemInfo);
                             String[] array = new String[info.companys.size()];
                             int index = 0;
@@ -176,6 +176,10 @@ public class InfoSettingActivity extends BaseActivity implements View.OnClickLis
         if (v == tvAreaName) {
             cpl.show(areaCode, dialog, "");
         } else if (v == btnSave) {
+            if (companyId.equals("")) {
+                ToastUtil.showMessage(this, "请选择地区");
+                return;
+            }
             HttpHelper.sendRequest_saveExpressCompany(this, RequestID.REQ_SAVE_COMPANY, companyId, areaCode, areaName, sp.getUserInfo().token, dialog);
         }
     }

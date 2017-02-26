@@ -3,6 +3,7 @@ package com.express56.xq.activity;
 import com.express56.xq.R;
 import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.RequestID;
+import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.widget.ToastUtil;
 
@@ -24,6 +25,8 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
     private final String TAG = ReceivingOrderShowActivity.class.getSimpleName();
 
     private String orderId = "";
+
+    private MyExpressInfo currentInfo = null;
 
     private String insuranceMoney = "";
 
@@ -61,6 +64,12 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
 
     private EditText etRemarks = null;
 
+    private TextView tvSupportValue = null;
+
+    private TextView tvSupportCharge = null;
+
+    private TextView tvOffer = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +95,8 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         etEpressMoney = getView(R.id.et_receive_order_express_money);
         etSupportMoney = getView(R.id.et_receive_order_express_support_money);
         etRemarks = getView(R.id.et_place_order_desc);
+        tvSupportValue = getView(R.id.tv_receive_order_show_show_support_value);
+        tvSupportCharge = getView(R.id.tv_receive_order_show_show_support_charge);
     }
 
     @Override
@@ -97,6 +108,9 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         btnSave = getView(R.id.btn_receive_order_show_show_pay);
 
         btnSave.setOnClickListener(this);
+
+        HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, orderId,
+                sp.getUserInfo().token, dialog);
     }
 
     @Override
@@ -144,8 +158,46 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
                     }
                 }
                 break;
+            case RequestID.REQ_GET_ORDER:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            String content = object.getString("result");
+                            currentInfo = JSON
+                                    .parseObject(JSON.parseObject(content).getString("order"),
+                                            MyExpressInfo.class);
+                            setData();
+                        }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
             default:
                 break;
         }
+    }
+
+    private void setData() {
+        tvOrderNo.setText(currentInfo.orderNo);
+        tvCreateDate.setText(currentInfo.createDate);
+        tvReceiveDate.setText(currentInfo.serviceTime);
+        tvReceiver.setText(currentInfo.receiver);
+        tvReceiverPhone.setText(currentInfo.receiverPhone);
+        tvReceiverAddress.setText(currentInfo.receiveAddress + currentInfo.receiveDetailAddress);
+        tvSender.setText(currentInfo.sender);
+        tvSenderPhone.setText(currentInfo.senderPhone);
+        tvSenderAddress.setText(currentInfo.sendAddress + currentInfo.sendDetailAddress);
+        tvWeight.setText(currentInfo.weight);
+        tvThingDesc.setText(currentInfo.thingDesc);
+        tvSupportValue
+                .setText(currentInfo.isInsurance.equals("1") ? currentInfo.insuranceMoney : "未保价");
+        tvSupportCharge
+                .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "不代收货款");
+        etEpressMoney.setText(currentInfo.expressMoney);
+        etSupportMoney.setText(currentInfo.insuranceMoney);
     }
 }
