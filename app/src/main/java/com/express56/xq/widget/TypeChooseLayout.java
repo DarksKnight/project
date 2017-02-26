@@ -1,12 +1,12 @@
 package com.express56.xq.widget;
 
+import com.express56.xq.R;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.express56.xq.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class TypeChooseLayout extends LinearLayout {
                         tclItem.reset();
                     }
                     item.selected();
-                    listener.onClick();
+                    listener.onClick(item.getIndex());
                 }
             });
             listItem.add(item);
@@ -68,6 +68,6 @@ public class TypeChooseLayout extends LinearLayout {
     }
 
     public interface ItemListener {
-        void onClick();
+        void onClick(int index);
     }
 }

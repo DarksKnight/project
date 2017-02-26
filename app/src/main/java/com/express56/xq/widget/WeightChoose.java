@@ -1,5 +1,7 @@
 package com.express56.xq.widget;
 
+import com.express56.xq.R;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -7,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
-import com.express56.xq.R;
 
 /**
  * Created by bojoy-sdk2 on 2017/2/13.
@@ -65,5 +65,10 @@ public class WeightChoose extends LinearLayout implements View.OnClickListener {
 
     public double getWeight() {
         return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+        etNumber.setText(weight + "");
     }
 }

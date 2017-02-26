@@ -1,13 +1,14 @@
 package com.express56.xq.adapter;
 
+import com.express56.xq.R;
+import com.express56.xq.model.MyExpressInfo;
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.express56.xq.R;
-import com.express56.xq.model.ReceivingOrderInfo;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -18,11 +19,13 @@ import java.util.List;
 public class ReceivingOrderAdapter extends RecyclerView.Adapter<ReceivingOrderAdapter.ReceivingOrderViewHolder> {
 
     private Context context = null;
-    private List<ReceivingOrderInfo> infos = null;
+    private List<MyExpressInfo> infos = null;
+    private Listener listener = null;
 
-    public ReceivingOrderAdapter(Context context, List<ReceivingOrderInfo> infos) {
+    public ReceivingOrderAdapter(Context context, List<MyExpressInfo> infos, Listener listener) {
         this.context = context;
         this.infos = infos;
+        this.listener = listener;
     }
 
     @Override
@@ -33,8 +36,13 @@ public class ReceivingOrderAdapter extends RecyclerView.Adapter<ReceivingOrderAd
     }
 
     @Override
-    public void onBindViewHolder(ReceivingOrderViewHolder holder, int position) {
-
+    public void onBindViewHolder(ReceivingOrderViewHolder holder, final int position) {
+        holder.llContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(infos.get(position).id);
+            }
+        });
     }
 
     @Override
@@ -44,8 +52,16 @@ public class ReceivingOrderAdapter extends RecyclerView.Adapter<ReceivingOrderAd
 
     class ReceivingOrderViewHolder extends RecyclerView.ViewHolder {
 
+        public LinearLayout llContent = null;
+
         public ReceivingOrderViewHolder(View itemView) {
             super(itemView);
+
+            llContent = (LinearLayout)itemView.findViewById(R.id.ll_receiving_order_content);
         }
+    }
+
+    public interface Listener {
+        void onClick(String orderId);
     }
 }

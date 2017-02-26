@@ -1,5 +1,16 @@
 package com.express56.xq.activity;
 
+import com.express56.xq.R;
+import com.express56.xq.adapter.ReceivingOrderAdapter;
+import com.express56.xq.http.HttpHelper;
+import com.express56.xq.http.RequestID;
+import com.express56.xq.model.MyExpressInfo;
+import com.express56.xq.model.ReceivingOrderInfo;
+import com.express56.xq.util.LogUtil;
+import com.express56.xq.widget.ToastUtil;
+import com.express56.xq.widget.TypeChooseLayout;
+import com.kyleduo.switchbutton.SwitchButton;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,16 +18,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
-import com.express56.xq.R;
-import com.express56.xq.adapter.ReceivingOrderAdapter;
-import com.express56.xq.http.HttpHelper;
-import com.express56.xq.http.RequestID;
-import com.express56.xq.model.ReceivingOrderInfo;
-import com.express56.xq.util.LogUtil;
-import com.express56.xq.widget.ToastUtil;
-import com.express56.xq.widget.TypeChooseLayout;
-import com.kyleduo.switchbutton.SwitchButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
     private SwitchButton sbPush = null;
 
     private ReceivingOrderAdapter adapter = null;
-    private List<ReceivingOrderInfo> infos = null;
+    private List<MyExpressInfo> infos = new ArrayList<>();
     private ReceivingOrderInfo info = null;
 
     @Override
@@ -73,7 +74,7 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         });
 
         List<String> list = new ArrayList<>();
-        list.add("全部");
+        list.add("已报价");
         list.add("待报价");
         list.add("待取件");
         list.add("待退款");
@@ -82,15 +83,21 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         tcl.select(0);
         tcl.setListener(new TypeChooseLayout.ItemListener() {
             @Override
-            public void onClick() {
+            public void onClick(int index) {
 
             }
         });
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rvList.setLayoutManager(manager);
-        infos = new ArrayList<>();
-        adapter = new ReceivingOrderAdapter(this, infos);
+        adapter = new ReceivingOrderAdapter(this, infos, new ReceivingOrderAdapter.Listener() {
+            @Override
+            public void onClick(String orderId) {
+                Intent intent = new Intent(ReceivingOrderActivity.this, ReceivingOrderShowActivity.class);
+                intent.putExtra("orderId", orderId);
+                startActivityForResult(intent, 1000);
+            }
+        });
         rvList.setAdapter(adapter);
 
         tvSetting.setOnClickListener(this);
@@ -106,7 +113,7 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v == tvSetting) {
-            startActivity(new Intent(this, InfoSettingActivity.class));
+            startActivityForResult(new Intent(this, InfoSettingActivity.class), 1000);
         }
     }
 
@@ -139,6 +146,13 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                             info = JSONObject.parseObject(content, ReceivingOrderInfo.class);
                             tvCompanyName.setText(info.companyName);
                             tvAreaName.setText(info.areaName);
+                            infos.clear();
+                            if (info.orders != null || info.orders.size() > 0) {
+                                infos.addAll(info.orders);
+                            }
+                            if (info.companyName.equals("null")) {
+                                tvCompanyName.setText("不限");
+                            }
                             if (info.pushFlag.equals("0")) {
                                 sbPush.setChecked(false);
                             } else {
@@ -167,6 +181,15 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                 break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == 1000) {
+            HttpHelper.sendRequest_getReceivingOrder(this, RequestID.REQ_GET_RECEIVING_ORDER, sp.getUserInfo().token, dialog);
         }
     }
 }

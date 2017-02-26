@@ -15,5 +15,5 @@ public class ReceivingOrderInfo implements Serializable {
 
     public String companyName = "";
 
-    public List<ReceivingOrderItemInfo> orders = null;
+    public List<MyExpressInfo> orders = null;
 }

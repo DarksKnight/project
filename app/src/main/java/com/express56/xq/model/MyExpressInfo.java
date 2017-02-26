@@ -75,4 +75,6 @@ public class MyExpressInfo implements Serializable {
     public String expressCompany = "";
 
     public String expressCompanyName = "";
+
+    public int guotationCount = 0;
 }

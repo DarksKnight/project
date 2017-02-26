@@ -1,12 +1,5 @@
 package com.express56.xq.http;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
 import com.express56.xq.R;
 import com.express56.xq.constant.ExpressConstant;
 import com.express56.xq.model.AreaPriceInfo;
@@ -22,6 +15,13 @@ import com.express56.xq.util.DisplayUtil;
 import com.express56.xq.util.Encodes;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.util.NetWorkUtil;
+
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import java.io.File;
 import java.util.HashMap;
@@ -85,6 +85,8 @@ public class HttpHelper {
     public static final String URL_32 = HTTP + IP + "/express/rest/user/push/close";//推送关
     public static final String URL_33 = HTTP + IP + "/express/rest/user/service/get";//获取快递公司
     public static final String URL_34 = HTTP + IP + "/express/rest/user/service/save";//快递公司保存
+    public static final String URL_35 = HTTP + IP + "/express/rest/user/account/common";//普通用户余额查询
+    public static final String URL_36 = HTTP + IP + "/express/rest/quotation/save";//下单接口保存
 
 //    {"code":9,"result":{"version":"20161115.1.0beta","isRequire":"1","remarks":"测试","downloadPath":"app/android/express.apk"}}
 //    返回结果说明：isRequire 是否必须升级 remarks 升级内容 downloadPath:升级地址
@@ -4012,10 +4014,11 @@ public class HttpHelper {
     public static void sendRequest_saveOrder(final Context page, final int requestID, String submitType, Map<String, String> order, String token, final Dialog dialog) {
         final long requestTime = System.currentTimeMillis();
 
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, Object> map = new HashMap<>();
         map.put("submitType", submitType);
-        map.put("order", JSON.toJSONString(order));
+        map.put("order", JSON.parseObject(JSON.toJSONString(order)));
         String content = JSON.toJSONString(map);
+        LogUtil.d("aaa", content);
 
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
@@ -4140,11 +4143,12 @@ public class HttpHelper {
                 });
     }
 
-    public static void sendRequest_getOrderList(final Context page, final int requestID, String token, String keyword, String pageNo, final Dialog dialog) {
+    public static void sendRequest_getOrderList(final Context page, final int requestID, String token, String orderStatus, String keyword, String pageNo, final Dialog dialog) {
         Map<String, String> map = new HashMap<>();
         map.put("token", token);
         map.put("keyword", keyword);
         map.put("pageNo", pageNo);
+        map.put("orderStatus", orderStatus);
 
         final long requestTime = System.currentTimeMillis();
 
@@ -4448,6 +4452,95 @@ public class HttpHelper {
                 .postString()
                 .tag(page)
                 .url(URL_34 + "?token=" + token)
+                .content(content)
+                .mediaType(MEDIA_TYPE)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_saveExpressCompany", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_saveExpressCompany", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getUserMoney(final Context page, final int requestID, String token, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_35)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getUserMoney", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getUserMoney", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_saveQuotation(final Context page, final int requestID, String insuranceMoney, String expressMoney, String orderId, String remarks, String token, final Dialog dialog) {
+        final long requestTime = System.currentTimeMillis();
+
+        Map<String, String> map = new HashMap<>();
+        map.put("insuranceMoney", insuranceMoney);
+        map.put("expressMoney", expressMoney);
+        map.put("orderId", orderId);
+        map.put("remarks", remarks);
+        String content = JSON.toJSONString(map);
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .postString()
+                .tag(page)
+                .url(URL_36 + "?token=" + token)
                 .content(content)
                 .mediaType(MEDIA_TYPE)
                 .build()

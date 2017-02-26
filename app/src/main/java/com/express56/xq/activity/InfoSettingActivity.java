@@ -1,20 +1,21 @@
 package com.express56.xq.activity;
 
+import com.express56.xq.R;
+import com.express56.xq.adapter.SpinnerAdapter;
+import com.express56.xq.http.HttpHelper;
+import com.express56.xq.http.RequestID;
+import com.express56.xq.model.CompanyInfo;
+import com.express56.xq.model.CompanyItemInfo;
+import com.express56.xq.util.LogUtil;
+import com.express56.xq.widget.ChoosePlaceLayout;
+import com.express56.xq.widget.ToastUtil;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.express56.xq.R;
-import com.express56.xq.adapter.SpinnerAdapter;
-import com.express56.xq.http.HttpHelper;
-import com.express56.xq.http.RequestID;
-import com.express56.xq.model.CompanyInfo;
-import com.express56.xq.util.LogUtil;
-import com.express56.xq.widget.ChoosePlaceLayout;
-import com.express56.xq.widget.ToastUtil;
 
 import java.util.List;
 
@@ -121,6 +122,9 @@ public class InfoSettingActivity extends BaseActivity implements View.OnClickLis
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
                             info = JSONObject.parseObject(content, CompanyInfo.class);
+                            CompanyItemInfo itemInfo = new CompanyItemInfo();
+                            itemInfo.name = "不限";
+                            info.companys.addFirst(itemInfo);
                             String[] array = new String[info.companys.size()];
                             int index = 0;
                             for (int i = 0; i < info.companys.size(); i++) {
@@ -133,6 +137,12 @@ public class InfoSettingActivity extends BaseActivity implements View.OnClickLis
                             spCompany.setAdapter(adapter);
                             spCompany.setSelection(index);
                             tvAreaName.setText(info.areaName);
+                            areaName = info.areaName;
+                            areaCode = info.areaCode;
+                            if (info.areaName.equals("")) {
+                                tvAreaName.setText("请选择");
+                            }
+
                         }
                     } else if (code == 0) {
                         showReloginDialog();
@@ -148,6 +158,7 @@ public class InfoSettingActivity extends BaseActivity implements View.OnClickLis
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
                             ToastUtil.showMessage(this, content, true);
+                            setResult(1000, null);
                             finish();
                         }
                     } else {

@@ -1,5 +1,23 @@
 package com.express56.xq.activity;
 
+import com.express56.xq.R;
+import com.express56.xq.constant.ExpressConstant;
+import com.express56.xq.http.HttpHelper;
+import com.express56.xq.http.IHttpResponse;
+import com.express56.xq.http.RequestID;
+import com.express56.xq.model.PersonalInfo;
+import com.express56.xq.model.User;
+import com.express56.xq.model.VersionInfo;
+import com.express56.xq.okhttp.OkHttpUtils;
+import com.express56.xq.util.DialogUtils;
+import com.express56.xq.util.LogUtil;
+import com.express56.xq.util.PermissionUtil;
+import com.express56.xq.util.SharedPreUtils;
+import com.express56.xq.widget.CustomDialog;
+import com.express56.xq.widget.ToastUtil;
+import com.tencent.android.tpush.XGPushClickedResult;
+import com.tencent.android.tpush.XGPushManager;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
@@ -22,24 +40,6 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.express56.xq.R;
-import com.express56.xq.constant.ExpressConstant;
-import com.express56.xq.http.HttpHelper;
-import com.express56.xq.http.IHttpResponse;
-import com.express56.xq.http.RequestID;
-import com.express56.xq.model.PersonalInfo;
-import com.express56.xq.model.User;
-import com.express56.xq.model.VersionInfo;
-import com.express56.xq.okhttp.OkHttpUtils;
-import com.express56.xq.util.DialogUtils;
-import com.express56.xq.util.LogUtil;
-import com.express56.xq.util.PermissionUtil;
-import com.express56.xq.util.SharedPreUtils;
-import com.express56.xq.widget.CustomDialog;
-import com.express56.xq.widget.ToastUtil;
-import com.tencent.android.tpush.XGPushClickedResult;
-import com.tencent.android.tpush.XGPushManager;
 
 import java.io.File;
 
@@ -125,13 +125,13 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
     }
 
     protected void initData() {
-        sp = new SharedPreUtils(this);
         clickFirstTime = 0;
-        user = sp.getUserInfo();
         ExpressConstant.isOnlyUploadWifi = sp.getBoolean("is_upload_only_wifi", true);
     }
 
     protected void initView() {
+        sp = new SharedPreUtils(this);
+        user = sp.getUserInfo();
         btnBack = getView(R.id.search_back_btn);
 
         if (null != btnBack) {

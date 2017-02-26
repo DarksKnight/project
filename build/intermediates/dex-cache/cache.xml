@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/24149f0def7eda2c6a6328e2d5727fc2e40c0fcf/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="32c0bf3a62b3f92a29e778953d1929c378aab264">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_3637855bbe500b82b04af18bf08cf9139c4452bc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/core-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fb52cf43975eb06d1696b341b5b7d8e40e8a59e5">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/core-3.0.0_38f1675d1b04994395c55dca9a1ea0e9657e5a19/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/7ed6a171813904ffb4c3977a3bd0308887e5ab36/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f310ddf2b169eeacbb0ff06ec410c8d7e591c220">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_e975734b58d3cb9335157495ce327e7443911d7e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/2c3fa90269aee3fc303be1daa564421226368dfd/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_d839faa9bc84d82fb8bb91caccce6dabea116a3f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/universal-image-loader-1.9.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/universal-image-loader-1.9.5_ab68e775215e507a4718307d238d1ced2cb486a9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/commons-codec-1.9.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/commons-codec-1.9_a9420b976853c695234b764890782d2a9a797934/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/d1d77701650f3bd7cd69584c560a3e8c57051d34/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_3c0c451d6c3adb75d4a9d495b07e33373639cfa8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/wup-1.0.0.E-SNAPSHOT.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5a0917f8418b3726f89ae120182dfb6b884740d">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/wup-1.0.0.E-SNAPSHOT_a65be9fc4e45d41e26fbd3fef4557a0e887bb033/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/b6c258dd69c1fd682d56bb9f303d94f8d4fdd774/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_2bcd245da1406fd737e3ea29d2f29799a67629c5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/okhttp-3.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/okhttp-3.2.0_5e6e70cf4572a69e8920a215b6c77a6130a695b7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/ffabac9bdc370ecef49e61ac33de8266e911a571/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_271afa97ae2e51aa96819e5be443b458459eddf5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/gson-2.6.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/gson-2.6.2_c7ccc2687dd57eb878ffdded2fe2c663f848dc38/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/929b2f5368c152716879a0c862615765ffe3c534/output/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/internal_impl-23.4.0_c9590451861f4ac24177215743d9bd36c904add8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/junit-4.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/junit-4.12_0487d0c3d02f1331a209c792e5fc7ebe70168046/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/29c22951abd780e5a2f7f98b6c3ae175ee315a3f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_d122415199228b689b8b01a07f3c93952e1672db/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/locSDK_6.13.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2cdb37444b41b42e1ce5a8a27e5d3c22e1c57479">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/locSDK_6.13_44efbc215328f616698bfe1e4b91b396ec171c59/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/okio-1.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/okio-1.8.0_c411bc836f2cf0432a38dd6fe953fedac93beb12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/Xg_sdk_v2.47_20161026_0936.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bf805014c23dd47a70909310a7fc3acdfab4ac1b">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/Xg_sdk_v2.47_20161026_0936_7b4c89c31c3bf3fe371e094b2b8bbeebd0528bfc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/alipaySingle-20161222.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="795c38473dc8c277a8a07694592e13d7e7601108">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/alipaySingle-20161222_e64e87cd3f15a4bfd3ce40f52f40d1f1de8d0aa9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/90498509e5645efbde62da1ad6ed3ae9956e609f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_e7a689d120e413f836c5059173d871091084a0f4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/9f87d513d6d8b82b4495e37fdb8dd2dd584a20d9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_851c79113016b1ce6a5aa65720a19575bf21ccf1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/e2c8a9b3f6926cda5a85d69a468e04882ddfd2fb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4baabb686423e51adb84608ec82df25f146709c9">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_18ec2cf582b783babb3dd5b2551bdefc69b63cf7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/androidSdk/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/support-annotations-23.4.0_56930d1255b3240c55226b2d8f310679eb738436/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/d5647927ae0c8cfebf179e08eb3969444c1905f9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="84a5e720e441032fc979314a4539f3d40079801b">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_dddd46cca9bd611bb0be758f74d90418160119bf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/bcaafbf94714414548b0819c4051a6c094dfa14b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_52cb6272f134036e6a4e37303b59ddb6d7f51ce1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/jg_filter_sdk_1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ebfc3cde0309ff27e9568757784eefefc71407a2">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/jg_filter_sdk_1.1_8675a7138169d731d0533cb1a9178a51ba36d16d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/eventbus-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/eventbus-3.0.0_95ba950e1885f7fade257c14dec326ff201100b3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/40e9cc4d85f78c61a91e0f06239891b7c8b0d366/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bc8e3e3b486160c2382f499319b1c70adbf32575">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_8e3cf1c2f9ec7a817a7e7114b53cd0f3d7778b89/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/Documents/demo/project/app/libs/commons-lang3-3.3.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/2/commons-lang3-3.3.2_6c47569564ffde12ed64ed2e7bbb2078bcc87990/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/apple/.android/build-cache/929b2f5368c152716879a0c862615765ffe3c534/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/apple/Documents/demo/project/app/build/intermediates/transforms/dex/develop/debug/folders/1000/10/classes_38a84c510336ac3cf10c5fdf330b4744c44e00d9/classes.dex" />
+    </item>
+
+</items>

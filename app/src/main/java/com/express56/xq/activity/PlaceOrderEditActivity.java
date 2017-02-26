@@ -1,5 +1,19 @@
 package com.express56.xq.activity;
 
+import com.express56.xq.R;
+import com.express56.xq.adapter.SpinnerAdapter;
+import com.express56.xq.http.HttpHelper;
+import com.express56.xq.http.RequestID;
+import com.express56.xq.model.CompanyItemInfo;
+import com.express56.xq.model.PlaceOrderInfo;
+import com.express56.xq.util.LogUtil;
+import com.express56.xq.widget.ChoosePlaceLayout;
+import com.express56.xq.widget.ToastUtil;
+import com.express56.xq.widget.WeightChoose;
+import com.jzxiang.pickerview.TimePickerDialog;
+import com.jzxiang.pickerview.data.Type;
+import com.jzxiang.pickerview.listener.OnDateSetListener;
+
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -11,20 +25,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.express56.xq.R;
-import com.express56.xq.adapter.SpinnerAdapter;
-import com.express56.xq.http.HttpHelper;
-import com.express56.xq.http.RequestID;
-import com.express56.xq.model.ExpressCompany;
-import com.express56.xq.model.MyExpressInfo;
-import com.express56.xq.util.LogUtil;
-import com.express56.xq.widget.ChoosePlaceLayout;
-import com.express56.xq.widget.ToastUtil;
-import com.express56.xq.widget.WeightChoose;
-import com.jzxiang.pickerview.TimePickerDialog;
-import com.jzxiang.pickerview.data.Type;
-import com.jzxiang.pickerview.listener.OnDateSetListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,7 +46,6 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
 
     private ChoosePlaceLayout cpl = null;
     private Spinner spExpressCompany = null;
-    private Button btnChooseDate = null;
     private TimePickerDialog dateDialog = null;
     private RelativeLayout rlNumberDate = null;
     private TextView tvOrderNumber = null;
@@ -74,22 +73,26 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     private EditText etSenderAddressDesc = null;
     private EditText etReceiverAddressDesc = null;
     private EditText etMoney = null;
+    private LinearLayout llMoney = null;
+    private TextView tvOrderNo = null;
+    private TextView tvCreateDate = null;
 
     private Map<String, String> order = new HashMap<>();
     private String submitType = "1";
     private String[] flags = new String[]{"0", "1"};
     private String[] flagNames = new String[]{"否", "是"};
-    private LinkedList<ExpressCompany> listCompany = new LinkedList<>();
+    private LinkedList<CompanyItemInfo> listCompany = new LinkedList<>();
     private String sendAreaId = "";
     private String sendAreaName = "";
     private String receiverAreaId = "";
     private String receiverAreaName = "";
     private String getItemDate = "";
     private String expressCompanyId = "";
-    private MyExpressInfo info = null;
-    private String supportValue = "";
-    private String supportCharge = "";
-    private String arrive = "";
+    private String orderId = "";
+    private PlaceOrderInfo info = null;
+    private String supportValue = "0";
+    private String supportCharge = "0";
+    private String arrive = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,16 +107,20 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
 
         Bundle bundle = getIntent().getExtras();
         if (null != bundle) {
-            info = (MyExpressInfo) bundle.getSerializable("info");
+            orderId = bundle.getString("orderId");
+            HttpHelper.sendRequest_getOrder(this, RequestID.REQ_GET_ORDER, orderId,
+                    sp.getUserInfo().token, dialog);
+        } else {
+            orderId = "";
         }
 
         btnSave = getView(R.id.btn_place_order_save);
         btnSaveRelease = getView(R.id.btn_place_order_save_release);
         cpl = getView(R.id.cpl);
+        llMoney = getView(R.id.ll_place_order_money);
         rlNumberDate = getView(R.id.rl_place_order_number_date);
-        tvOrderNumber = getView(R.id.tv_place_order_number);
+        tvOrderNumber = getView(R.id.tv_place_order_express_number);
         spExpressCompany = getView(R.id.sp_place_order_edit_express_company);
-        btnChooseDate = getView(R.id.btn_place_order_choose_date);
         btnSendItem = getView(R.id.btn_place_order_send_item);
         tvSendItem = getView(R.id.tv_place_order_send_item);
         btnGetItem = getView(R.id.btn_place_order_get_item);
@@ -136,6 +143,8 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         etSenderAddressDesc = getView(R.id.et_place_order_sender_address);
         etReceiverAddressDesc = getView(R.id.et_place_order_receiver_address);
         etMoney = getView(R.id.et_place_order_express_money);
+        tvOrderNo = getView(R.id.tv_place_order_no);
+        tvCreateDate = getView(R.id.tv_place_order_createdate);
 
         SpinnerAdapter sa = new SpinnerAdapter(this, flagNames);
         spSupportValue.setAdapter(sa);
@@ -154,12 +163,12 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
                 .setWheelItemTextSize(12)
                 .build();
 
-        if (null == info) {
+        if ("".equals(orderId)) {
             rlNumberDate.setVisibility(View.GONE);
             tvOrderNumber.setVisibility(View.GONE);
         }
 
-        btnChooseDate.setOnClickListener(this);
+        tvGetItemDate.setOnClickListener(this);
         btnSendItem.setOnClickListener(this);
         btnGetItem.setOnClickListener(this);
         tvGetItem.setOnClickListener(this);
@@ -234,8 +243,8 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
                         if (object != null && object.containsKey("result")) {
                             final String content = object.getString("result");
                             listCompany.clear();
-                            listCompany.addAll(JSON.parseArray(content, ExpressCompany.class));
-                            ExpressCompany company = new ExpressCompany();
+                            listCompany.addAll(JSON.parseArray(content, CompanyItemInfo.class));
+                            CompanyItemInfo company = new CompanyItemInfo();
                             company.name = "不限";
                             listCompany.addFirst(company);
                             String[] arrayCompany = new String[listCompany.size()];
@@ -256,7 +265,29 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
                 if (object.containsKey("code")) {
                     int code = object.getIntValue("code");
                     if (code == 9) {
+                        if ("".equals(orderId)) {
+                            ToastUtil.showMessage(this, "保存成功");
+                        } else {
+                            ToastUtil.showMessage(this, "修改成功");
+                        }
+                        setResult(1001, null);
                         finish();
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
+            case RequestID.REQ_GET_ORDER:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            final String content = object.getString("result");
+                            info = JSON.parseObject(content, PlaceOrderInfo.class);
+                            initEdit();
+                        }
                     } else if (code == 0) {
                         showReloginDialog();
                     } else {
@@ -279,7 +310,7 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
 
     @Override
     public void onClick(View v) {
-        if (v == btnChooseDate) {
+        if (v == tvGetItemDate) {
             dateDialog.show(getSupportFragmentManager(), "");
         } else if (v == btnSendItem) {
             cpl.show(sendAreaId, dialog, "send_item");
@@ -295,8 +326,8 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     }
 
     private void save() {
-        if (null != info) {
-            order.put("id", info.id);
+        if (!"".equals(orderId)) {
+            order.put("id", orderId);
         }
         order.put("serviceTime", getItemDate);
         order.put("remarks", etRemark.getText().toString());
@@ -367,5 +398,50 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     public boolean dispatchTouchEvent(MotionEvent ev) {
         cpl.dispatchTouchEventA(ev);
         return super.dispatchTouchEvent(ev);
+    }
+
+    private void initEdit() {
+        listCompany.clear();
+        listCompany.addAll(info.companys);
+        CompanyItemInfo company = new CompanyItemInfo();
+        company.name = "不限";
+        listCompany.addFirst(company);
+        String[] arrayCompany = new String[listCompany.size()];
+        int selectIndex = -1;
+        for (int i = 0; i < listCompany.size(); i++) {
+            arrayCompany[i] = listCompany.get(i).name;
+            if (listCompany.get(i).selected) {
+                selectIndex = i;
+            }
+        }
+        if (selectIndex != -1) {
+            spExpressCompany.setSelection(selectIndex);
+        }
+        SpinnerAdapter adapter = new SpinnerAdapter(this, arrayCompany);
+        spExpressCompany.setAdapter(adapter);
+
+        orderId = info.order.id;
+        sendAreaId = info.order.sendAreaCode;
+        sendAreaName = info.order.sendAddress;
+        receiverAreaId = info.order.receiveAreaCode;
+        receiverAreaName = info.order.receiveAddress;
+
+        tvOrderNo.setText(info.order.orderNo);
+        tvCreateDate.setText(info.order.createDate);
+        tvGetItemDate.setText(info.order.serviceTime);
+        etSenderName.setText(info.order.sender);
+        etSenderPhone.setText(info.order.senderPhone);
+        tvSendItem.setText(info.order.sendAddress);
+        etSenderAddressDesc.setText(info.order.sendDetailAddress);
+        etReceiverName.setText(info.order.receiver);
+        etReceiverPhone.setText(info.order.receiverPhone);
+        tvGetItem.setText(info.order.receiveAddress);
+        etReceiverAddressDesc.setText(info.order.receiveDetailAddress);
+        spArrive.setSelection(Integer.parseInt(info.order.isArrivePay));
+        spSupportCharge.setSelection(Integer.parseInt(info.order.isAgentPay));
+        spSupportValue.setSelection(Integer.parseInt(info.order.isInsurance));
+        wcWeight.setWeight(Double.parseDouble(info.order.weight));
+        etRemark.setText(info.order.thingDesc);
+        etDesc.setText(info.order.remarks);
     }
 }

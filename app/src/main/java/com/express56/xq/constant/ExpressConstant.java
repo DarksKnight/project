@@ -1,9 +1,9 @@
 package com.express56.xq.constant;
 
+import com.express56.xq.http.HttpHelper;
+
 import android.Manifest;
 import android.os.Environment;
-
-import com.express56.xq.http.HttpHelper;
 
 import java.io.File;
 
@@ -359,4 +359,8 @@ public class ExpressConstant {
      * 上传图片类型 收件
      */
     public static final int EXPRESS_TYPE_RECEIVE = 2;
+
+    public static final String EXPRESS_ORDER_NOT_RELEASE = "1";
+
+    public static final String EXPRESS_ORDER_RELEASE = "2";
 }

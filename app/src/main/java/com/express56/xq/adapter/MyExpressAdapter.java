@@ -1,5 +1,11 @@
 package com.express56.xq.adapter;
 
+import com.express56.xq.R;
+import com.express56.xq.activity.PlaceOrderEditActivity;
+import com.express56.xq.activity.PlaceOrderShowActivity;
+import com.express56.xq.constant.ExpressConstant;
+import com.express56.xq.model.MyExpressInfo;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +14,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.express56.xq.R;
-import com.express56.xq.activity.PlaceOrderEditActivity;
-import com.express56.xq.activity.PlaceOrderShowActivity;
-import com.express56.xq.model.MyExpressInfo;
 
 import java.util.List;
 
@@ -72,9 +73,9 @@ public class MyExpressAdapter extends BaseAdapter {
 
     private void bindHolder(final ViewHolder viewHolder, final int position) {
         String status = listMyExpress.get(position).orderStatus;
-        if (listMyExpress.get(position).orderStatus.equals("1")) {
+        if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_NOT_RELEASE)) {
             status = "未发布";
-        } else if (listMyExpress.get(position).orderStatus.equals("2")) {
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_RELEASE)) {
             status = "已发布";
         }
         viewHolder.tvOrderStatus.setText(status);
@@ -87,7 +88,7 @@ public class MyExpressAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("info", listMyExpress.get(position));
+                bundle.putString("orderId", listMyExpress.get(position).id);
                 Intent intent = null;
                 if (listMyExpress.get(position).orderStatus.equals("1")) {
                     intent = new Intent(activity, PlaceOrderEditActivity.class);
@@ -95,7 +96,7 @@ public class MyExpressAdapter extends BaseAdapter {
                     intent = new Intent(activity, PlaceOrderShowActivity.class);
                 }
                 intent.putExtras(bundle);
-                activity.startActivity(intent);
+                activity.startActivityForResult(intent, 1001);
             }
         });
     }
