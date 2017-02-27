@@ -1,9 +1,5 @@
 package com.express56.xq.adapter;
 
-import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
-import com.express56.xq.R;
-import com.express56.xq.model.MyExpressInfo;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
+import com.express56.xq.R;
+import com.express56.xq.model.MyExpressInfo;
 
 import java.util.List;
 
@@ -35,7 +35,12 @@ public class ReceivingOrderAdapter
 
     @Override
     public ReceivingOrderViewHolder getViewHolder(View view) {
-        return (ReceivingOrderViewHolder)view.getTag();
+        return new ReceivingOrderViewHolder(view);
+    }
+
+    @Override
+    public int getAdapterItemViewType(int position) {
+        return 0;
     }
 
     @Override
@@ -45,7 +50,6 @@ public class ReceivingOrderAdapter
                 = new ReceivingOrderAdapter.ReceivingOrderViewHolder(
                 LayoutInflater.from(context).inflate(R.layout.layout_receiving_order_item, null,
                         false));
-        parent.setTag(holder);
         return holder;
     }
 

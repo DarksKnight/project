@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="bottom-navigation-bar-1.3.0-">
     <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/bottom-navigation-bar-1.3.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/a6d721b4bee31badc73eaa2a9f03f7274a3f0a84/output/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/d5647927ae0c8cfebf179e08eb3969444c1905f9/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/d5647927ae0c8cfebf179e08eb3969444c1905f9/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/a6d721b4bee31badc73eaa2a9f03f7274a3f0a84/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/a6d721b4bee31badc73eaa2a9f03f7274a3f0a84/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

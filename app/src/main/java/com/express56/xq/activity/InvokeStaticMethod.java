@@ -32,6 +32,16 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.express56.xq.constant.ExpressConstant;
+import com.express56.xq.http.RequestID;
+import com.express56.xq.model.BikeSite;
+import com.express56.xq.model.RentInfo;
+import com.express56.xq.service.UploadService;
+import com.express56.xq.util.BitmapUtils;
+import com.express56.xq.util.LogUtil;
+import com.express56.xq.util.RGBLuminanceSource;
+import com.express56.xq.util.SharedPreUtils;
+import com.express56.xq.util.StringUtils;
+import com.express56.xq.widget.ToastUtil;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;
@@ -40,18 +50,7 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
 import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushManager;
-import com.express56.xq.http.HttpHelper;
-import com.express56.xq.http.RequestID;
-import com.express56.xq.model.BikeSite;
-import com.express56.xq.model.RentInfo;
-import com.express56.xq.model.User;
-import com.express56.xq.service.UploadService;
-import com.express56.xq.util.BitmapUtils;
-import com.express56.xq.util.LogUtil;
-import com.express56.xq.util.RGBLuminanceSource;
-import com.express56.xq.util.SharedPreUtils;
-import com.express56.xq.util.StringUtils;
-import com.express56.xq.widget.ToastUtil;
+import com.tencent.android.tpush.service.XGPushService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -60,7 +59,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Timer;
@@ -153,28 +151,28 @@ public class InvokeStaticMethod {
      * 信鸽绑定账号
      */
     public static void registerXGPush(Context context, String userID) {
-
-        if (StringUtils.notEmpty(userID)) {
-            // 开启logcat输出，方便debug，发布时请关闭
-            // XGPushConfig.enableDebug(this, true);
-            // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
-            // 如果需要绑定账号，请使用registerPush(getApplicationContext(),account)版本
-            // 具体可参考详细的开发指南
-            // 传递的参数为ApplicationContext
+        try {
+            if (StringUtils.notEmpty(userID)) {
+                // 开启logcat输出，方便debug，发布时请关闭
+                // XGPushConfig.enableDebug(this, true);
+                // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
+                // 如果需要绑定账号，请使用registerPush(getApplicationContext(),account)版本
+                // 具体可参考详细的开发指南
+                // 传递的参数为ApplicationContext
 //        XGPushManager.registerPush(context);
 //            XGPushManager.registerPush(context, userID);
-            XGPushManager.registerPush(context, userID, new XGIOperateCallback() {
-                @Override
-                public void onSuccess(Object data, int flag) {
-                    LogUtil.d("TPush", "注册成功，设备token为：" + data);
-                }
+                XGPushManager.registerPush(context, userID, new XGIOperateCallback() {
+                    @Override
+                    public void onSuccess(Object data, int flag) {
+                        LogUtil.d("TPush", "注册成功，设备token为：" + data);
+                    }
 
-                @Override
-                public void onFail(Object data, int errCode, String msg) {
-                    LogUtil.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
+                    @Override
+                    public void onFail(Object data, int errCode, String msg) {
+                        LogUtil.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
 
-                }
-            });
+                    }
+                });
 //            try {
 //                TelephonyManager tm = (TelephonyManager) getBaseContext()
 //                        .getSystemService(Context.TELEPHONY_SERVICE);
@@ -184,6 +182,9 @@ public class InvokeStaticMethod {
 //                e.printStackTrace();
 //            }
 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         // 其它常用的API：

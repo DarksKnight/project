@@ -163,7 +163,6 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                             JSONObject json = (JSONObject) map.get("areas");
                             try {
                                 org.json.JSONObject obj = new org.json.JSONObject(json.toJSONString());
-                                int i = 0;
                                 List<List<AreaInfo>> listArray = new ArrayList<>();
                                 for (Iterator<String> iterator = obj.keys(); iterator.hasNext(); ) {
                                     String key = iterator.next();
@@ -172,12 +171,9 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                                     item = createItem(context);
                                     llContent.addView(item);
                                     listArray.add(list);
-                                    if (i == 0) {
-                                        infos.clear();
-                                        infos.addAll(list);
-                                        adapter.notifyDataSetChanged();
-                                    }
-                                    i++;
+                                    infos.clear();
+                                    infos.addAll(list);
+                                    adapter.notifyDataSetChanged();
                                 }
                                 for (int j = 0; j < listArray.size(); j++) {
                                     ChoosePlaceItemLayout layout = (ChoosePlaceItemLayout) llContent.getChildAt(listArray.size() - j - 1);

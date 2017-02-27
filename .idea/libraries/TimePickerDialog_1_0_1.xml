@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="TimePickerDialog-1.0.1">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/24149f0def7eda2c6a6328e2d5727fc2e40c0fcf/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/24149f0def7eda2c6a6328e2d5727fc2e40c0fcf/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/0f2f1f0145c4e01e98126e0f3a6e11afe6420261/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/0f2f1f0145c4e01e98126e0f3a6e11afe6420261/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

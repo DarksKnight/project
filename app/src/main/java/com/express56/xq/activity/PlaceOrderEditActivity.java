@@ -1,5 +1,17 @@
 package com.express56.xq.activity;
 
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.express56.xq.R;
 import com.express56.xq.adapter.SpinnerAdapter;
 import com.express56.xq.http.HttpHelper;
@@ -13,18 +25,6 @@ import com.express56.xq.widget.WeightChoose;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
-
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,10 +49,8 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     private TimePickerDialog dateDialog = null;
     private RelativeLayout rlNumberDate = null;
     private TextView tvOrderNumber = null;
-    private Button btnSendItem = null;
     private TextView tvSendItem = null;
     private TextView tvGetItem = null;
-    private Button btnGetItem = null;
     private TextView tvGetItemDate = null;
     private WeightChoose wcWeight = null;
     private Spinner spSupportValue = null;
@@ -121,9 +119,7 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         rlNumberDate = getView(R.id.rl_place_order_number_date);
         tvOrderNumber = getView(R.id.tv_place_order_express_number);
         spExpressCompany = getView(R.id.sp_place_order_edit_express_company);
-        btnSendItem = getView(R.id.btn_place_order_send_item);
         tvSendItem = getView(R.id.tv_place_order_send_item);
-        btnGetItem = getView(R.id.btn_place_order_get_item);
         tvGetItem = getView(R.id.tv_place_order_get_item);
         tvGetItemDate = getView(R.id.tv_place_order_get_item_date);
         wcWeight = getView(R.id.wc_place_order);
@@ -169,8 +165,8 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         }
 
         tvGetItemDate.setOnClickListener(this);
-        btnSendItem.setOnClickListener(this);
-        btnGetItem.setOnClickListener(this);
+        tvSendItem.setOnClickListener(this);
+        tvGetItem.setOnClickListener(this);
         tvGetItem.setOnClickListener(this);
         btnSave.setOnClickListener(this);
         btnSaveRelease.setOnClickListener(this);
@@ -312,9 +308,9 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     public void onClick(View v) {
         if (v == tvGetItemDate) {
             dateDialog.show(getSupportFragmentManager(), "");
-        } else if (v == btnSendItem) {
+        } else if (v == tvSendItem) {
             cpl.show(sendAreaId, dialog, "send_item");
-        } else if (v == btnGetItem) {
+        } else if (v == tvGetItem) {
             cpl.show(receiverAreaId, dialog, "get_item");
         } else if (v == btnSave) {
             submitType = "1";

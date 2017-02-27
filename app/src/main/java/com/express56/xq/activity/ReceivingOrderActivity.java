@@ -1,6 +1,15 @@
 package com.express56.xq.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+
 import com.andview.refreshview.XRefreshView;
+import com.andview.refreshview.XRefreshViewFooter;
 import com.express56.xq.R;
 import com.express56.xq.adapter.ReceivingOrderAdapter;
 import com.express56.xq.http.HttpHelper;
@@ -12,14 +21,6 @@ import com.express56.xq.widget.SearchBarLayout;
 import com.express56.xq.widget.ToastUtil;
 import com.express56.xq.widget.TypeChooseLayout;
 import com.kyleduo.switchbutton.SwitchButton;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,9 +88,6 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         xr = getView(R.id.xr_receiving_order);
         sbl = getView(R.id.ll_receiving_order_search);
 
-        xr.setPullLoadEnable(true);
-        xr.setAutoRefresh(false);
-
         sbl.setListener(new SearchBarLayout.Listener() {
             @Override
             public void onSearch(String key) {
@@ -143,6 +141,7 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
             }
         });
 
+        rvList.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rvList.setLayoutManager(manager);
         adapter = new ReceivingOrderAdapter(this, infos, new ReceivingOrderAdapter.Listener() {
@@ -155,6 +154,13 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
             }
         });
         rvList.setAdapter(adapter);
+        adapter.setCustomLoadMoreView(new XRefreshViewFooter(this));
+
+        xr.setPullLoadEnable(true);
+        xr.setAutoRefresh(false);
+        xr.enableReleaseToLoadMore(true);
+        xr.enableRecyclerViewPullUp(true);
+        xr.enablePullUpWhenLoadCompleted(true);
 
         tvSetting.setOnClickListener(this);
 

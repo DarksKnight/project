@@ -24,7 +24,6 @@ import com.express56.xq.http.RequestID;
 import com.express56.xq.model.Adv;
 import com.express56.xq.model.UpgradeInfo;
 import com.express56.xq.model.User;
-import com.express56.xq.service.UploadService;
 import com.express56.xq.util.DeviceUtil;
 import com.express56.xq.util.DisplayUtil;
 import com.express56.xq.util.LogUtil;
@@ -482,6 +481,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                 LogUtil.d(TAG, "json user->" + userJsonStr);
                                 User user = JSONObject.parseObject(userJsonStr, User.class);
                                 sp.saveUserInfo(user);
+                                LogUtil.d("TEST", "token : " + sp.getUserInfo().token);
+                                InvokeStaticMethod.registerXGPush(this, sp.getUserInfo().token);
                             }
                             //进入主界面
                             finish();
