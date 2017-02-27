@@ -154,4 +154,6 @@ public class RequestID {
     public static final int REQ_GET_USER_MONEY = REQ_SAVE_COMPANY + 1;
 
     public static final int REQ_SAVE_RECEIVING_ORDER = REQ_GET_USER_MONEY + 1;
+
+    public static final int REQ_GET_QUOTATION_LIST = REQ_SAVE_RECEIVING_ORDER + 1;
 }

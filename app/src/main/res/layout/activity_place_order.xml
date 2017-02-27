@@ -257,6 +257,7 @@
                             android:id="@+id/tv_place_order_send_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="请选择"
                             android:textColor="@color/color_red"
                             android:textSize="16sp" />
@@ -282,7 +283,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/color_bg"
-                            android:hint="街道、楼牌号等"
+                            android:hint="社区、楼牌号等"
                             android:padding="8dp"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
@@ -355,7 +356,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/color_bg"
-                        android:hint="输入收件人"
+                        android:hint="输入联系电话"
                         android:padding="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -389,6 +390,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="请选择"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/color_red"
                             android:textSize="16sp" />
 
@@ -541,7 +543,8 @@
                             android:padding="8dp"
                             android:text=""
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:gravity="right|center_vertical"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -599,7 +602,8 @@
                             android:padding="8dp"
                             android:text=""
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:gravity="right|center_vertical"/>
 
                         <TextView
                             android:layout_width="wrap_content"

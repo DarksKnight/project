@@ -1,8 +1,5 @@
 package com.express56.xq.adapter;
 
-import com.express56.xq.R;
-import com.express56.xq.model.OfferInfo;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.express56.xq.R;
+import com.express56.xq.model.OfferInfo;
 
 import java.util.List;
 
@@ -38,13 +38,19 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
     }
 
     @Override
-    public void onBindViewHolder(OfferViewHolder offerViewHolder, int i) {
-        offerViewHolder.btnChoose.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(OfferViewHolder holder, final int i) {
+        holder.btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onChoose();
+                listener.onChoose(i);
             }
         });
+        holder.tvTotalMoney.setText(infos.get(i).orderMoney);
+        holder.tvExpressMoney.setText(infos.get(i).expressMoney);
+        holder.tvCompany.setText(infos.get(i).expressCompanyName);
+        holder.tvSupportMoney.setText(infos.get(i).insuranceMoney);
+        holder.tvRemarks.setText(infos.get(i).remarks);
+        holder.tvDate.setText(infos.get(i).publishDate);
     }
 
     @Override
@@ -60,6 +66,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
         public TextView tvSupportMoney = null;
         public TextView tvDate = null;
         public Button btnChoose = null;
+        public TextView tvRemarks = null;
 
         public OfferViewHolder(View itemView) {
             super(itemView);
@@ -70,11 +77,12 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
             tvSupportMoney = (TextView)itemView.findViewById(R.id.tv_offer_support_money);
             tvDate = (TextView)itemView.findViewById(R.id.tv_offer_date);
             btnChoose = (Button)itemView.findViewById(R.id.btn_offer_choose);
+            tvRemarks = (TextView)itemView.findViewById(R.id.tv_offer_remarks);
         }
     }
 
     public interface Listener {
-        void onChoose();
+        void onChoose(int index);
     }
 
 }

@@ -1,13 +1,5 @@
 package com.express56.xq.activity;
 
-import com.express56.xq.R;
-import com.express56.xq.constant.ExpressConstant;
-import com.express56.xq.http.HttpHelper;
-import com.express56.xq.http.RequestID;
-import com.express56.xq.model.MyExpressInfo;
-import com.express56.xq.util.LogUtil;
-import com.express56.xq.widget.ToastUtil;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +10,15 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.express56.xq.R;
+import com.express56.xq.constant.ExpressConstant;
+import com.express56.xq.http.HttpHelper;
+import com.express56.xq.http.RequestID;
+import com.express56.xq.model.MyExpressInfo;
+import com.express56.xq.model.OfferInfo;
+import com.express56.xq.util.LogUtil;
+import com.express56.xq.widget.ToastUtil;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONObject;
@@ -203,7 +204,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     }
 
     private void setData() {
-        tvOffer.setText(currentInfo.guotationCount + "个报价");
+        tvOffer.setText(currentInfo.quotationCount + "个报价");
         tvNumber.setText(currentInfo.orderNo);
         tvCreateDate.setText(currentInfo.createDate);
         tvServiceTime.setText(currentInfo.serviceTime);
@@ -229,7 +230,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         double totalMoney = Double.parseDouble(currentInfo.orderMoney) + Double
                 .parseDouble(currentInfo.insuranceMoney);
         tvTotalMoney.setText(totalMoney + "元");
-        tvOffer.setText(currentInfo.guotationCount + "个报价");
+        tvOffer.setText(currentInfo.quotationCount + "个保价");
         if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_NOT_RELEASE)) {
             tvTitleExpressMoney.setVisibility(GONE);
             llExpressMoney.setVisibility(GONE);
@@ -239,7 +240,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v == tvOffer) {
-            startActivityForResult(new Intent(this, OfferActivity.class), 1000);
+            Intent intent = new Intent(this, OfferActivity.class);
+            intent.putExtra("orderId", currentInfo.id);
+            startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
             createDialog();
         }
@@ -252,6 +255,10 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         if (resultCode == 1000) {
             llMoney.setVisibility(VISIBLE);
             btnPay.setVisibility(VISIBLE);
+            OfferInfo offerInfo = (OfferInfo)data.getSerializableExtra("offerInfo");
+            tvMoney.setText(offerInfo.expressMoney + "元");
+            tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
+            tvTotalMoney.setText(offerInfo.orderMoney);
         }
     }
 

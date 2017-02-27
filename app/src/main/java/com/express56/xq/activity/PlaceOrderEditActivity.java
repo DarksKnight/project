@@ -209,7 +209,9 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
     protected void initData() {
         super.initData();
 
-        HttpHelper.sendRequest_getExpressCompany(this, RequestID.REQ_GET_EXPRESS_COMPANY, sp.getUserInfo().token, dialog);
+        if (orderId.equals("")) {
+            HttpHelper.sendRequest_getExpressCompany(this, RequestID.REQ_GET_EXPRESS_COMPANY, sp.getUserInfo().token, dialog);
+        }
     }
 
     @Override
@@ -410,11 +412,11 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
                 selectIndex = i;
             }
         }
+        SpinnerAdapter adapter = new SpinnerAdapter(this, arrayCompany);
+        spExpressCompany.setAdapter(adapter);
         if (selectIndex != -1) {
             spExpressCompany.setSelection(selectIndex);
         }
-        SpinnerAdapter adapter = new SpinnerAdapter(this, arrayCompany);
-        spExpressCompany.setAdapter(adapter);
 
         orderId = info.order.id;
         sendAreaId = info.order.sendAreaCode;

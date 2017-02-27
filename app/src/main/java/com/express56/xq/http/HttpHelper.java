@@ -1,5 +1,12 @@
 package com.express56.xq.http;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
 import com.express56.xq.R;
 import com.express56.xq.constant.ExpressConstant;
 import com.express56.xq.model.AreaPriceInfo;
@@ -15,13 +22,6 @@ import com.express56.xq.util.DisplayUtil;
 import com.express56.xq.util.Encodes;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.util.NetWorkUtil;
-
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import java.io.File;
 import java.util.HashMap;
@@ -87,6 +87,7 @@ public class HttpHelper {
     public static final String URL_34 = HTTP + IP + "/express/rest/user/service/save";//快递公司保存
     public static final String URL_35 = HTTP + IP + "/express/rest/user/account/common";//普通用户余额查询
     public static final String URL_36 = HTTP + IP + "/express/rest/quotation/save";//下单接口保存
+    public static final String URL_37 = HTTP + IP + "/express/rest/order/quotations";//保价列表
 
 //    {"code":9,"result":{"version":"20161115.1.0beta","isRequire":"1","remarks":"测试","downloadPath":"app/android/express.apk"}}
 //    返回结果说明：isRequire 是否必须升级 remarks 升级内容 downloadPath:升级地址
@@ -4564,6 +4565,49 @@ public class HttpHelper {
                     @Override
                     public void onResponse(String response) {
                         printAPI_TimeConsuming("sendRequest_saveExpressCompany", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_getQuotationList(final Context page, final int requestID, String token, String id, final Dialog dialog) {
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+        map.put("id", id);
+
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .get()
+                .tag(page)
+                .params(map)
+                .url(URL_37)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_getQuotationList", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_getQuotationList", requestTime);
 
                         if (dialog != null) {
                             dialog.dismiss();
