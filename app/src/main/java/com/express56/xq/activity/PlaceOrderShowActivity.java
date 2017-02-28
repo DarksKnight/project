@@ -90,6 +90,8 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private TextView tvUserMoney = null;
 
+    private Button btnCancel = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,9 +128,11 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         llMoney = getView(R.id.ll_place_order_show_money);
         llCompany = getView(R.id.ll_place_order_show_express_company);
         btnPay = getView(R.id.btn_place_order_show_pay);
+        btnCancel = getView(R.id.btn_place_order_show_cancel);
 
         tvOffer.setOnClickListener(this);
         btnPay.setOnClickListener(this);
+        btnCancel.setOnClickListener(this);
     }
 
     @Override
@@ -198,6 +202,22 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                     }
                 }
                 break;
+            case RequestID.REQ_ORDER_CANCEL:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            String content = object.getString("result");
+                            ToastUtil.showMessage(this, content, true);
+                            finish();
+                        }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -245,6 +265,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
             createDialog();
+        } else if (v == btnCancel) {
+            HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, orderId,
+                    sp.getUserInfo().token, dialog);
         }
     }
 

@@ -2,14 +2,12 @@ package com.express56.xq.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.andview.refreshview.XRefreshView;
-import com.andview.refreshview.XRefreshViewFooter;
 import com.express56.xq.R;
 import com.express56.xq.adapter.ReceivingOrderAdapter;
 import com.express56.xq.http.HttpHelper;
@@ -38,7 +36,7 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
 
     private TextView tvSetting = null;
 
-    private RecyclerView rvList = null;
+    private ListView rvList = null;
 
     private TypeChooseLayout tcl = null;
 
@@ -140,10 +138,6 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                         pageNo, dialog);
             }
         });
-
-        rvList.setHasFixedSize(true);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        rvList.setLayoutManager(manager);
         adapter = new ReceivingOrderAdapter(this, infos, new ReceivingOrderAdapter.Listener() {
             @Override
             public void onClick(String orderId) {
@@ -154,13 +148,9 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
             }
         });
         rvList.setAdapter(adapter);
-        adapter.setCustomLoadMoreView(new XRefreshViewFooter(this));
 
         xr.setPullLoadEnable(true);
         xr.setAutoRefresh(false);
-        xr.enableReleaseToLoadMore(true);
-        xr.enableRecyclerViewPullUp(true);
-        xr.enablePullUpWhenLoadCompleted(true);
 
         tvSetting.setOnClickListener(this);
 

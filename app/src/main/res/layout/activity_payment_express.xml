@@ -37,33 +37,128 @@
         android:layout_below="@id/search_title_part"
         android:background="#d3d4d8" />
 
-    <RelativeLayout
-        android:id="@+id/rl_payment"
+    <LinearLayout
+        android:id="@+id/ll_pay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="20dp">
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="合计：100元"
-            android:layout_centerVertical="true"/>
+            android:text="请选择充值方式："
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
 
-        <Button
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d3d4d8" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/rl_alipay">
+
+            <ImageView
+                android:id="@+id/iv_payment_alipay"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/alipay"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_toRightOf="@id/iv_payment_alipay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="支付宝安全支付"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/arrow"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d3d4d8" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/rl_wechat">
+
+            <ImageView
+                android:id="@+id/iv_payment_wechat"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/wechat"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_toRightOf="@id/iv_payment_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="微信支付"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/arrow"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/search_line_1"
+        android:layout_above="@id/ll_pay"
+        android:background="#E0E0E0">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="充值"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+            android:text="请选择充值金额："
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
 
-    </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_payment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_payment"
-        android:layout_below="@id/search_line_1"
-        android:layout_above="@id/rl_payment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,14 +1,12 @@
 package com.express56.xq.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.express56.xq.R;
 import com.express56.xq.model.MyExpressInfo;
 
@@ -18,8 +16,7 @@ import java.util.List;
  * Created by bojoy-sdk2 on 2017/2/20.
  */
 
-public class ReceivingOrderAdapter
-        extends BaseRecyclerAdapter<ReceivingOrderAdapter.ReceivingOrderViewHolder> {
+public class ReceivingOrderAdapter extends BaseAdapter {
 
     private Context context = null;
 
@@ -34,28 +31,35 @@ public class ReceivingOrderAdapter
     }
 
     @Override
-    public ReceivingOrderViewHolder getViewHolder(View view) {
-        return new ReceivingOrderViewHolder(view);
+    public int getCount() {
+        return infos.size();
     }
 
     @Override
-    public int getAdapterItemViewType(int position) {
-        return 0;
+    public Object getItem(int position) {
+        return infos.get(position);
     }
 
     @Override
-    public ReceivingOrderViewHolder onCreateViewHolder(ViewGroup parent,
-            int viewType, boolean isItem) {
-        ReceivingOrderAdapter.ReceivingOrderViewHolder holder
-                = new ReceivingOrderAdapter.ReceivingOrderViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.layout_receiving_order_item, null,
-                        false));
-        return holder;
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
-    public void onBindViewHolder(ReceivingOrderViewHolder holder,
-            final int position, boolean isItem) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder = null;
+        if (convertView == null) {
+            convertView = View.inflate(context, R.layout.layout_receiving_order_item, null);
+            viewHolder = createHolder(convertView);
+            convertView.setTag(R.id.tag_receiving_order, viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag(R.id.tag_receiving_order);
+        }
+        bindHolder(viewHolder, position);
+        return convertView;
+    }
+
+    private void bindHolder(final ReceivingOrderAdapter.ViewHolder holder, final int position) {
         holder.llContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,13 +81,23 @@ public class ReceivingOrderAdapter
         holder.tvMoney.setText("费用：" + infos.get(position).orderMoney + "元");
     }
 
-    @Override
-    public int getAdapterItemCount() {
-        return infos.size();
+    private ViewHolder createHolder(View itemView) {
+        final ViewHolder holder = new ViewHolder();
+        holder.llContent = (LinearLayout) itemView.findViewById(R.id.ll_receiving_order_content);
+        holder.tvOrderNo = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_number);
+        holder.tvStatus = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_status);
+        holder.tvCreateDate = (TextView) itemView
+                .findViewById(R.id.tv_receiving_order_item_createdate);
+        holder.tvSender = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_sender);
+        holder.tvSenderPhone = (TextView) itemView
+                .findViewById(R.id.tv_receiving_order_item_sender_phone);
+        holder.tvSenderAddress = (TextView) itemView
+                .findViewById(R.id.tv_receiving_order_item_sender_address);
+        holder.tvMoney = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_money);
+        return holder;
     }
 
-    class ReceivingOrderViewHolder extends RecyclerView.ViewHolder {
-
+    private class ViewHolder {
         public LinearLayout llContent = null;
 
         public TextView tvOrderNo = null;
@@ -99,22 +113,6 @@ public class ReceivingOrderAdapter
         public TextView tvSenderAddress = null;
 
         public TextView tvMoney = null;
-
-        public ReceivingOrderViewHolder(View itemView) {
-            super(itemView);
-
-            llContent = (LinearLayout) itemView.findViewById(R.id.ll_receiving_order_content);
-            tvOrderNo = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_number);
-            tvStatus = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_status);
-            tvCreateDate = (TextView) itemView
-                    .findViewById(R.id.tv_receiving_order_item_createdate);
-            tvSender = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_sender);
-            tvSenderPhone = (TextView) itemView
-                    .findViewById(R.id.tv_receiving_order_item_sender_phone);
-            tvSenderAddress = (TextView) itemView
-                    .findViewById(R.id.tv_receiving_order_item_sender_address);
-            tvMoney = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_money);
-        }
     }
 
     public interface Listener {
