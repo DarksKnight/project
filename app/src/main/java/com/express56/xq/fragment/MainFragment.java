@@ -155,7 +155,7 @@ public class MainFragment extends MyBaseFragment {
         }
         int length = functionNames.length;
         for (int i = 0; i < length; i++) {
-            HashMap<String, String> map = new HashMap<String, String>();
+            HashMap<String, String> map = new HashMap<>();
             map.put("functionName", functionNames[i]);
             map.put("iamgeName", imageNames[i]);
             map.put("funcId", String.valueOf(i));

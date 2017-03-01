@@ -768,22 +768,36 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
 //            case EXPRESS_PHOTO_GET_TAKE_ORDER:
 //                break;
             case 3:
-                startActivity(new Intent(this, MyExpressActivity.class));
+                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
+                    startActivity(new Intent(this, MyExpressActivity.class));
+                } else {
+                    startActivity(new Intent(this, AreaPriceSetActivity.class));
+                }
                 break;
             case 4:
-                startActivity(new Intent(this, PlaceOrderEditActivity.class));
+                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
+
+                } else {
+                    startActivity(new Intent(this, ReceivingOrderActivity.class));
+                }
                 break;
             case 5:
-                startActivity(new Intent(this, AreaPriceSetActivity.class));
+                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
+
+                } else {
+                    startActivity(new Intent(this, PlaceOrderShowActivityaa.class));
+                }
                 break;
             case 6:
-                startActivity(new Intent(this, ReceivingOrderActivity.class));
+                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
+
+                } else {
+                    startActivity(new Intent(this, PaymentActivity.class));
+                }
                 break;
             case 7:
-                startActivity(new Intent(this, PlaceOrderShowActivityaa.class));
                 break;
             case 8:
-                startActivity(new Intent(this, PaymentActivity.class));
                 break;
             default:
                 break;

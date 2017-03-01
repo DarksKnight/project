@@ -17,11 +17,11 @@
         <item>快递单扫码</item>
         <item>快递单查询</item>
         <item>我的快递</item>
-        <item>下单</item>
-        <item>区域价格设置</item>
-        <item>接单</item>
-        <item>支付宝测试</item>
-        <item>充值</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
         <item></item>
         <item></item>
         <item></item>
@@ -32,12 +32,12 @@
         <item>拍快递单</item>
         <item>快递单扫码</item>
         <item>快递单查询</item>
-        <item>我的快递</item>
-        <item>下单</item>
         <item>区域价格设置</item>
         <item>接单</item>
         <item>支付宝测试</item>
         <item>充值</item>
+        <item></item>
+        <item></item>
         <item></item>
         <item></item>
         <item></item>
@@ -50,11 +50,11 @@
         <item>scan</item>
         <item>search</item>
         <item>myexpress</item>
-        <item>search</item>
-        <item>search</item>
-        <item>search</item>
-        <item>search</item>
-        <item>search</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
+        <item>other</item>
         <item>other</item>
         <item>other</item>
         <item>other</item>
@@ -63,12 +63,12 @@
         <item>camera</item>
         <item>scan</item>
         <item>search</item>
-        <item>myexpress</item>
         <item>search</item>
         <item>search</item>
         <item>search</item>
         <item>search</item>
-        <item>search</item>
+        <item>other</item>
+        <item>other</item>
         <item>other</item>
         <item>other</item>
         <item>other</item>
