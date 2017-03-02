@@ -176,12 +176,19 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d3d4d8" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_marginLeft="10dp"
+                android:gravity="center"
                 android:text="寄件人信息"
-                android:textColor="@color/color_red"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -264,12 +271,18 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d3d4d8" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="10dp"
+                android:gravity="center"
                 android:text="收件人信息"
-                android:textColor="@color/color_red"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -336,7 +349,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="收件人地址："
+                        android:text="收件地址："
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -352,12 +365,18 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#d3d4d8" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="10dp"
+                android:gravity="center"
                 android:text="货物信息"
-                android:textColor="@color/color_red"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -499,13 +518,19 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#d3d4d8" />
+
                 <TextView
                     android:id="@+id/tv_place_order_express_money"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
                     android:text="快递费用"
-                    android:textColor="@color/color_red"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -610,29 +635,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_place_order_show_cancel"
                     android:layout_width="100dp"
                     android:layout_height="36dp"
+                    android:background="@drawable/btn_login_new"
                     android:text="取消发布"
-                    android:textSize="16sp"
                     android:textColor="@color/color_view_text"
-                    android:background="@drawable/btn_login_new"/>
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btn_place_order_show_pay"
                     android:layout_width="100dp"
                     android:layout_height="36dp"
-                    android:text="支付/确定"
-                    android:textSize="16sp"
-                    android:textColor="@color/color_view_text"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_login_new"
-                    android:visibility="gone"
-                    android:layout_marginLeft="10dp"/>
+                    android:text="支付/确定"
+                    android:textColor="@color/color_view_text"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

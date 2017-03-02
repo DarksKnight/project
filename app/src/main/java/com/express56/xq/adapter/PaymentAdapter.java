@@ -39,7 +39,8 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentV
 
     @Override
     public void onBindViewHolder(PaymentViewHolder holder, final int position) {
-        holder.tvTitle.setText(infos.get(position).rechargeMoney + "元(" + infos.get(position).giveaway + ")");
+        holder.tvTitle.setText(infos.get(position).rechargeMoney + "元");
+        holder.tvGift.setText("(" + infos.get(position).giveaway + ")");
         if (infos.get(position).selected) {
             holder.llContent.setBackgroundResource(R.drawable.bg_payment_info_item);
         } else {
@@ -63,16 +64,18 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentV
 
         public TextView tvTitle = null;
         public LinearLayout llContent = null;
+        public TextView tvGift = null;
 
         public PaymentViewHolder(View itemView) {
             super(itemView);
 
             tvTitle = (TextView) itemView.findViewById(R.id.tv_payment_info_item_title);
             llContent = (LinearLayout) itemView.findViewById(R.id.ll_content);
+            tvGift = (TextView) itemView.findViewById(R.id.tv_payment_info_item_gift);
         }
     }
 
-    public interface Listener{
+    public interface Listener {
         void onClick(int index);
     }
 }
