@@ -137,7 +137,7 @@ public class LogoActivity extends BaseActivity {
             startActivity(new Intent(context, LoginActivity.class));
         }
         LogUtil.d("TEST", "token : " + sp.getUserInfo().token);
-        InvokeStaticMethod.registerXGPush(this, sp.getUserInfo().token);
+        InvokeStaticMethod.registerXGPush(this, sp.getUserInfo().phone);
         finish();
     }
 

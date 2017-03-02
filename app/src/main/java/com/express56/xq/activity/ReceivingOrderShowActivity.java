@@ -1,17 +1,19 @@
 package com.express56.xq.activity;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.express56.xq.R;
 import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.widget.ToastUtil;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import com.tencent.android.tpush.XGPushClickedResult;
+import com.tencent.android.tpush.XGPushManager;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONObject;
@@ -109,8 +111,10 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
 
         btnSave.setOnClickListener(this);
 
-        HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, orderId,
-                sp.getUserInfo().token, dialog);
+        if (null != orderId) {
+            HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, orderId,
+                    sp.getUserInfo().token, dialog);
+        }
     }
 
     @Override
@@ -199,5 +203,27 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
                 .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "不代收货款");
         etEpressMoney.setText(currentInfo.expressMoney);
         etSupportMoney.setText(currentInfo.insuranceMoney);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        XGPushClickedResult click = XGPushManager.onActivityStarted(this);
+        LogUtil.d(TAG, "onStart click : " + click);
+        if (null != click) {
+            String content = click.getCustomContent();
+            orderId = JSON.parseObject(content).getString("orderId");
+
+            HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, orderId,
+                    sp.getUserInfo().token, dialog);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        XGPushManager.onActivityStoped(this);
     }
 }

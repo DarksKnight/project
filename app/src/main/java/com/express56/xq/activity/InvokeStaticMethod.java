@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -35,6 +36,7 @@ import com.express56.xq.constant.ExpressConstant;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.BikeSite;
 import com.express56.xq.model.RentInfo;
+import com.express56.xq.receiver.MsgPushReceiver;
 import com.express56.xq.service.UploadService;
 import com.express56.xq.util.BitmapUtils;
 import com.express56.xq.util.LogUtil;
@@ -50,7 +52,6 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
 import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushManager;
-import com.tencent.android.tpush.service.XGPushService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -161,6 +162,10 @@ public class InvokeStaticMethod {
                 // 传递的参数为ApplicationContext
 //        XGPushManager.registerPush(context);
 //            XGPushManager.registerPush(context, userID);
+//                IntentFilter intentFilter = new IntentFilter();
+//                intentFilter.addAction("com.express56.xq.UPDATE_LISTVIEW");
+//                MsgPushReceiver receiver = new MsgPushReceiver();
+//                context.registerReceiver(receiver, intentFilter);
                 XGPushManager.registerPush(context, userID, new XGIOperateCallback() {
                     @Override
                     public void onSuccess(Object data, int flag) {

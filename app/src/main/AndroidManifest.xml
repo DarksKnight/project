@@ -111,6 +111,17 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".receiver.MsgPushReceiver"
+            android:exported="true">
+
+            <!-- 接收消息透传 -->
+            <action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE" />
+            <!-- 监听注册、反注册、设置/删除标签、通知被点击等处理结果 -->
+            <action android:name="com.tencent.android.tpush.action.FEEDBACK" />
+
+        </receiver>
+
         <!-- 【必须】 (2.30及以上版新增)展示通知的activity -->
         <!-- 【注意】 如果被打开的activity是启动模式为SingleTop，SingleTask或SingleInstance，请根据通知的异常自查列表第8点处理-->
         <activity

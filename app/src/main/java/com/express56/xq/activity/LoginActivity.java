@@ -482,7 +482,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                 User user = JSONObject.parseObject(userJsonStr, User.class);
                                 sp.saveUserInfo(user);
                                 LogUtil.d("TEST", "token : " + sp.getUserInfo().token);
-                                InvokeStaticMethod.registerXGPush(this, sp.getUserInfo().token);
+                                InvokeStaticMethod.registerXGPush(this, sp.getUserInfo().phone);
                             }
                             //进入主界面
                             finish();
