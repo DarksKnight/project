@@ -7,5 +7,6 @@
     <item type="id" name="tag_my_express" />
     <item type="id" name="tag_receiving_order" />
     <item type="id" name="tag_area_price_set" />
+    <item type="id" name="tag_recharge_record_item" />
     <item type="id" name="tag_spinner" />
 </resources>

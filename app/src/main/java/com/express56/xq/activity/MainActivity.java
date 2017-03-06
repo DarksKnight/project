@@ -797,8 +797,18 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
                 }
                 break;
             case 7:
+                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
+
+                } else {
+                    startActivity(new Intent(this, MallTypeActivity.class));
+                }
                 break;
             case 8:
+                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
+
+                } else {
+                    startActivity(new Intent(this, RechargeRecordActivity.class));
+                }
                 break;
             default:
                 break;

@@ -160,4 +160,8 @@ public class RequestID {
     public static final int REQ_ORDER_CANCEL = REQ_GET_QUOTATION_LIST + 1;
 
     public static final int REQ_GET_RECHARGE_LIST = REQ_ORDER_CANCEL + 1;
+
+    public static final int REQ_GET_RECHARGE_INFO = REQ_GET_RECHARGE_LIST + 1;
+
+    public static final int REQ_GET_RECHARGE_RECORD_LIST = REQ_GET_RECHARGE_INFO + 1;
 }
