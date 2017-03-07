@@ -71,6 +71,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
     private RelativeLayout rlAliPay = null;
     private RelativeLayout rlWechat = null;
     private PaymentItemInfo info = null;
+    private String rechargeId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
                 for (PaymentItemInfo info : list) {
                     info.selected = false;
                 }
+                rechargeId = list.get(index).id;
                 list.get(index).selected = true;
                 info = list.get(index);
                 adapter.notifyDataSetChanged();
@@ -194,7 +196,7 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
                 ToastUtil.showMessage(this, "请选择充值金额");
                 return;
             }
-            HttpHelper.sendRequest_getRechargeInfo(this, RequestID.REQ_GET_RECHARGE_INFO, "2", "0", sp.getUserInfo().token, dialog);
+            HttpHelper.sendRequest_getRechargeInfo(this, RequestID.REQ_GET_RECHARGE_INFO, "2", rechargeId, sp.getUserInfo().token, dialog);
         } else if (v == rlWechat) {
             if (null == info) {
                 ToastUtil.showMessage(this, "请选择充值金额");

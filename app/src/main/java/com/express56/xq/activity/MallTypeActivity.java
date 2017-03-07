@@ -20,7 +20,7 @@ public class MallTypeActivity extends BaseActivity {
     private RecyclerView rv = null;
     private MallTypeAdapter adapter = null;
     private List<MallTypeInfo> list = new ArrayList<>();
-    private String[] arrayTitle = new String[]{"防水袋", "电子秤", "扫描枪", "手持终端", "大头笔", "验视章", "封箱胶带", "打印机", "信封"};
+    private String[] arrayTitle = new String[]{"防水袋", "电子秤", "扫描枪", "手持终端", "大头笔", "验视章", "封箱胶带", "打印机", "信封", "输送带", "名片", "摄像头", "纸箱", "快递车辆", "路由器", "快递包", "服装", "手机", "运单扫描仪", "运单系统", "安检机"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

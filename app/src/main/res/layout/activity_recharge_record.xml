@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="@color/color_bg"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/search_title_part"
@@ -36,9 +37,17 @@
         android:layout_height="1px"
         android:background="#d3d4d8" />
 
-    <ListView
-        android:id="@+id/lv_recharge_record"
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/rv_recharge_record"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/color_title_bg">
+
+        <ListView
+            android:id="@+id/lv_recharge_record"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.andview.refreshview.XRefreshView>
 
 </LinearLayout>
