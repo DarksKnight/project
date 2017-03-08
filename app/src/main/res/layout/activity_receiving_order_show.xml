@@ -173,7 +173,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:text="寄件人信息"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -267,7 +266,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:text="收件人信息"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -361,7 +359,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:text="货物信息"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -517,7 +514,6 @@
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:gravity="center"
                     android:layout_margin="10dp"/>
 
                 <View

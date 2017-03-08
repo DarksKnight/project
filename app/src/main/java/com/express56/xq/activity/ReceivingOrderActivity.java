@@ -123,10 +123,10 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
             public void onClick(int index) {
                 switch (index) {
                     case 0:
-                        orderStatus = "2";
+                        orderStatus = "";
                         break;
                     case 1:
-                        orderStatus = "3";
+                        orderStatus = "2";
                         break;
                     default:
                         break;
