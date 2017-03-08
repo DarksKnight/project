@@ -804,11 +804,6 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
                 }
                 break;
             case 8:
-                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
-
-                } else {
-                    startActivity(new Intent(this, MyAccountActivity.class));
-                }
                 break;
             default:
                 break;

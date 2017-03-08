@@ -1,23 +1,22 @@
 package com.express56.xq.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.express56.xq.R;
-import com.express56.xq.activity.BaseActivity;
 import com.express56.xq.activity.MainActivity;
+import com.express56.xq.activity.RechargeRecordActivity;
 import com.express56.xq.constant.ExpressConstant;
 import com.express56.xq.http.HttpHelper;
-import com.express56.xq.http.IHttpResponse;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.PersonalInfo;
 import com.express56.xq.util.BitmapUtils;
@@ -28,10 +27,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import static com.express56.xq.R.style.dialog;
 
-
-public class PersonalFragment extends MyBaseFragment {
+public class PersonalFragment extends MyBaseFragment implements View.OnClickListener{
 
     private static final String TAG = PersonalFragment.class.getSimpleName();
 
@@ -59,6 +56,8 @@ public class PersonalFragment extends MyBaseFragment {
     private TextView textView_account_installment;
     private ImageView imageView_portrait;
 //    private String mParam2;
+
+    private LinearLayout llRechargeRecord = null;
 
     public PersonalFragment() {
         // Required empty public constructor
@@ -126,6 +125,10 @@ public class PersonalFragment extends MyBaseFragment {
         textView_account_credit = (TextView) rootView.findViewById(R.id.accout_credit);
         textView_credit_limit = (TextView) rootView.findViewById(R.id.accout_credit_limit);
         textView_account_installment = (TextView) rootView.findViewById(R.id.accout_installment);
+
+        llRechargeRecord = (LinearLayout) rootView.findViewById(R.id.ll_recharge_record);
+
+        llRechargeRecord.setOnClickListener(this);
 
         rootView.findViewById(R.id.personal_main_part).setOnClickListener(this);
 
@@ -201,6 +204,9 @@ public class PersonalFragment extends MyBaseFragment {
         super.onClick(v);
         listener.FragmentViewOnClick(v);
 
+        if (v == llRechargeRecord) {
+            startActivity(new Intent(getActivity(), RechargeRecordActivity.class));
+        }
     }
 
     @Override

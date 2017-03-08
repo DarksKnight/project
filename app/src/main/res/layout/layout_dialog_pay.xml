@@ -1,102 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/color_bg">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    android:orientation="vertical">
 
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:gravity="center_vertical"
-                  android:layout_margin="5dp">
+    <LinearLayout
+        android:id="@+id/ll_normal_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <ImageView android:layout_width="25dp" android:layout_height="25dp"
-                   android:background="@mipmap/account"
-                   android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/account" />
 
-        <TextView android:layout_width="wrap_content" android:layout_height="20dp"
-                  android:text="普通账户："
-                  android:textSize="14sp"
-                  android:textColor="@color/black"
-                  android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="普通账户："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="10元"
-                  android:textSize="14sp"
-                  android:textColor="@color/black"
-                  android:id="@+id/tv_dialog_pay_money"/>
-
-    </LinearLayout>
-
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#d3d4d8"/>
-
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layout_margin="5dp"
-                  android:layout_gravity="center_vertical">
-
-        <ImageView android:layout_width="25dp" android:layout_height="25dp"
-                   android:background="@mipmap/cash"
-                   android:layout_marginLeft="10dp"/>
-
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="现金"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:background="@color/color_bg"
-                android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/tv_dialog_pay_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10元"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#d3d4d8"/>
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#d3d4d8" />
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_gravity="center_vertical"
-                  android:orientation="horizontal"
-                  android:layout_margin="5dp">
+    <LinearLayout
+        android:id="@+id/ll_cash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
 
-        <ImageView android:layout_width="25dp" android:layout_height="25dp"
-                   android:background="@mipmap/alipay"
-                   android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/cash" />
 
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="支付宝"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:background="@color/color_bg"
-                android:layout_marginLeft="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_bg"
+            android:text="现金"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#d3d4d8"/>
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#d3d4d8" />
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layout_margin="5dp"
-                  android:layout_gravity="center_vertical">
+    <LinearLayout
+        android:id="@+id/ll_alipay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
 
-        <ImageView android:layout_width="25dp" android:layout_height="25dp"
-                   android:layout_marginLeft="10dp"
-                   android:background="@mipmap/wechat"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/alipay" />
 
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="微信"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:background="@color/color_bg"
-                android:layout_marginLeft="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_bg"
+            android:text="支付宝"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#d3d4d8" />
+
+    <LinearLayout
+        android:id="@+id/ll_wechat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/wechat" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_bg"
+            android:text="微信"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

@@ -4,9 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -86,11 +88,18 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private Button btnPay = null;
 
-    private Dialog dialog = null;
+    private Dialog dialogPay = null;
 
     private TextView tvUserMoney = null;
 
     private Button btnCancel = null;
+
+    private String payType = "";
+
+    private LinearLayout llNormalAccount = null;
+    private LinearLayout llCash = null;
+    private LinearLayout llAlipay = null;
+    private LinearLayout llWechat = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,7 +202,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
                             tvUserMoney.setText(content + "元");
-                            dialog.show();
+                            dialogPay.show();
                         }
                     } else if (code == 0) {
                         showReloginDialog();
@@ -224,6 +233,12 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     }
 
     private void setData() {
+        if (currentInfo.isArrivePay.equals("0")) {
+            btnPay.setText("确定");
+        } else {
+            btnPay.setText("支付");
+        }
+
         tvOffer.setText(currentInfo.quotationCount + "个报价");
         tvNumber.setText(currentInfo.orderNo);
         tvCreateDate.setText(currentInfo.createDate);
@@ -265,9 +280,24 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
             createDialog();
+            if (btnPay.getText().toString().equals("支付")) {
+                createDialog();
+            }
         } else if (v == btnCancel) {
             HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, orderId,
                     sp.getUserInfo().token, dialog);
+        } else if (v == llNormalAccount) {
+            payType = "4";
+            pay();
+        } else if (v == llCash) {
+            payType = "1";
+            pay();
+        } else if (v == llAlipay) {
+            payType = "2";
+            pay();
+        } else if (v == llWechat) {
+            payType = "3";
+            pay();
         }
     }
 
@@ -278,23 +308,43 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         if (resultCode == 1000) {
             llMoney.setVisibility(VISIBLE);
             btnPay.setVisibility(VISIBLE);
-            OfferInfo offerInfo = (OfferInfo)data.getSerializableExtra("offerInfo");
+            OfferInfo offerInfo = (OfferInfo) data.getSerializableExtra("offerInfo");
             tvMoney.setText(offerInfo.expressMoney + "元");
             tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
             tvTotalMoney.setText(offerInfo.orderMoney);
         }
     }
 
+    private void pay() {
+
+    }
+
     private void createDialog() {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.layout_dialog_pay, null);
-        tvUserMoney = (TextView)layout.findViewById(R.id.tv_dialog_pay_money);
-        dialog = new Dialog(this, 0);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(layout, new LinearLayout.LayoutParams(
+
+        tvUserMoney = (TextView) layout.findViewById(R.id.tv_dialog_pay_money);
+        llNormalAccount = (LinearLayout) layout.findViewById(R.id.ll_normal_account);
+        llCash = (LinearLayout) layout.findViewById(R.id.ll_cash);
+        llAlipay = (LinearLayout) layout.findViewById(R.id.ll_alipay);
+        llWechat = (LinearLayout) layout.findViewById(R.id.ll_wechat);
+
+        llNormalAccount.setOnClickListener(this);
+        llCash.setOnClickListener(this);
+        llAlipay.setOnClickListener(this);
+        llWechat.setOnClickListener(this);
+
+        dialogPay = new Dialog(this, 0);
+        dialogPay.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogPay.setContentView(layout, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
+        WindowManager windowManager = getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        WindowManager.LayoutParams lp = dialogPay.getWindow().getAttributes();
+        lp.width = (int) (display.getWidth()); //设置宽度
+        dialogPay.getWindow().setAttributes(lp);
         HttpHelper.sendRequest_getUserMoney(this, RequestID.REQ_GET_USER_MONEY, sp.getUserInfo().token, dialog);
     }
 }
