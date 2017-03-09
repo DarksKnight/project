@@ -96,10 +96,14 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private String payType = "";
 
+    private boolean canPay = true;
+
     private LinearLayout llNormalAccount = null;
     private LinearLayout llCash = null;
     private LinearLayout llAlipay = null;
     private LinearLayout llWechat = null;
+
+    private TextView llNotEnoughMoney = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -279,7 +283,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             intent.putExtra("orderId", currentInfo.id);
             startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
-            createDialog();
+//            createDialog();
             if (btnPay.getText().toString().equals("支付")) {
                 createDialog();
             }
@@ -309,14 +313,23 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             llMoney.setVisibility(VISIBLE);
             btnPay.setVisibility(VISIBLE);
             OfferInfo offerInfo = (OfferInfo) data.getSerializableExtra("offerInfo");
-            tvMoney.setText(offerInfo.expressMoney + "元");
+            if (Double.parseDouble(currentInfo.orderMoney) > Double.parseDouble(offerInfo.expressMoney)) {
+                tvMoney.setText(offerInfo.expressMoney + "元");
+                llNotEnoughMoney.setVisibility(VISIBLE);
+                canPay = false;
+            } else {
+                tvMoney.setText(offerInfo.expressMoney + "元");
+                llNotEnoughMoney.setVisibility(GONE);
+            }
             tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
             tvTotalMoney.setText(offerInfo.orderMoney);
         }
     }
 
     private void pay() {
+        if (canPay) {
 
+        }
     }
 
     private void createDialog() {
@@ -329,6 +342,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         llCash = (LinearLayout) layout.findViewById(R.id.ll_cash);
         llAlipay = (LinearLayout) layout.findViewById(R.id.ll_alipay);
         llWechat = (LinearLayout) layout.findViewById(R.id.ll_wechat);
+        llNotEnoughMoney = (TextView) layout.findViewById(R.id.tv_not_enough_money);
 
         llNormalAccount.setOnClickListener(this);
         llCash.setOnClickListener(this);

@@ -35,6 +35,16 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
 
+        <TextView
+            android:id="@+id/tv_not_enough_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/color_red"
+            android:text="(余额不足)"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"/>
+
     </LinearLayout>
 
     <View

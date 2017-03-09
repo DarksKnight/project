@@ -24,6 +24,7 @@ import com.express56.xq.model.AreaInfo;
 import com.express56.xq.util.SharedPreUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +56,7 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     private ArrayList<String> chooseAreaName = new ArrayList<>();
     private ArrayList<String> originalAreaName = new ArrayList<>();
     private List<AreaInfo> selectedArea = null;
+    private Map<String, List<AreaInfo>> areaMap = new HashMap<>();
     private SharedPreUtils sp = null;
     private Dialog dialog = null;
 
@@ -161,30 +163,36 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                             String content = object.getString("result");
                             Map<String, Object> map = JSON.parseObject(content, Map.class);
                             JSONObject json = (JSONObject) map.get("areas");
+                            JSONArray str = (JSONArray) map.get("selectedAreas");
+                            selectedArea = JSONArray.parseArray(str.toJSONString(), AreaInfo.class);
                             try {
                                 org.json.JSONObject obj = new org.json.JSONObject(json.toJSONString());
                                 for (Iterator<String> iterator = obj.keys(); iterator.hasNext(); ) {
                                     String key = iterator.next();
                                     parentId = key;
-                                    List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
                                     item = createItem(context);
                                     llContent.addView(item);
-                                    item.setListAreaInfos(list);
+                                    List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
+                                    areaMap.put(parentId, list);
                                     infos.clear();
                                     infos.addAll(list);
+                                    adapter.notifyDataSetChanged();
+                                }
+                                if (selectedArea.size() > 0) {
+                                    infos.clear();
+                                    infos.addAll(areaMap.get(selectedArea.get(selectedArea.size() - 1).parentId));
                                     adapter.notifyDataSetChanged();
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
-                            JSONArray str = (JSONArray) map.get("selectedAreas");
-                            selectedArea = JSONArray.parseArray(str.toJSONString(), AreaInfo.class);
                             for (int i = 0; i < llContent.getChildCount(); i++) {
                                 ChoosePlaceItemLayout layout = (ChoosePlaceItemLayout) llContent.getChildAt(i);
                                 if (selectedArea.size() > 0) {
                                     layout.setAreaInfo(selectedArea.get(i));
                                     layout.reset();
+                                    layout.setListAreaInfos(areaMap.get(selectedArea.get(i).parentId));
                                     chooseAreaId.add(selectedArea.get(i).id);
                                     chooseAreaName.add(selectedArea.get(i).name);
                                     if (i == llContent.getChildCount() - 1) {
