@@ -146,6 +146,8 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         tvOffer.setOnClickListener(this);
         btnPay.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+
+        initDialog();
     }
 
     @Override
@@ -283,8 +285,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             intent.putExtra("orderId", currentInfo.id);
             startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
-//            createDialog();
-            if (btnPay.getText().toString().equals("支付")) {
+            if (!currentInfo.isArrivePay.equals("0")) {
                 createDialog();
             }
         } else if (v == btnCancel) {
@@ -332,7 +333,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         }
     }
 
-    private void createDialog() {
+    private void initDialog() {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.layout_dialog_pay, null);
@@ -359,6 +360,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         WindowManager.LayoutParams lp = dialogPay.getWindow().getAttributes();
         lp.width = (int) (display.getWidth()); //设置宽度
         dialogPay.getWindow().setAttributes(lp);
+    }
+
+    private void createDialog() {
         HttpHelper.sendRequest_getUserMoney(this, RequestID.REQ_GET_USER_MONEY, sp.getUserInfo().token, dialog);
     }
 }

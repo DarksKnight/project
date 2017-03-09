@@ -2,6 +2,7 @@ package com.express56.xq.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ListView;
@@ -188,6 +189,11 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
     }
 
     @Override
+    public void onPanelClosed(int featureId, Menu menu) {
+        super.onPanelClosed(featureId, menu);
+    }
+
+    @Override
     protected void initData() {
         super.initData();
 
@@ -241,6 +247,7 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                             if (info.orders != null) {
                                 if (info.orders.size() > 0) {
                                     infos.addAll(info.orders);
+                                    adapter.notifyDataSetChanged();
                                 }
                             }
                             if (info.companyName.equals("null") || info.companyName.equals("")) {

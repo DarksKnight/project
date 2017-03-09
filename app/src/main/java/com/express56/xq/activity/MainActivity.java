@@ -86,6 +86,10 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
 
     private CycleViewPager cycleViewPager;
 
+    private CustomDialog updateDialog = null;
+
+    private boolean isShowUpdate = false;
+
     /**
      * 获取头像imageview
      *
@@ -188,7 +192,7 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
         setDefaultFragment();
         bottomNavigationBar.setTabSelectedListener(this);
 
-
+        showUpgradeDialog();
     }
 
     /**
@@ -284,11 +288,12 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
         String prompt = getString(R.string.str_dialog_update_optional_prompt);
         String confirm = getString(R.string.str_dialog_update_optional_btn_update);
         String cancel = getString(R.string.str_dialog_update_optional_btn_cancel);
-        final CustomDialog customDialog = new CustomDialog(this, prompt, confirm, cancel, 60);
-        customDialog.setClickListener(new CustomDialog.ClickListenerInterface() {
+        updateDialog = new CustomDialog(this, prompt, confirm, cancel, 60);
+        updateDialog.setClickListener(new CustomDialog.ClickListenerInterface() {
             @Override
             public void doConfirm() {
-                customDialog.dismiss();
+                updateDialog.dismiss();
+                isShowUpdate = false;
                 //检查是否是wifi网络
                 if (InvokeStaticMethod.isWifiOpen(context)) {
                     //去下载
@@ -301,10 +306,14 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
 
             @Override
             public void doCancel() {
-                customDialog.dismiss();
+                isShowUpdate = false;
+                updateDialog.dismiss();
             }
         });
-        customDialog.show();
+        if (!isShowUpdate) {
+            isShowUpdate = true;
+            updateDialog.show();
+        }
     }
 
     /**
@@ -777,7 +786,7 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
                 break;
             case 4:
                 if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
-
+                    startActivity(new Intent(this, PaymentActivity.class));
                 } else {
                     startActivity(new Intent(this, ReceivingOrderActivity.class));
                 }
@@ -797,11 +806,6 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
                 }
                 break;
             case 7:
-                if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
-
-                } else {
-                    startActivity(new Intent(this, MallTypeActivity.class));
-                }
                 break;
             case 8:
                 break;

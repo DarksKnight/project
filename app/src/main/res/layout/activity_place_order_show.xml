@@ -29,6 +29,17 @@
             android:textColor="@color/color_view_title_text"
             android:textSize="@dimen/font_content_size_2" />
 
+        <TextView
+            android:id="@+id/tv_place_order_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="5个保价"
+            android:textColor="@color/color_red"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"/>
+
     </RelativeLayout>
 
     <View
@@ -108,16 +119,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
-
-                    <TextView
-                        android:id="@+id/tv_place_order_offer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp"
-                        android:text="5个保价"
-                        android:textColor="@color/color_red"
-                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_place_order_get_item_time"

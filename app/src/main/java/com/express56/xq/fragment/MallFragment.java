@@ -4,24 +4,32 @@ import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.express56.xq.R;
+import com.express56.xq.adapter.MallTypeAdapter;
+import com.express56.xq.model.MallTypeInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MallFragment extends MyBaseFragment {
 
+    private RecyclerView rv = null;
+    private MallTypeAdapter adapter = null;
+    private List<MallTypeInfo> list = new ArrayList<>();
+    private String[] arrayTitle = new String[]{"防水袋", "电子秤", "扫描枪", "手持终端", "大头笔", "验视章", "封箱胶带", "打印机", "信封", "输送带", "名片", "摄像头", "纸箱", "快递车辆", "路由器", "快递包", "服装", "手机", "运单扫描仪", "运单系统", "安检机"};
+
+
     private static MallFragment instance = null;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
-//    private String mParam2;
 
     public void setOnClickListener(FragmentOnClickListener listener) {
         this.listener = listener;
@@ -30,22 +38,11 @@ public class MallFragment extends MyBaseFragment {
     private FragmentOnClickListener listener = null;
 
     public MallFragment() {
-        // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @return A new instance of fragment MainFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static MallFragment newInstance(String param1) {
         MallFragment fragment = new MallFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,15 +52,16 @@ public class MallFragment extends MyBaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mall, container, false);
+        super.onCreateView(inflater, container, savedInstanceState);
+        View rootView = inflater.inflate(R.layout.fragment_mall, container, false);
+        init(rootView);
+        return rootView;
     }
 
     @Override
@@ -84,4 +82,22 @@ public class MallFragment extends MyBaseFragment {
         super.onDetach();
     }
 
+    @Override
+    protected void initView(View rootView) {
+        super.initView(rootView);
+
+        rv = (RecyclerView)rootView.findViewById(R.id.rv_mall_type);
+
+        list.clear();
+        for(int i = 0; i < arrayTitle.length; i++) {
+            MallTypeInfo info = new MallTypeInfo();
+            info.title = arrayTitle[i];
+            list.add(info);
+        }
+        adapter = new MallTypeAdapter(getActivity(), list);
+
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
+        rv.setLayoutManager(layoutManager);
+        rv.setAdapter(adapter);
+    }
 }
