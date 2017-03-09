@@ -7,18 +7,21 @@ import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.util.LogUtil;
+import com.express56.xq.widget.CustomFootView;
 import com.express56.xq.widget.SearchBarLayout;
 import com.express56.xq.widget.ToastUtil;
 import com.express56.xq.widget.TypeChooseLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONArray;
@@ -103,8 +106,15 @@ public class MyExpressActivity extends BaseActivity {
                     if (code == 9) {
                         if (object != null && object.containsKey("result")) {
                             final String content = object.getString("result");
-                            expressInfos.addAll(JSONArray.parseArray(content, MyExpressInfo.class));
-                            adapter.notifyDataSetChanged();
+                            List<MyExpressInfo> tempData = JSONArray.parseArray(content, MyExpressInfo.class);
+                            if (tempData.size() == 0) {
+                                rv.setLoadComplete(true);
+                                CustomFootView v = new CustomFootView(this);
+                                rv.setCustomFooterView(v);
+                            } else {
+                                expressInfos.addAll(tempData);
+                                adapter.notifyDataSetChanged();
+                            }
                         }
                     } else if (code == 0) {
                         showReloginDialog();

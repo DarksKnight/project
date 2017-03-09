@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="5个保价"
+            android:text="选择报价（8）"
             android:textColor="@color/color_red"
             android:textSize="16sp"
             android:layout_centerVertical="true"/>

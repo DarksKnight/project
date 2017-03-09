@@ -261,7 +261,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             btnPay.setText("支付");
         }
 
-        tvOffer.setText(currentInfo.quotationCount + "个报价");
+        tvOffer.setText("选择报价（" + currentInfo.quotationCount + "）");
         tvNumber.setText(currentInfo.orderNo);
         tvCreateDate.setText(currentInfo.createDate);
         tvServiceTime.setText(currentInfo.serviceTime);
@@ -301,9 +301,6 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             intent.putExtra("orderId", currentInfo.id);
             startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
-//            if (!currentInfo.isArrivePay.equals("0")) {
-//                createDialog();
-//            }
             createDialog();
         } else if (v == btnCancel) {
             HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, orderId,
@@ -346,10 +343,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     }
 
     private void pay() {
-        HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.quotationId, currentInfo.id, currentInfo.orderMoney, currentInfo.expressMoney, payType, currentInfo.insuranceMoney, sp.getUserInfo().token, dialog);
-//        if (canPay) {
-//            HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.quotationId, currentInfo.id, currentInfo.orderMoney, currentInfo.expressMoney, payType, currentInfo.insuranceMoney, sp.getUserInfo().token, dialog);
-//        }
+        if (canPay) {
+            HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.quotationId, currentInfo.id, currentInfo.orderMoney, currentInfo.expressMoney, payType, currentInfo.insuranceMoney, sp.getUserInfo().token, dialog);
+        }
     }
 
     private void initDialog() {

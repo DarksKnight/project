@@ -92,6 +92,7 @@ public class MallFragment extends MyBaseFragment {
         for(int i = 0; i < arrayTitle.length; i++) {
             MallTypeInfo info = new MallTypeInfo();
             info.title = arrayTitle[i];
+            info.icon = "icon_" + (i + 1) + ".png";
             list.add(info);
         }
         adapter = new MallTypeAdapter(getActivity(), list);

@@ -16,6 +16,7 @@ import com.express56.xq.http.RequestID;
 import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.model.ReceivingOrderInfo;
 import com.express56.xq.util.LogUtil;
+import com.express56.xq.widget.CustomFootView;
 import com.express56.xq.widget.SearchBarLayout;
 import com.express56.xq.widget.ToastUtil;
 import com.express56.xq.widget.TypeChooseLayout;
@@ -248,6 +249,10 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                                 if (info.orders.size() > 0) {
                                     infos.addAll(info.orders);
                                     adapter.notifyDataSetChanged();
+                                } else {
+                                    xr.setLoadComplete(true);
+                                    CustomFootView v = new CustomFootView(this);
+                                    xr.setCustomFooterView(v);
                                 }
                             }
                             if (info.companyName.equals("null") || info.companyName.equals("")) {

@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class MallTypeInfo implements Serializable {
 
-    public int icon = -1;
+    public String icon = "";
 
     public String title = "";
 }
