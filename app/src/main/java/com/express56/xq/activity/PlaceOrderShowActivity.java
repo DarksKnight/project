@@ -233,6 +233,22 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                     }
                 }
                 break;
+            case RequestID.REQ_QUOTATION_PAY:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            String content = object.getString("result");
+//                            ToastUtil.showMessage(this, content, true);
+//                            finish();
+                        }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -285,9 +301,10 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             intent.putExtra("orderId", currentInfo.id);
             startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
-            if (!currentInfo.isArrivePay.equals("0")) {
-                createDialog();
-            }
+//            if (!currentInfo.isArrivePay.equals("0")) {
+//                createDialog();
+//            }
+            createDialog();
         } else if (v == btnCancel) {
             HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, orderId,
                     sp.getUserInfo().token, dialog);
@@ -321,6 +338,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             } else {
                 tvMoney.setText(offerInfo.expressMoney + "元");
                 llNotEnoughMoney.setVisibility(GONE);
+                canPay = true;
             }
             tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
             tvTotalMoney.setText(offerInfo.orderMoney);
@@ -328,9 +346,10 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     }
 
     private void pay() {
-        if (canPay) {
-
-        }
+        HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.quotationId, currentInfo.id, currentInfo.orderMoney, currentInfo.expressMoney, payType, currentInfo.insuranceMoney, sp.getUserInfo().token, dialog);
+//        if (canPay) {
+//            HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.quotationId, currentInfo.id, currentInfo.orderMoney, currentInfo.expressMoney, payType, currentInfo.insuranceMoney, sp.getUserInfo().token, dialog);
+//        }
     }
 
     private void initDialog() {

@@ -164,4 +164,6 @@ public class RequestID {
     public static final int REQ_GET_RECHARGE_INFO = REQ_GET_RECHARGE_LIST + 1;
 
     public static final int REQ_GET_RECHARGE_RECORD_LIST = REQ_GET_RECHARGE_INFO + 1;
+
+    public static final int REQ_QUOTATION_PAY = REQ_GET_RECHARGE_RECORD_LIST + 1;
 }

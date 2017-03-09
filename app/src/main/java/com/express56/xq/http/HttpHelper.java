@@ -51,6 +51,7 @@ public class HttpHelper {
     //  http://192.168.31.234:8080
     //  http://192.168.1.102:8888
     //  http://58.220.216.74
+    //  192.168.1.102:8081
 
     public static final String URL_1 = HTTP + IP + "/express/rest/registerCode";
     public static final String URL_2 = HTTP + IP + "/express/rest/login";
