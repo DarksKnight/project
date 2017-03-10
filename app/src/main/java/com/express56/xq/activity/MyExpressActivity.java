@@ -111,8 +111,8 @@ public class MyExpressActivity extends BaseActivity {
                                 rv.setLoadComplete(true);
                             } else {
                                 expressInfos.addAll(tempData);
-                                adapter.notifyDataSetChanged();
                             }
+                            adapter.notifyDataSetChanged();
                         }
                     } else if (code == 0) {
                         showReloginDialog();

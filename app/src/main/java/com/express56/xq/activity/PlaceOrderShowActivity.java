@@ -92,6 +92,8 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private TextView tvUserMoney = null;
 
+    private TextView tvArrivePay = null;
+
     private Button btnCancel = null;
 
     private String payType = "";
@@ -142,6 +144,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         llCompany = getView(R.id.ll_place_order_show_express_company);
         btnPay = getView(R.id.btn_place_order_show_pay);
         btnCancel = getView(R.id.btn_place_order_show_cancel);
+        tvArrivePay = getView(R.id.tv_place_order_show_is_arrive_pay);
 
         tvOffer.setOnClickListener(this);
         btnPay.setOnClickListener(this);
@@ -281,6 +284,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                 .setText(currentInfo.isInsurance.equals("1") ? currentInfo.insuranceMoney : "否");
         tvSupportCharge
                 .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "否");
+        tvArrivePay.setText(currentInfo.isArrivePay.equals("1") ? "是" : "否");
         tvDesc.setText(currentInfo.thingDesc);
         tvMoney.setText(currentInfo.orderMoney + "元");
         tvSupportMoney.setText(currentInfo.insuranceMoney + "元");
