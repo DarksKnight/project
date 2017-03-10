@@ -61,4 +61,6 @@
     <color name="orange">#F57C00</color>
     <color name="text_color">#666666</color>
 
+    <color name="title">#FC7229</color>
+
 </resources>

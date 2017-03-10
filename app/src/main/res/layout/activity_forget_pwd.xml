@@ -11,7 +11,7 @@
         android:id="@+id/forget_pwd_title_part"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_title"
-        android:background="@color/color_title_bg">
+        android:background="@color/title">
 
         <ImageView
             android:id="@+id/forget_pwd_back_btn"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/str_title_forget_pwd"
-            android:textColor="@color/color_view_title_text"
+            android:textColor="@color/white"
             android:textSize="@dimen/font_content_size_3" />
 
     </RelativeLayout>

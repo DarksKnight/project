@@ -72,6 +72,8 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
 
     private TextView tvOffer = null;
 
+    private TextView tvTotalMoney = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +101,7 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         etRemarks = getView(R.id.et_place_order_desc);
         tvSupportValue = getView(R.id.tv_receive_order_show_show_support_value);
         tvSupportCharge = getView(R.id.tv_receive_order_show_show_support_charge);
+        tvTotalMoney = getView(R.id.tv_receive_order_show_show_total_money);
     }
 
     @Override
@@ -198,11 +201,12 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         tvWeight.setText(currentInfo.weight);
         tvThingDesc.setText(currentInfo.thingDesc);
         tvSupportValue
-                .setText(currentInfo.isInsurance.equals("1") ? currentInfo.insuranceMoney : "未保价");
+                .setText(currentInfo.isInsurance.equals("1") ? currentInfo.insuranceMoney : "否");
         tvSupportCharge
-                .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "不代收货款");
+                .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "否");
         etEpressMoney.setText(currentInfo.expressMoney);
         etSupportMoney.setText(currentInfo.insuranceMoney);
+        tvTotalMoney.setText(currentInfo.orderMoney + "元");
     }
 
     @Override
@@ -210,7 +214,6 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         super.onStart();
 
         XGPushClickedResult click = XGPushManager.onActivityStarted(this);
-        LogUtil.d(TAG, "onStart click : " + click);
         if (null != click) {
             String content = click.getCustomContent();
             orderId = JSON.parseObject(content).getString("orderId");

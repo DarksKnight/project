@@ -278,9 +278,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         tvRemark.setText(currentInfo.remarks);
         tvWeight.setText(currentInfo.weight);
         tvSupportValue
-                .setText(currentInfo.isInsurance.equals("1") ? currentInfo.insuranceMoney : "未保价");
+                .setText(currentInfo.isInsurance.equals("1") ? currentInfo.insuranceMoney : "否");
         tvSupportCharge
-                .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "不代收货款");
+                .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "否");
         tvDesc.setText(currentInfo.thingDesc);
         tvMoney.setText(currentInfo.orderMoney + "元");
         tvSupportMoney.setText(currentInfo.insuranceMoney + "元");

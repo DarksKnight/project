@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.andview.refreshview.XRefreshView;
+import com.andview.refreshview.listener.OnBottomLoadMoreTime;
 import com.express56.xq.R;
 import com.express56.xq.adapter.ReceivingOrderAdapter;
 import com.express56.xq.http.HttpHelper;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import alibaba.fastjson.JSON;
+import alibaba.fastjson.JSONArray;
 import alibaba.fastjson.JSONObject;
 
 /**
@@ -161,8 +163,10 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
             @Override
             public void onRefresh() {
                 isRefresh = true;
+                isLoadMore = false;
                 pageNo = "1";
                 infos.clear();
+                xr.setLoadComplete(false);
                 HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this,
                         RequestID.REQ_GET_RECEIVING_ORDER, sp.getUserInfo().token, orderStatus, keyword,
                         pageNo, dialog);
@@ -170,10 +174,11 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
 
             @Override
             public void onLoadMore(boolean isSilence) {
+                isRefresh = false;
                 isLoadMore = true;
                 pageNo = String.valueOf(Integer.parseInt(pageNo) + 1);
-                HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this,
-                        RequestID.REQ_GET_RECEIVING_ORDER, sp.getUserInfo().token, orderStatus, keyword,
+                HttpHelper.sendRequest_getOrderList(ReceivingOrderActivity.this,
+                        RequestID.REQ_GET_ORDER_LIST, sp.getUserInfo().token, orderStatus, keyword,
                         pageNo, dialog);
             }
 
@@ -249,10 +254,6 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                                 if (info.orders.size() > 0) {
                                     infos.addAll(info.orders);
                                     adapter.notifyDataSetChanged();
-                                } else {
-                                    xr.setLoadComplete(true);
-                                    CustomFootView v = new CustomFootView(this);
-                                    xr.setCustomFooterView(v);
                                 }
                             }
                             if (info.companyName.equals("null") || info.companyName.equals("")) {
@@ -284,6 +285,30 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                     }
                 }
                 break;
+            case RequestID.REQ_GET_ORDER_LIST:
+                if (isLoadMore) {
+                    xr.stopLoadMore();
+                }
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            final String content = object.getString("result");
+                            List<MyExpressInfo> tempData = JSONArray.parseArray(content, MyExpressInfo.class);
+                            if (tempData.size() == 0) {
+                                xr.setLoadComplete(true);
+                            } else {
+                                infos.addAll(tempData);
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -295,9 +320,15 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
 
         if (resultCode == 1000) {
             infos.clear();
-            HttpHelper.sendRequest_getReceivingOrder(this, RequestID.REQ_GET_RECEIVING_ORDER,
-                    sp.getUserInfo().token, orderStatus, keyword,
-                    pageNo, dialog);
+            if (isLoadMore) {
+                HttpHelper.sendRequest_getOrderList(ReceivingOrderActivity.this,
+                        RequestID.REQ_GET_ORDER_LIST, sp.getUserInfo().token, orderStatus, keyword,
+                        pageNo, dialog);
+            } else {
+                HttpHelper.sendRequest_getReceivingOrder(this, RequestID.REQ_GET_RECEIVING_ORDER,
+                        sp.getUserInfo().token, orderStatus, keyword,
+                        pageNo, dialog);
+            }
         }
     }
 }

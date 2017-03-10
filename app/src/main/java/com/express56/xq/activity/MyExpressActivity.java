@@ -109,8 +109,6 @@ public class MyExpressActivity extends BaseActivity {
                             List<MyExpressInfo> tempData = JSONArray.parseArray(content, MyExpressInfo.class);
                             if (tempData.size() == 0) {
                                 rv.setLoadComplete(true);
-                                CustomFootView v = new CustomFootView(this);
-                                rv.setCustomFooterView(v);
                             } else {
                                 expressInfos.addAll(tempData);
                                 adapter.notifyDataSetChanged();
@@ -201,6 +199,7 @@ public class MyExpressActivity extends BaseActivity {
                 isRefresh = true;
                 pageNo = "1";
                 expressInfos.clear();
+                rv.setLoadComplete(false);
                 HttpHelper.sendRequest_getOrderList(MyExpressActivity.this,
                         RequestID.REQ_GET_ORDER_LIST, sp.getUserInfo().token, orderStatus, keyword,
                         pageNo, dialog);
