@@ -43,7 +43,7 @@
     <string name="str_title_place_order_edit">快递单</string>
     <string name="str_title_place_order_show">快递单详情</string>
     <string name="str_title_offer">报价列表</string>
-    <string name="str_title_receive_order_show_edit">接单详情</string>
+    <string name="str_title_receive_order_show_edit">快递单</string>
     <string name="str_title_my_lock_card">我的车牌</string>
     <string name="str_title_rent_bike">用车中</string>
     <string name="str_title_alarm_route">报警追踪</string>
