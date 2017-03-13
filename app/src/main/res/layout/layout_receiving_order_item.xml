@@ -22,7 +22,7 @@
                 android:layout_toRightOf="@id/tv_receiving_order_item_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="123123123123"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="@color/black"/>
 
@@ -57,7 +57,7 @@
                 android:id="@+id/tv_receiving_order_item_createdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2016-09-09 12:10"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="@color/black"/>
 
@@ -81,7 +81,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="123123123123123"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="@color/black"/>
 
@@ -105,7 +105,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="你好"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:id="@+id/tv_receiving_order_item_sender"/>
@@ -130,7 +130,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="123123123123123"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:id="@+id/tv_receiving_order_item_sender_phone"/>
@@ -155,7 +155,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="阿斯蒂芬阿斯蒂芬阿斯蒂芬"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:id="@+id/tv_receiving_order_item_sender_address"/>
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:text="费用：18"
+                android:text="费用："
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:id="@+id/tv_receiving_order_item_money"/>
