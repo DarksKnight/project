@@ -122,11 +122,11 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
     }
 
     protected void init() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        /*set it to be full screen*/
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//
+//        /*set it to be full screen*/
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initView();
         initData();
     }

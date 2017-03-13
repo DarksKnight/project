@@ -154,8 +154,6 @@ public class MainActivity extends UploadUserPortraitActivity implements BottomNa
         startService(new Intent(context, UploadService.class));//开启后台上传服务
         init();
         LogUtil.d(TAG, "phone : " + sp.getUserInfo().phone);
-        StatusBarUtil.setTransparent(this);
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.title));
     }
 
     @Override
