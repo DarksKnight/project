@@ -86,10 +86,10 @@
         android:layout_marginLeft="@dimen/login_page_margin_new"
         android:layout_marginRight="@dimen/login_page_margin_new"
         android:layout_marginTop="@dimen/login_page_input_height_new"
-        android:background="@drawable/btn_login_new"
+        android:background="@drawable/bg_btn_bind_lock"
         android:gravity="center"
         android:text="@string/str_login"
-        android:textColor="@color/color_view_text"
+        android:textColor="@color/white"
         android:textSize="@dimen/font_content_size_3" />
 
     <TextView

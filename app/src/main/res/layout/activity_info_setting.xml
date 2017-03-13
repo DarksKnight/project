@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_line_1"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_info_setting_company"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
@@ -96,9 +96,10 @@
         android:layout_width="100dp"
         android:layout_height="36dp"
         android:layout_below="@id/ll_info_setting_area"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/bg_btn_bind_lock"
         android:text="保存"
-        android:textColor="@color/color_view_text"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <com.express56.xq.widget.ChoosePlaceLayout

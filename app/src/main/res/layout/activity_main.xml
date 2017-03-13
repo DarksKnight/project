@@ -42,7 +42,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text="退出登录"
-        android:textColor="#666666"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_btn_bind_lock"
+        android:padding="10dp"
         android:textSize="@dimen/font_content_size_5" />
 
     <GridView

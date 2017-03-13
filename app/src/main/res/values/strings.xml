@@ -40,7 +40,8 @@
     <string name="str_title_my_account">我的账户</string>
     <string name="str_title_mall_type">快递商城</string>
     <string name="str_title_recharge_type">充值记录</string>
-    <string name="str_title_place_order_edit">下单</string>
+    <string name="str_title_place_order_edit">快递单</string>
+    <string name="str_title_place_order_show">快递单详情</string>
     <string name="str_title_offer">报价列表</string>
     <string name="str_title_receive_order_show_edit">接单详情</string>
     <string name="str_title_my_lock_card">我的车牌</string>

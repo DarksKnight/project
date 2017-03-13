@@ -11,6 +11,7 @@ import com.express56.xq.widget.CustomFootView;
 import com.express56.xq.widget.SearchBarLayout;
 import com.express56.xq.widget.ToastUtil;
 import com.express56.xq.widget.TypeChooseLayout;
+import com.jaeger.library.StatusBarUtil;
 
 import android.content.Intent;
 import android.os.Bundle;

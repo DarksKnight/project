@@ -77,7 +77,7 @@ public class ReceivingOrderAdapter extends BaseAdapter {
         holder.tvCreateDate.setText(infos.get(position).createDate);
         holder.tvSender.setText(infos.get(position).sender);
         holder.tvSenderPhone.setText(infos.get(position).senderPhone);
-        holder.tvSenderAddress.setText(infos.get(position).sendAddress);
+        holder.tvSenderAddress.setText(infos.get(position).sendAddress + infos.get(position).sendDetailAddress);
         holder.tvMoney.setText("费用：" + infos.get(position).orderMoney + "元");
     }
 

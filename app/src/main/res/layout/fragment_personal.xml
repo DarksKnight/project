@@ -263,13 +263,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:background="#FF0000"
+        android:background="@drawable/bg_btn_bind_lock"
         android:gravity="center"
         android:paddingBottom="6dp"
         android:visibility="gone"
         android:paddingTop="6dp"
         android:text="退出登录"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="@dimen/font_content_size_4" />
 
 </RelativeLayout>

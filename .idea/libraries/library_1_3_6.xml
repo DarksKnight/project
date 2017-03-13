@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="library-1.3.6">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/687b6b953c79025dfef02a870958ecdc6032c241/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/687b6b953c79025dfef02a870958ecdc6032c241/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jaeger.statusbaruitl/library/1.3.6/17ae5081e9a45b2fb02ba73c96e0c986e8e7d180/library-1.3.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

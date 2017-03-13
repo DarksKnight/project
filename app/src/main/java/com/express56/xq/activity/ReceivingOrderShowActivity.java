@@ -74,6 +74,10 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
 
     private TextView tvTotalMoney = null;
 
+    private TextView tvArrivePay = null;
+
+//    private TextView tvRemarks = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +106,8 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         tvSupportValue = getView(R.id.tv_receive_order_show_show_support_value);
         tvSupportCharge = getView(R.id.tv_receive_order_show_show_support_charge);
         tvTotalMoney = getView(R.id.tv_receive_order_show_show_total_money);
+        tvArrivePay = getView(R.id.tv_receiving_order_show_is_arrive_pay);
+//        tvRemarks = getView(R.id.tv_receiving_order_show_remark);
     }
 
     @Override
@@ -207,6 +213,8 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         etEpressMoney.setText(currentInfo.expressMoney);
         etSupportMoney.setText(currentInfo.insuranceMoney);
         tvTotalMoney.setText(currentInfo.orderMoney + "元");
+        tvArrivePay.setText(currentInfo.isArrivePay.equals("1") ? "是" : "否");
+//        tvRemarks.setText(currentInfo.remarks);
     }
 
     @Override

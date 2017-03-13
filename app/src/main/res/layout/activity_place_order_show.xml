@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/str_title_place_order_edit"
+            android:text="@string/str_title_place_order_show"
             android:textColor="@color/white"
             android:textSize="@dimen/font_content_size_2" />
 
@@ -663,9 +663,9 @@
                     android:id="@+id/btn_place_order_show_cancel"
                     android:layout_width="100dp"
                     android:layout_height="36dp"
-                    android:background="@drawable/btn_login_new"
+                    android:background="@drawable/bg_btn_bind_lock"
                     android:text="取消发布"
-                    android:textColor="@color/color_view_text"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <Button
@@ -673,9 +673,9 @@
                     android:layout_width="100dp"
                     android:layout_height="36dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_login_new"
+                    android:background="@drawable/bg_btn_bind_lock"
                     android:text="支付/确定"
-                    android:textColor="@color/color_view_text"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:visibility="gone" />
 

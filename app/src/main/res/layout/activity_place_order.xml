@@ -90,13 +90,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="寄件人信息"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:gravity="center"/>
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
@@ -229,12 +229,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
                 android:text="收件人信息"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_margin="10dp"/>
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
@@ -369,7 +369,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_margin="10dp"
                 android:text="货物信息"
                 android:textColor="@color/black"
@@ -414,6 +413,146 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是否保价："
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <Spinner
+                        android:id="@+id/sp_place_order_support_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_bg" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_place_order_support_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=","
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/et_place_order_support_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/color_bg"
+                            android:gravity="right|center_vertical"
+                            android:hint="输入保价"
+                            android:inputType="number"
+                            android:padding="8dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="元"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是否代收货款："
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <Spinner
+                        android:id="@+id/sp_place_order_support_charge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_bg"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_place_order_support_charge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=","
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/et_place_order_support_charge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/color_bg"
+                            android:gravity="right|center_vertical"
+                            android:hint="输入货款"
+                            android:inputType="number"
+                            android:padding="8dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="元"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是否到付："
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <Spinner
+                        android:id="@+id/sp_place_order_arrive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_bg"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -440,6 +579,31 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="备注："
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_place_order_remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_bg"
+                        android:hint="输入备注"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -454,8 +618,7 @@
                 android:text="快递信息"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:gravity="center"/>
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
@@ -500,10 +663,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
                     android:text="快递公司："
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginLeft="10dp"/>
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/sp_place_order_edit_express_company"
@@ -528,173 +691,6 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="是否到付："
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <Spinner
-                    android:id="@+id/sp_place_order_arrive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/color_bg"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="是否保价："
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <Spinner
-                    android:id="@+id/sp_place_order_support_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/color_bg" />
-
-                <LinearLayout
-                    android:id="@+id/ll_place_order_support_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=","
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/et_place_order_support_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_bg"
-                        android:gravity="right|center_vertical"
-                        android:hint="输入保价"
-                        android:inputType="number"
-                        android:padding="8dp"
-                        android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="元"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="是否代收货款："
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <Spinner
-                    android:id="@+id/sp_place_order_support_charge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/color_bg"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:id="@+id/ll_place_order_support_charge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=","
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/et_place_order_support_charge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_bg"
-                        android:gravity="right|center_vertical"
-                        android:hint="输入货款"
-                        android:inputType="number"
-                        android:padding="8dp"
-                        android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="元"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="备注："
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/et_place_order_remark"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/color_bg"
-                    android:hint="输入备注"
-                    android:padding="8dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/ll_place_order_money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -709,8 +705,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_margin="10dp"
+                    android:gravity="center"
                     android:text="快递费用"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -831,6 +827,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -838,9 +835,9 @@
                     android:layout_width="100dp"
                     android:layout_height="36dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/btn_login_new"
+                    android:background="@drawable/bg_btn_bind_lock"
                     android:text="保存"
-                    android:textColor="@color/color_view_text"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <Button
@@ -848,9 +845,9 @@
                     android:layout_width="100dp"
                     android:layout_height="36dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/btn_login_new"
+                    android:background="@drawable/bg_btn_bind_lock"
                     android:text="保存并发布"
-                    android:textColor="@color/color_view_text"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
 

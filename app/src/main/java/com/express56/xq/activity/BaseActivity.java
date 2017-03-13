@@ -15,6 +15,7 @@ import com.express56.xq.util.PermissionUtil;
 import com.express56.xq.util.SharedPreUtils;
 import com.express56.xq.widget.CustomDialog;
 import com.express56.xq.widget.ToastUtil;
+import com.jaeger.library.StatusBarUtil;
 import com.tencent.android.tpush.XGPushClickedResult;
 import com.tencent.android.tpush.XGPushManager;
 
@@ -37,6 +38,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -120,6 +122,11 @@ public class BaseActivity extends FragmentActivity implements IHttpResponse {
     }
 
     protected void init() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        /*set it to be full screen*/
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initView();
         initData();
     }

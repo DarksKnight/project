@@ -274,10 +274,10 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         }
         tvSender.setText(currentInfo.sender);
         tvSenderPhone.setText(currentInfo.senderPhone);
-        tvSenderAddress.setText(currentInfo.sendDetailAddress);
+        tvSenderAddress.setText(currentInfo.sendAddress + currentInfo.sendDetailAddress);
         tvReceiver.setText(currentInfo.receiver);
         tvReceiverPhone.setText(currentInfo.receiverPhone);
-        tvReceiverAddress.setText(currentInfo.receiveAddress);
+        tvReceiverAddress.setText(currentInfo.receiveAddress + currentInfo.receiveDetailAddress);
         tvRemark.setText(currentInfo.remarks);
         tvWeight.setText(currentInfo.weight);
         tvSupportValue
@@ -291,7 +291,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         double totalMoney = Double.parseDouble(currentInfo.orderMoney) + Double
                 .parseDouble(currentInfo.insuranceMoney);
         tvTotalMoney.setText(totalMoney + "元");
-        tvOffer.setText(currentInfo.quotationCount + "个保价");
+        tvOffer.setText("选择保价（" + currentInfo.quotationCount + "）");
         if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_NOT_RELEASE)) {
             tvTitleExpressMoney.setVisibility(GONE);
             llExpressMoney.setVisibility(GONE);
