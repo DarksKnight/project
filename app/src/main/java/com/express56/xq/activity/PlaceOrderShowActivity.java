@@ -290,8 +290,8 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                 .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "否");
         tvArrivePay.setText(currentInfo.isArrivePay.equals("1") ? "是" : "否");
         tvDesc.setText(currentInfo.thingDesc);
-        tvMoney.setText(currentInfo.expressExpense + "元");
-        tvSupportMoney.setText(currentInfo.insuranceMoney + "元");
+        tvMoney.setText(currentInfo.expressExpense.equals("") ? "0元" : currentInfo.expressExpense + "元");
+        tvSupportMoney.setText(currentInfo.insuranceExpense.equals("") ? "0元" : currentInfo.insuranceExpense + "元");
         tvTotalMoney.setText(currentInfo.orderMoney + "元");
         tvOffer.setText("选择报价（" + currentInfo.quotationCount + "）");
         if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_NOT_RELEASE)) {
