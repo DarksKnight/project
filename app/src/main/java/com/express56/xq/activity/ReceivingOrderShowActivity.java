@@ -214,6 +214,7 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         etSupportMoney.setText(currentInfo.insuranceMoney);
         tvTotalMoney.setText(currentInfo.orderMoney + "元");
         tvArrivePay.setText(currentInfo.isArrivePay.equals("1") ? "是" : "否");
+        etEpressMoney.setText(currentInfo.expressExpense);
 //        tvRemarks.setText(currentInfo.remarks);
     }
 

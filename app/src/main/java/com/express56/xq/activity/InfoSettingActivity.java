@@ -63,6 +63,7 @@ public class InfoSettingActivity extends BaseActivity implements View.OnClickLis
         cpl.setListener(new ChoosePlaceLayout.ChooseListener() {
             @Override
             public void chooseCompelete(List<String> areaIds, List<String> areaNames, String tag) {
+                areaCode = "";
                 for (String s : areaIds) {
                     areaCode += s + "_";
                 }

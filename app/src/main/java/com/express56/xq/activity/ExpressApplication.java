@@ -12,6 +12,7 @@ import com.express56.xq.util.LogUtil;
 import com.tencent.android.tpush.XGNotifaction;
 import com.tencent.android.tpush.XGPushManager;
 import com.tencent.android.tpush.XGPushNotifactionCallback;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class ExpressApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CrashReport.initCrashReport(getApplicationContext(), "8c30eb95fe", false);
         InvokeStaticMethod.makeFiles();
 //        //未捕获异常处理
 //        CrashHandler crashHandler = CrashHandler.getInstance();

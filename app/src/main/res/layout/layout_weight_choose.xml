@@ -17,7 +17,7 @@
         android:id="@+id/et_weight_choose"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:background="@drawable/bg_edittext"
+        android:background="@color/color_bg"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="1.0"

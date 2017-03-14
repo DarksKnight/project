@@ -4157,6 +4157,7 @@ public class HttpHelper {
         map.put("keyword", keyword);
         map.put("pageNo", pageNo);
         map.put("orderStatus", orderStatus);
+        LogUtil.i("aaa", map.toString());
 
         final long requestTime = System.currentTimeMillis();
 
@@ -4456,6 +4457,7 @@ public class HttpHelper {
         map.put("areaCode", areaCode);
         map.put("areaName", areaName);
         String content = JSON.toJSONString(map);
+        LogUtil.i("aaa", content);
 
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
@@ -4630,15 +4632,16 @@ public class HttpHelper {
         final long requestTime = System.currentTimeMillis();
 
         Map<String, String> map = new HashMap<>();
-        map.put("id", id);
+//        map.put("id", id);
         String content = JSON.toJSONString(map);
+        LogUtil.i("aaa", content);
 
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
         OkHttpUtils
                 .postString()
                 .tag(page)
-                .url(URL_38 + "?token=" + token)
+                .url(URL_38 + "?token=" + token + "&id=" + id)
                 .content(content)
                 .mediaType(MEDIA_TYPE)
                 .build()
@@ -4811,6 +4814,7 @@ public class HttpHelper {
         map.put("expressMoney", expressMoney);
         map.put("insuranceMoney", insuranceMoney);
         String content = JSON.toJSONString(map);
+        LogUtil.i("aaa", content);
 
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);

@@ -107,6 +107,10 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private TextView llNotEnoughMoney = null;
 
+    private String totalMoney = "";
+
+    private OfferInfo offerInfo = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,7 +230,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                     if (code == 9) {
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
-                            ToastUtil.showMessage(this, content, true);
+                            ToastUtil.showMessage(this, "取消成功", true);
                             finish();
                         }
                     } else if (code == 0) {
@@ -281,7 +285,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         tvRemark.setText(currentInfo.remarks);
         tvWeight.setText(currentInfo.weight);
         tvSupportValue
-                .setText(currentInfo.isInsurance.equals("1") ? currentInfo.insuranceMoney : "否");
+                .setText(currentInfo.isInsurance.equals("1") ? "是，保价费：" + currentInfo.insuranceMoney + "元" : "否");
         tvSupportCharge
                 .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "否");
         tvArrivePay.setText(currentInfo.isArrivePay.equals("1") ? "是" : "否");
@@ -307,7 +311,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         } else if (v == btnPay) {
             createDialog();
         } else if (v == btnCancel) {
-            HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, orderId,
+            HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, currentInfo.id,
                     sp.getUserInfo().token, dialog);
         } else if (v == llNormalAccount) {
             payType = "4";
@@ -331,24 +335,24 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         if (resultCode == 1000) {
             llMoney.setVisibility(VISIBLE);
             btnPay.setVisibility(VISIBLE);
-            OfferInfo offerInfo = (OfferInfo) data.getSerializableExtra("offerInfo");
+            offerInfo = (OfferInfo) data.getSerializableExtra("offerInfo");
             if (Double.parseDouble(currentInfo.orderMoney) > Double.parseDouble(offerInfo.expressMoney)) {
-                tvMoney.setText(offerInfo.expressMoney + "元");
                 llNotEnoughMoney.setVisibility(VISIBLE);
                 canPay = false;
             } else {
-                tvMoney.setText(offerInfo.expressMoney + "元");
                 llNotEnoughMoney.setVisibility(GONE);
                 canPay = true;
             }
+            tvMoney.setText(offerInfo.expressMoney + "元");
             tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
-            tvTotalMoney.setText(offerInfo.orderMoney);
+            totalMoney = String.valueOf(Double.parseDouble(currentInfo.orderMoney) + Double.parseDouble(offerInfo.expressMoney) + Double.parseDouble(offerInfo.insuranceMoney));
+            tvTotalMoney.setText(totalMoney);
         }
     }
 
     private void pay() {
         if (canPay) {
-            HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.quotationId, currentInfo.id, currentInfo.orderMoney, currentInfo.expressMoney, payType, currentInfo.insuranceMoney, sp.getUserInfo().token, dialog);
+            HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.id, offerInfo.id, totalMoney, offerInfo.expressMoney, payType, offerInfo.insuranceMoney, sp.getUserInfo().token, dialog);
         }
     }
 

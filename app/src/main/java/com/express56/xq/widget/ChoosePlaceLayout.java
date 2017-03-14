@@ -124,6 +124,10 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     }
 
     public void show(String areaCode, Dialog dialog, String tag) {
+        if (areaCode.trim().length() > 0) {
+            chooseAreaId.clear();
+            chooseAreaName.clear();
+        }
         isShow = true;
         this.dialog = dialog;
         this.tag = tag;
@@ -170,13 +174,15 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                                 for (Iterator<String> iterator = obj.keys(); iterator.hasNext(); ) {
                                     String key = iterator.next();
                                     parentId = key;
-                                    item = createItem(context);
-                                    llContent.addView(item);
                                     List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
-                                    areaMap.put(parentId, list);
-                                    infos.clear();
-                                    infos.addAll(list);
-                                    adapter.notifyDataSetChanged();
+                                    if(list.size() > 0) {
+                                        item = createItem(context);
+                                        llContent.addView(item);
+                                        areaMap.put(parentId, list);
+                                        infos.clear();
+                                        infos.addAll(list);
+                                        adapter.notifyDataSetChanged();
+                                    }
                                 }
                                 if (selectedArea.size() > 0) {
                                     infos.clear();

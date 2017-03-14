@@ -95,8 +95,12 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
             public void onSearch(String key) {
                 keyword = key;
                 infos.clear();
-                HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this, RequestID.REQ_GET_RECEIVING_ORDER,
-                        sp.getUserInfo().token, orderStatus, keyword,
+                pageNo = "1";
+                isRefresh = false;
+                isLoadMore = false;
+                xr.setLoadComplete(false);
+                HttpHelper.sendRequest_getOrderList(ReceivingOrderActivity.this,
+                        RequestID.REQ_GET_ORDER_LIST, sp.getUserInfo().token, orderStatus, keyword,
                         pageNo, dialog);
             }
         });
@@ -137,7 +141,10 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                 }
                 pageNo = "1";
                 infos.clear();
-                HttpHelper.sendRequest_getReceivingOrder(ReceivingOrderActivity.this, RequestID.REQ_GET_RECEIVING_ORDER,
+                isRefresh = false;
+                isLoadMore = false;
+                xr.setLoadComplete(false);
+                HttpHelper.sendRequest_getOrderList(ReceivingOrderActivity.this, RequestID.REQ_GET_ORDER_LIST,
                         sp.getUserInfo().token, orderStatus, keyword,
                         pageNo, dialog);
             }
@@ -252,7 +259,11 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                             tvAreaName.setText(info.areaName);
                             if (info.orders != null) {
                                 if (info.orders.size() > 0) {
-                                    infos.addAll(info.orders);
+                                    for(MyExpressInfo order : info.orders) {
+                                        if (order.orderStatus.equals("")) {
+                                            infos.add(order);
+                                        }
+                                    }
                                     adapter.notifyDataSetChanged();
                                 }
                             }

@@ -327,6 +327,10 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         if (!"".equals(orderId)) {
             order.put("id", orderId);
         }
+        if(getItemDate.trim().length() == 0) {
+            ToastUtil.showMessage(this, "请选择取件时间");
+            return;
+        }
         order.put("serviceTime", getItemDate);
         order.put("remarks", etRemark.getText().toString());
         order.put("isInsurance", supportValue);
@@ -441,5 +445,7 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         wcWeight.setWeight(Double.parseDouble(info.order.weight));
         etRemark.setText(info.order.thingDesc);
         etDesc.setText(info.order.remarks);
+        etSupportValue.setText(info.order.insuranceMoney);
+        getItemDate = info.order.serviceTime;
     }
 }
