@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.express56.xq.R;
@@ -16,7 +17,7 @@ import com.express56.xq.R;
 
 public class TypeChooseLayoutItem extends LinearLayout {
 
-    private LinearLayout llContent = null;
+    private RelativeLayout llContent = null;
     private TextView tvTitle = null;
     private View vLine = null;
 
@@ -37,7 +38,7 @@ public class TypeChooseLayoutItem extends LinearLayout {
     }
 
     private void initView(Context context) {
-        llContent = (LinearLayout) findViewById(R.id.ll_type_choose_item);
+        llContent = (RelativeLayout) findViewById(R.id.ll_type_choose_item);
         tvTitle = (TextView) findViewById(R.id.tv_type_choose_title);
         vLine = findViewById(R.id.v_type_choose_title_line);
 

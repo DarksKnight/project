@@ -155,7 +155,7 @@ public class MyExpressActivity extends BaseActivity {
         list.add("已发布");
         list.add("待评价");
         list.add("退款");
-        tcl.setList(list);
+        tcl.setList(list, getWindowManager().getDefaultDisplay());
         tcl.select(0);
         tcl.setListener(new TypeChooseLayout.ItemListener() {
             @Override

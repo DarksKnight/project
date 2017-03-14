@@ -107,9 +107,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private TextView llNotEnoughMoney = null;
 
-    private String totalMoney = "";
-
     private OfferInfo offerInfo = null;
+
+    private String totalMoney = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -285,17 +285,15 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         tvRemark.setText(currentInfo.remarks);
         tvWeight.setText(currentInfo.weight);
         tvSupportValue
-                .setText(currentInfo.isInsurance.equals("1") ? "是，保价费：" + currentInfo.insuranceMoney + "元" : "否");
+                .setText(currentInfo.isInsurance.equals("1") ? "是，报价费：" + currentInfo.insuranceMoney + "元" : "否");
         tvSupportCharge
                 .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "否");
         tvArrivePay.setText(currentInfo.isArrivePay.equals("1") ? "是" : "否");
         tvDesc.setText(currentInfo.thingDesc);
-        tvMoney.setText(currentInfo.orderMoney + "元");
+        tvMoney.setText(currentInfo.expressExpense + "元");
         tvSupportMoney.setText(currentInfo.insuranceMoney + "元");
-        double totalMoney = Double.parseDouble(currentInfo.orderMoney) + Double
-                .parseDouble(currentInfo.insuranceMoney);
-        tvTotalMoney.setText(totalMoney + "元");
-        tvOffer.setText("选择保价（" + currentInfo.quotationCount + "）");
+        tvTotalMoney.setText(currentInfo.orderMoney + "元");
+        tvOffer.setText("选择报价（" + currentInfo.quotationCount + "）");
         if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_NOT_RELEASE)) {
             tvTitleExpressMoney.setVisibility(GONE);
             llExpressMoney.setVisibility(GONE);
@@ -346,7 +344,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             tvMoney.setText(offerInfo.expressMoney + "元");
             tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
             totalMoney = String.valueOf(Double.parseDouble(currentInfo.orderMoney) + Double.parseDouble(offerInfo.expressMoney) + Double.parseDouble(offerInfo.insuranceMoney));
-            tvTotalMoney.setText(totalMoney);
+            tvTotalMoney.setText(totalMoney + "元");
         }
     }
 

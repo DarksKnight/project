@@ -3,10 +3,14 @@ package com.express56.xq.widget;
 import com.express56.xq.R;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +43,12 @@ public class TypeChooseLayout extends LinearLayout {
         llContent = (LinearLayout) findViewById(R.id.ll_type_choose_content);
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<String> list, Display display) {
         for (int i = 0; i < list.size(); i++) {
             final TypeChooseLayoutItem item = new TypeChooseLayoutItem(getContext());
+            Point size = new Point();
+            display.getSize(size);
+            item.setLayoutParams(new RelativeLayout.LayoutParams(size.x / 5, ViewGroup.LayoutParams.WRAP_CONTENT));
             item.setTitle(list.get(i));
             item.setIndex(i);
             item.setOnClickListener(new OnClickListener() {

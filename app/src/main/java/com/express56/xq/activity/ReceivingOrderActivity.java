@@ -124,7 +124,7 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
         list.add("待取件");
         list.add("待退款");
         list.add("已完成");
-        tcl.setList(list);
+        tcl.setList(list, getWindowManager().getDefaultDisplay());
         tcl.select(0);
         tcl.setListener(new TypeChooseLayout.ItemListener() {
             @Override
@@ -135,6 +135,9 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                         break;
                     case 1:
                         orderStatus = "2";
+                        break;
+                    case 2:
+                        orderStatus = "5";
                         break;
                     default:
                         break;
@@ -257,16 +260,9 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                             info = JSONObject.parseObject(content, ReceivingOrderInfo.class);
                             tvCompanyName.setText(info.companyName);
                             tvAreaName.setText(info.areaName);
-                            if (info.orders != null) {
-                                if (info.orders.size() > 0) {
-                                    for(MyExpressInfo order : info.orders) {
-                                        if (order.orderStatus.equals("")) {
-                                            infos.add(order);
-                                        }
-                                    }
-                                    adapter.notifyDataSetChanged();
-                                }
-                            }
+                            HttpHelper.sendRequest_getOrderList(ReceivingOrderActivity.this, RequestID.REQ_GET_ORDER_LIST,
+                                    sp.getUserInfo().token, orderStatus, keyword,
+                                    pageNo, dialog);
                             if (info.companyName.equals("null") || info.companyName.equals("")) {
                                 tvCompanyName.setText("不限");
                             }
@@ -310,8 +306,8 @@ public class ReceivingOrderActivity extends BaseActivity implements View.OnClick
                                 xr.setLoadComplete(true);
                             } else {
                                 infos.addAll(tempData);
-                                adapter.notifyDataSetChanged();
                             }
+                            adapter.notifyDataSetChanged();
                         }
                     } else if (code == 0) {
                         showReloginDialog();

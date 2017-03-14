@@ -68,10 +68,12 @@ public class ReceivingOrderAdapter extends BaseAdapter {
         });
         holder.tvOrderNo.setText(infos.get(position).orderNo);
         String status = "";
-        if (infos.get(position).orderStatus.equals("")) {
+        if (infos.get(position).orderStatus.equals("2")) {
             status = "待报价";
         } else if (infos.get(position).orderStatus.equals("2")) {
             status = "已报价";
+        } else if (infos.get(position).orderStatus.equals("5")) {
+            status = "待取件";
         }
         holder.tvStatus.setText(status);
         holder.tvCreateDate.setText(infos.get(position).createDate);

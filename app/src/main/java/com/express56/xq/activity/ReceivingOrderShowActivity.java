@@ -1,9 +1,12 @@
 package com.express56.xq.activity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.express56.xq.R;
@@ -76,6 +79,10 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
 
     private TextView tvArrivePay = null;
 
+    private String totalMoney = "";
+
+    private LinearLayout llSupportMoney = null;
+
 //    private TextView tvRemarks = null;
 
     @Override
@@ -107,7 +114,27 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         tvSupportCharge = getView(R.id.tv_receive_order_show_show_support_charge);
         tvTotalMoney = getView(R.id.tv_receive_order_show_show_total_money);
         tvArrivePay = getView(R.id.tv_receiving_order_show_is_arrive_pay);
+        llSupportMoney = getView(R.id.ll_receive_order_show_support_money);
 //        tvRemarks = getView(R.id.tv_receiving_order_show_remark);
+
+        etSupportMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                double money = Double.parseDouble(s.toString().equals("")? "0" : s.toString());
+                totalMoney = String.valueOf(Double.parseDouble(currentInfo.orderMoney) + money);
+                tvTotalMoney.setText(totalMoney + "元");
+            }
+        });
     }
 
     @Override
@@ -211,10 +238,14 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
         tvSupportCharge
                 .setText(currentInfo.isAgentPay.equals("1") ? currentInfo.agentMoney : "否");
         etEpressMoney.setText(currentInfo.expressMoney);
-        etSupportMoney.setText(currentInfo.insuranceMoney);
+        etSupportMoney.setText(currentInfo.insuranceExpense);
         tvTotalMoney.setText(currentInfo.orderMoney + "元");
         tvArrivePay.setText(currentInfo.isArrivePay.equals("1") ? "是" : "否");
         etEpressMoney.setText(currentInfo.expressExpense);
+
+        if (!currentInfo.isInsurance.equals("1")) {
+            llSupportMoney.setVisibility(View.GONE);
+        }
 //        tvRemarks.setText(currentInfo.remarks);
     }
 
