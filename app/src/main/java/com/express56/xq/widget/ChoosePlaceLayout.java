@@ -21,6 +21,7 @@ import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.IHttpResponse;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.AreaInfo;
+import com.express56.xq.util.LogUtil;
 import com.express56.xq.util.SharedPreUtils;
 
 import java.util.ArrayList;
@@ -171,17 +172,19 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                             selectedArea = JSONArray.parseArray(str.toJSONString(), AreaInfo.class);
                             try {
                                 org.json.JSONObject obj = new org.json.JSONObject(json.toJSONString());
-                                for (Iterator<String> iterator = obj.keys(); iterator.hasNext(); ) {
-                                    String key = iterator.next();
-                                    parentId = key;
-                                    List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
-                                    if(list.size() > 0) {
-                                        item = createItem(context);
-                                        llContent.addView(item);
-                                        areaMap.put(parentId, list);
-                                        infos.clear();
-                                        infos.addAll(list);
-                                        adapter.notifyDataSetChanged();
+                                if (selectedArea.size() > 0) {
+                                    for (AreaInfo info : selectedArea) {
+                                        String key = info.parentId;
+                                        parentId = key;
+                                        List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
+                                        setData(key ,list);
+                                    }
+                                } else {
+                                    for (Iterator<String> iterator = obj.keys(); iterator.hasNext(); ) {
+                                        String key = iterator.next();
+                                        parentId = key;
+                                        List<AreaInfo> list = JSONArray.parseArray(obj.getString(key), AreaInfo.class);
+                                        setData(key ,list);
                                     }
                                 }
                                 if (selectedArea.size() > 0) {
@@ -249,6 +252,17 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void setData(String key, List<AreaInfo> list) {
+        if (list.size() > 0) {
+            item = createItem(context);
+            llContent.addView(item);
+            areaMap.put(parentId, list);
+            infos.clear();
+            infos.addAll(list);
+            adapter.notifyDataSetChanged();
         }
     }
 

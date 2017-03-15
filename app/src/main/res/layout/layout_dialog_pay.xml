@@ -9,7 +9,7 @@
         android:id="@+id/ll_normal_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:padding="5dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -25,7 +25,7 @@
             android:layout_marginLeft="10dp"
             android:text="普通账户："
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_dialog_pay_money"
@@ -33,13 +33,13 @@
             android:layout_height="wrap_content"
             android:text="10元"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_not_enough_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="@color/color_red"
             android:text="(余额不足)"
             android:layout_marginLeft="10dp"
@@ -73,7 +73,7 @@
             android:background="@color/color_bg"
             android:text="现金"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -103,7 +103,7 @@
             android:background="@color/color_bg"
             android:text="支付宝"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -133,7 +133,7 @@
             android:background="@color/color_bg"
             android:text="微信"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 

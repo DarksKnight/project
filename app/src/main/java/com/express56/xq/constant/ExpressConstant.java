@@ -363,4 +363,6 @@ public class ExpressConstant {
     public static final String EXPRESS_ORDER_NOT_RELEASE = "1";
 
     public static final String EXPRESS_ORDER_RELEASE = "2";
+
+    public static final String EXPRESS_ORDER_PAY_COMPLETE = "5";
 }

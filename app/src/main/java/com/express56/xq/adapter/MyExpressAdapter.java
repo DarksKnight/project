@@ -77,6 +77,8 @@ public class MyExpressAdapter extends BaseAdapter {
             status = "未发布";
         } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_RELEASE)) {
             status = "已发布";
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_COMPLETE)) {
+            status = "已付款";
         }
         viewHolder.tvOrderStatus.setText(status);
         viewHolder.tvOrderDate.setText(listMyExpress.get(position).createDate);

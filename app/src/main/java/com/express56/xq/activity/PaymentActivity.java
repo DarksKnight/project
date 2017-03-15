@@ -184,6 +184,21 @@ public class PaymentActivity extends BaseActivity implements View.OnClickListene
                     }
                 }
                 break;
+            case RequestID.REQ_PAY_SUCCESS:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            final String content = object.getString("result");
+                            ToastUtil.showMessage(this, "支付成功");
+                        }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
             default:
                 break;
         }

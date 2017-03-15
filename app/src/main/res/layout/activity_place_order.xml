@@ -152,6 +152,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/color_bg"
                         android:hint="输入联系电话"
+                        android:inputType="number"
                         android:padding="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -290,6 +291,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/color_bg"
                         android:hint="输入联系电话"
+                        android:inputType="number"
                         android:padding="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />

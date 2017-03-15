@@ -21,6 +21,8 @@ import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.model.OfferInfo;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.widget.ToastUtil;
+import com.tencent.android.tpush.XGPushClickedResult;
+import com.tencent.android.tpush.XGPushManager;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONObject;
@@ -110,6 +112,8 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     private OfferInfo offerInfo = null;
 
     private String totalMoney = "";
+
+    private String userMoney = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,6 +218,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                     if (code == 9) {
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
+                            userMoney = content;
                             tvUserMoney.setText(content + "元");
                             dialogPay.show();
                         }
@@ -246,6 +251,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                     if (code == 9) {
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
+
 //                            ToastUtil.showMessage(this, content, true);
 //                            finish();
                         }
@@ -313,7 +319,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                     sp.getUserInfo().token, dialog);
         } else if (v == llNormalAccount) {
             payType = "4";
-            pay();
+            if(canPay) {
+                pay();
+            }
         } else if (v == llCash) {
             payType = "1";
             pay();
@@ -334,12 +342,14 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             llMoney.setVisibility(VISIBLE);
             btnPay.setVisibility(VISIBLE);
             offerInfo = (OfferInfo) data.getSerializableExtra("offerInfo");
-            if (Double.parseDouble(currentInfo.orderMoney) > Double.parseDouble(offerInfo.expressMoney)) {
+            if (Double.parseDouble(currentInfo.orderMoney.equals("") ? "0" : currentInfo.orderMoney) > Double.parseDouble(userMoney)) {
                 llNotEnoughMoney.setVisibility(VISIBLE);
                 canPay = false;
+                llNormalAccount.setBackgroundResource(R.color.color_gray);
             } else {
                 llNotEnoughMoney.setVisibility(GONE);
                 canPay = true;
+                llNormalAccount.setBackgroundResource(R.color.color_bg);
             }
             tvMoney.setText(offerInfo.expressMoney + "元");
             tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
@@ -349,9 +359,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     }
 
     private void pay() {
-        if (canPay) {
-            HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.id, offerInfo.id, totalMoney, offerInfo.expressMoney, payType, offerInfo.insuranceMoney, sp.getUserInfo().token, dialog);
-        }
+        HttpHelper.sendRequest_quotationPay(this, RequestID.REQ_QUOTATION_PAY, currentInfo.id, offerInfo.id, totalMoney, offerInfo.expressMoney, payType, offerInfo.insuranceMoney, sp.getUserInfo().token, dialog);
     }
 
     private void initDialog() {
@@ -385,5 +393,19 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private void createDialog() {
         HttpHelper.sendRequest_getUserMoney(this, RequestID.REQ_GET_USER_MONEY, sp.getUserInfo().token, dialog);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        XGPushClickedResult click = XGPushManager.onActivityStarted(this);
+        if (null != click) {
+            String content = click.getCustomContent();
+            orderId = JSON.parseObject(content).getString("orderId");
+
+            HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, orderId,
+                    sp.getUserInfo().token, dialog);
+        }
     }
 }
