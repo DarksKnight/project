@@ -95,6 +95,7 @@ public class HttpHelper {
     public static final String URL_40 = HTTP + IP + "/express/rest/recharge/add";//充值
     public static final String URL_41 = HTTP + IP + "/express/rest/recharge/flow";//充值记录列表
     public static final String URL_42 = HTTP + IP + "/express/rest/quotation/pay";//订单支付
+    public static final String URL_43 = HTTP + IP + "/express/rest/order/apply";//申请退款
 
 //    {"code":9,"result":{"version":"20161115.1.0beta","isRequire":"1","remarks":"测试","downloadPath":"app/android/express.apk"}}
 //    返回结果说明：isRequire 是否必须升级 remarks 升级内容 downloadPath:升级地址
@@ -4841,6 +4842,45 @@ public class HttpHelper {
                     @Override
                     public void onResponse(String response) {
                         printAPI_TimeConsuming("sendRequest_getRechargeInfo", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        //网络返回处理
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(response, requestID);
+                        }
+                    }
+                });
+    }
+
+    public static void sendRequest_reimburse(final Context page, final int requestID, String id, String token, final Dialog dialog) {
+        final long requestTime = System.currentTimeMillis();
+
+        final IHttpResponse responsePage = (IHttpResponse) page;
+        DialogUtils.showLoadingDialog(dialog);
+        OkHttpUtils
+                .postString()
+                .tag(page)
+                .url(URL_43 + "?token=" + token + "&id=" + id)
+                .mediaType(MEDIA_TYPE)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        printAPI_TimeConsuming("sendRequest_reimburse", requestTime);
+
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        if (responsePage != null) {
+                            responsePage.doHttpResponse(null, requestID, page.getString(R.string.str_network_error));
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        printAPI_TimeConsuming("sendRequest_reimburse", requestTime);
 
                         if (dialog != null) {
                             dialog.dismiss();

@@ -125,6 +125,10 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
     }
 
     public void show(String areaCode, Dialog dialog, String tag) {
+        if (isShow) {
+            hide();
+            return;
+        }
         if (areaCode.trim().length() > 0) {
             chooseAreaId.clear();
             chooseAreaName.clear();

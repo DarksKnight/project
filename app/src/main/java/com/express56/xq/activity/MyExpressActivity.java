@@ -1,5 +1,11 @@
 package com.express56.xq.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+
 import com.andview.refreshview.XRefreshView;
 import com.express56.xq.R;
 import com.express56.xq.adapter.MyExpressAdapter;
@@ -7,22 +13,12 @@ import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.util.LogUtil;
-import com.express56.xq.widget.CustomFootView;
 import com.express56.xq.widget.SearchBarLayout;
 import com.express56.xq.widget.ToastUtil;
 import com.express56.xq.widget.TypeChooseLayout;
-import com.jaeger.library.StatusBarUtil;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import alibaba.fastjson.JSON;
 import alibaba.fastjson.JSONArray;
@@ -153,6 +149,7 @@ public class MyExpressActivity extends BaseActivity {
         list.add("全部");
         list.add("未发布");
         list.add("已发布");
+        list.add("已付款");
         list.add("待评价");
         list.add("退款");
         tcl.setList(list, getWindowManager().getDefaultDisplay());
@@ -169,6 +166,9 @@ public class MyExpressActivity extends BaseActivity {
                         break;
                     case 2:
                         orderStatus = "2";
+                        break;
+                    case 3:
+                        orderStatus = "5";
                         break;
                     default:
                         break;

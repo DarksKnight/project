@@ -61,6 +61,8 @@
     <!-- 允许程序更新手机电池统计信息 -->
     <uses-permission android:name="android.permission.BATTERY_STATS" />
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <!-- &lt;!&ndash; 发送短信&ndash;&gt; -->
     <!-- <uses-permission android:name="android.permission.SEND_SMS" /> -->
     <!-- &lt;!&ndash; 阅读消息 &ndash;&gt; -->

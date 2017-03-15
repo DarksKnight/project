@@ -1,7 +1,5 @@
 package com.express56.xq.widget;
 
-import com.express56.xq.R;
-
 import android.content.Context;
 import android.graphics.Point;
 import android.util.AttributeSet;
@@ -11,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.express56.xq.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class TypeChooseLayout extends LinearLayout {
             final TypeChooseLayoutItem item = new TypeChooseLayoutItem(getContext());
             Point size = new Point();
             display.getSize(size);
-            item.setLayoutParams(new RelativeLayout.LayoutParams(size.x / 5, ViewGroup.LayoutParams.WRAP_CONTENT));
+            item.setLayoutParams(new RelativeLayout.LayoutParams(size.x / list.size(), ViewGroup.LayoutParams.WRAP_CONTENT));
             item.setTitle(list.get(i));
             item.setIndex(i);
             item.setOnClickListener(new OnClickListener() {

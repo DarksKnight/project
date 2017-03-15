@@ -81,6 +81,13 @@ public class ReceivingOrderAdapter extends BaseAdapter {
         holder.tvSenderPhone.setText(infos.get(position).senderPhone);
         holder.tvSenderAddress.setText(infos.get(position).sendAddress + infos.get(position).sendDetailAddress);
         holder.tvMoney.setText("费用：" + infos.get(position).orderMoney + "元");
+        if (!infos.get(position).expressNo.equals("")) {
+            holder.tvExpressNumber.setText(infos.get(position).expressNo);
+            holder.llExpressNumber.setVisibility(View.VISIBLE);
+        } else {
+            holder.llExpressNumber.setVisibility(View.GONE);
+        }
+
     }
 
     private ViewHolder createHolder(View itemView) {
@@ -96,6 +103,8 @@ public class ReceivingOrderAdapter extends BaseAdapter {
         holder.tvSenderAddress = (TextView) itemView
                 .findViewById(R.id.tv_receiving_order_item_sender_address);
         holder.tvMoney = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_money);
+        holder.llExpressNumber = (LinearLayout) itemView.findViewById(R.id.ll_receiving_order_item_express_number);
+        holder.tvExpressNumber = (TextView) itemView.findViewById(R.id.tv_receiving_order_item_express_number);
         return holder;
     }
 
@@ -115,6 +124,10 @@ public class ReceivingOrderAdapter extends BaseAdapter {
         public TextView tvSenderAddress = null;
 
         public TextView tvMoney = null;
+
+        public LinearLayout llExpressNumber = null;
+
+        public TextView tvExpressNumber = null;
     }
 
     public interface Listener {

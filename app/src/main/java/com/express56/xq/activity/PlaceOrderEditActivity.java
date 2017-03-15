@@ -443,8 +443,8 @@ public class PlaceOrderEditActivity extends BaseActivity implements OnDateSetLis
         spSupportCharge.setSelection(Integer.parseInt(info.order.isAgentPay));
         spSupportValue.setSelection(Integer.parseInt(info.order.isInsurance));
         wcWeight.setWeight(Double.parseDouble(info.order.weight));
-        etRemark.setText(info.order.thingDesc);
-        etDesc.setText(info.order.remarks);
+        etRemark.setText(info.order.remarks);
+        etDesc.setText(info.order.thingDesc);
         etSupportValue.setText(info.order.insuranceMoney);
         getItemDate = info.order.serviceTime;
     }

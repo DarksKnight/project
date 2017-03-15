@@ -1,8 +1,11 @@
 package com.express56.xq.activity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -10,10 +13,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.express56.xq.R;
+import com.express56.xq.camera.util.ImageUtil;
 import com.express56.xq.constant.ExpressConstant;
 import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.RequestID;
@@ -90,11 +95,15 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
 
     private Button btnPay = null;
 
+    private Button btnReimburse = null;
+
     private Dialog dialogPay = null;
 
     private TextView tvUserMoney = null;
 
     private TextView tvArrivePay = null;
+
+    private TextView tvExpressCompanyName = null;
 
     private Button btnCancel = null;
 
@@ -107,6 +116,8 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     private LinearLayout llAlipay = null;
     private LinearLayout llWechat = null;
 
+    private LinearLayout llInsurance = null;
+
     private TextView llNotEnoughMoney = null;
 
     private OfferInfo offerInfo = null;
@@ -114,6 +125,17 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
     private String totalMoney = "";
 
     private String userMoney = "0";
+
+    private boolean isSelectInsurance = false;
+
+    private ImageView ivExpressPerson = null;
+
+    private LinearLayout llExpressPerson = null;
+
+    private TextView tvPersonName = null;
+    private TextView tvPersonPhone = null;
+
+    private LinearLayout llExpressUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,10 +175,20 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         btnPay = getView(R.id.btn_place_order_show_pay);
         btnCancel = getView(R.id.btn_place_order_show_cancel);
         tvArrivePay = getView(R.id.tv_place_order_show_is_arrive_pay);
+        llInsurance = getView(R.id.ll_place_order_show_insurance);
+        tvExpressCompanyName = getView(R.id.tv_place_order_show_express_name);
+        btnReimburse = getView(R.id.btn_place_order_show_reimburse);
+        ivExpressPerson = getView(R.id.iv_place_order_show_express_person_pic);
+        llExpressPerson = getView(R.id.ll_place_order_show_express_person);
+        tvPersonName = getView(R.id.tv_place_order_show_express_person_name);
+        tvPersonPhone = getView(R.id.tv_place_order_show_express_person_phone);
+        llExpressUser = getView(R.id.ll_place_order_show_express_user);
 
         tvOffer.setOnClickListener(this);
         btnPay.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+        btnReimburse.setOnClickListener(this);
+        llExpressPerson.setOnClickListener(this);
 
         initDialog();
     }
@@ -236,6 +268,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                         if (object != null && object.containsKey("result")) {
                             String content = object.getString("result");
                             ToastUtil.showMessage(this, "取消成功", true);
+                            setResult(1001, null);
                             finish();
                         }
                     } else if (code == 0) {
@@ -262,6 +295,23 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
                     }
                 }
                 break;
+            case RequestID.REQ_REIMBURSE:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            String content = object.getString("result");
+                            ToastUtil.showMessage(this, "申请退款成功");
+                            setResult(1001, null);
+                            finish();
+                        }
+                    } else if (code == 0) {
+                        showReloginDialog();
+                    } else {
+                        showErrorMsg(object);
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -280,7 +330,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         tvServiceTime.setText(currentInfo.serviceTime);
         tvCompany.setText(currentInfo.expressCompanyName);
         if (currentInfo.expressCompanyName.equals("")) {
-            llCompany.setVisibility(GONE);
+            tvExpressCompanyName.setText("不限");
         }
         tvSender.setText(currentInfo.sender);
         tvSenderPhone.setText(currentInfo.senderPhone);
@@ -304,6 +354,15 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             tvTitleExpressMoney.setVisibility(GONE);
             llExpressMoney.setVisibility(GONE);
         }
+        if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_COMPLETE)) {
+            btnPay.setVisibility(View.GONE);
+            btnCancel.setVisibility(View.GONE);
+            btnReimburse.setVisibility(View.VISIBLE);
+            ivExpressPerson.setBackground(ImageUtil.loadImageFromNetwork(currentInfo.expressUserPhoto));
+            tvPersonName.setText(currentInfo.expressUserName);
+            tvPersonPhone.setText(currentInfo.expressUserPhone);
+            llExpressUser.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -315,11 +374,12 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         } else if (v == btnPay) {
             createDialog();
         } else if (v == btnCancel) {
-            HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, currentInfo.id,
-                    sp.getUserInfo().token, dialog);
+            alert();
+        } else if (v == btnReimburse) {
+            HttpHelper.sendRequest_reimburse(this, RequestID.REQ_REIMBURSE, currentInfo.id, sp.getUserInfo().token, dialog);
         } else if (v == llNormalAccount) {
             payType = "4";
-            if(canPay) {
+            if (canPay) {
                 pay();
             }
         } else if (v == llCash) {
@@ -331,6 +391,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         } else if (v == llWechat) {
             payType = "3";
             pay();
+        } else if (v == llExpressPerson) {
+            Intent intent=new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + currentInfo.expressUserPhone));
+            startActivity(intent);
         }
     }
 
@@ -355,6 +418,11 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             tvSupportMoney.setText(offerInfo.insuranceMoney + "元");
             totalMoney = String.valueOf(Double.parseDouble(currentInfo.orderMoney) + Double.parseDouble(offerInfo.expressMoney) + Double.parseDouble(offerInfo.insuranceMoney));
             tvTotalMoney.setText(totalMoney + "元");
+            isSelectInsurance = true;
+            if (!currentInfo.isInsurance.equals("1")) {
+                llInsurance.setVisibility(View.GONE);
+            }
+            tvExpressCompanyName.setText(offerInfo.expressCompanyName);
         }
     }
 
@@ -407,5 +475,25 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             HttpHelper.sendRequest_getOrder(context, RequestID.REQ_GET_ORDER, orderId,
                     sp.getUserInfo().token, dialog);
         }
+    }
+
+    private void alert() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setMessage("确认取消吗？");
+        alertDialog.setTitle("提示");
+        alertDialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface alertDialog, int which) {
+                HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, currentInfo.id,
+                        sp.getUserInfo().token, dialog);
+            }
+        });
+        alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 }

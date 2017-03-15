@@ -79,4 +79,10 @@ public class MyExpressInfo implements Serializable {
     public int quotationCount = 0;
 
     public String expressMoney = "";
+
+    public String expressUserName = "";
+
+    public String expressUserPhone = "";
+
+    public String expressUserPhoto = "";
 }

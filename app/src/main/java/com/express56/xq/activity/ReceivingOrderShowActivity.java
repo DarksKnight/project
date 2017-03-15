@@ -2,6 +2,7 @@ package com.express56.xq.activity;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -245,6 +246,10 @@ public class ReceivingOrderShowActivity extends BaseActivity implements View.OnC
 
         if (!currentInfo.isInsurance.equals("1")) {
             llSupportMoney.setVisibility(View.GONE);
+        }
+        if (currentInfo.orderStatus.equals("5")) {
+            etEpressMoney.setInputType(InputType.TYPE_NULL);
+            etSupportMoney.setInputType(InputType.TYPE_NULL);
         }
 //        tvRemarks.setText(currentInfo.remarks);
     }

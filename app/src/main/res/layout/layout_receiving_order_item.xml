@@ -1,188 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical" android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@color/color_bg"
-              android:id="@+id/ll_receiving_order_content">
+    android:id="@+id/ll_receiving_order_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_bg"
+    android:orientation="vertical">
 
     <RelativeLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_receiving_order_item_number"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:text="订单编号："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-                android:id="@+id/tv_receiving_order_item_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="订单编号："
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_receiving_order_item_number"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-                android:layout_toRightOf="@id/tv_receiving_order_item_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
-
-        <TextView
-                android:id="@+id/tv_receiving_order_item_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="状态"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:textSize="14sp"
-                android:visibility="gone"
-                android:textColor="@color/color_red"/>
+            android:id="@+id/tv_receiving_order_item_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="状态"
+            android:textColor="@color/color_red"
+            android:textSize="14sp"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:text="发布时间："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="发布时间："
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
-
-        <TextView
-                android:id="@+id/tv_receiving_order_item_createdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
+            android:id="@+id/tv_receiving_order_item_createdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
+        android:id="@+id/ll_receiving_order_item_express_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:text="快递单号："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="快递单号："
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
+            android:id="@+id/tv_receiving_order_item_express_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:text="发货人："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="发货人："
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:id="@+id/tv_receiving_order_item_sender"/>
+            android:id="@+id/tv_receiving_order_item_sender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:text="发货人联系电话："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="发货人联系电话："
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:id="@+id/tv_receiving_order_item_sender_phone"/>
+            android:id="@+id/tv_receiving_order_item_sender_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:text="发货地址："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="发货地址："
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:id="@+id/tv_receiving_order_item_sender_address"/>
+            android:id="@+id/tv_receiving_order_item_sender_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:text="费用："
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:id="@+id/tv_receiving_order_item_money"/>
+            android:id="@+id/tv_receiving_order_item_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="费用："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/color_dark_grey"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_dark_grey" />
 
 </LinearLayout>

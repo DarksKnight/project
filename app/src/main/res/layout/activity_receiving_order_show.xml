@@ -29,6 +29,14 @@
             android:textColor="@color/white"
             android:textSize="@dimen/font_content_size_2" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="receiveorder"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/search_back_btn"
+            android:layout_centerVertical="true"/>
+
     </RelativeLayout>
 
     <View
@@ -461,7 +469,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="是否报价："
+                        android:text="是否保价："
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
