@@ -4856,13 +4856,16 @@ public class HttpHelper {
 
     public static void sendRequest_reimburse(final Context page, final int requestID, String id, String token, final Dialog dialog) {
         final long requestTime = System.currentTimeMillis();
-
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        String content = JSON.toJSONString(map);
         final IHttpResponse responsePage = (IHttpResponse) page;
         DialogUtils.showLoadingDialog(dialog);
         OkHttpUtils
                 .postString()
                 .tag(page)
                 .url(URL_43 + "?token=" + token + "&id=" + id)
+                .content(content)
                 .mediaType(MEDIA_TYPE)
                 .build()
                 .execute(new StringCallback() {

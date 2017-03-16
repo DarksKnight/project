@@ -104,10 +104,12 @@ public class MyExpressActivity extends BaseActivity {
                         if (object != null && object.containsKey("result")) {
                             final String content = object.getString("result");
                             List<MyExpressInfo> tempData = JSONArray.parseArray(content, MyExpressInfo.class);
-                            if (tempData.size() == 0) {
-                                rv.setLoadComplete(true);
-                            } else {
-                                expressInfos.addAll(tempData);
+                            if (null != tempData) {
+                                if (tempData.size() == 0) {
+                                    rv.setLoadComplete(true);
+                                } else {
+                                    expressInfos.addAll(tempData);
+                                }
                             }
                             adapter.notifyDataSetChanged();
                         }
@@ -147,11 +149,10 @@ public class MyExpressActivity extends BaseActivity {
 
         List<String> list = new ArrayList<>();
         list.add("全部");
-        list.add("未发布");
-        list.add("已发布");
-        list.add("已付款");
-        list.add("待评价");
+        list.add("发布");
+        list.add("付款");
         list.add("退款");
+        list.add("完成");
         tcl.setList(list, getWindowManager().getDefaultDisplay());
         tcl.select(0);
         tcl.setListener(new TypeChooseLayout.ItemListener() {
@@ -162,13 +163,16 @@ public class MyExpressActivity extends BaseActivity {
                         orderStatus = "";
                         break;
                     case 1:
-                        orderStatus = "1";
-                        break;
-                    case 2:
                         orderStatus = "2";
                         break;
-                    case 3:
+                    case 2:
                         orderStatus = "5";
+                        break;
+                    case 3:
+                        orderStatus = "8";
+                        break;
+                    case 4:
+                        orderStatus = "6";
                         break;
                     default:
                         break;

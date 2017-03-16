@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Display;
@@ -25,6 +26,7 @@ import com.express56.xq.http.RequestID;
 import com.express56.xq.model.MyExpressInfo;
 import com.express56.xq.model.OfferInfo;
 import com.express56.xq.util.LogUtil;
+import com.express56.xq.util.StringUtils;
 import com.express56.xq.widget.ToastUtil;
 import com.tencent.android.tpush.XGPushClickedResult;
 import com.tencent.android.tpush.XGPushManager;
@@ -211,6 +213,9 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         if (this.isFinishing()) {
             return;
         }
+        if (param[0] instanceof Bitmap) {
+            return;
+        }
         String result = (String) param[0];
         LogUtil.d(TAG, "response str=" + result);
         if (result == null) {
@@ -358,10 +363,14 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             btnPay.setVisibility(View.GONE);
             btnCancel.setVisibility(View.GONE);
             btnReimburse.setVisibility(View.VISIBLE);
-            ivExpressPerson.setBackground(ImageUtil.loadImageFromNetwork(currentInfo.expressUserPhoto));
             tvPersonName.setText(currentInfo.expressUserName);
             tvPersonPhone.setText(currentInfo.expressUserPhone);
             llExpressUser.setVisibility(View.VISIBLE);
+            tvOffer.setVisibility(View.GONE);
+            if (!StringUtils.isEmpty(currentInfo.expressUserPhoto)) {
+                HttpHelper.sendRequest_loadHeadPortraitImage(context,
+                        RequestID.REQ_DOWNLOAD_PICTURE_PERSONAL_VIEW, HttpHelper.HTTP + HttpHelper.IP + "/images/" + currentInfo.expressUserPhoto, ivExpressPerson, null);//下载新图片
+            }
         }
     }
 

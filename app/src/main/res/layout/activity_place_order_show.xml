@@ -691,7 +691,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <View
                     android:layout_width="match_parent"
@@ -746,7 +746,9 @@
                             android:layout_height="wrap_content"
                             android:text="186234234234"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:drawableRight="@mipmap/telephone"
+                            android:gravity="center_vertical"/>
 
                     </LinearLayout>
 

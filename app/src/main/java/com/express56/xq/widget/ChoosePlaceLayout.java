@@ -21,7 +21,6 @@ import com.express56.xq.http.HttpHelper;
 import com.express56.xq.http.IHttpResponse;
 import com.express56.xq.http.RequestID;
 import com.express56.xq.model.AreaInfo;
-import com.express56.xq.util.LogUtil;
 import com.express56.xq.util.SharedPreUtils;
 
 import java.util.ArrayList;
@@ -117,7 +116,9 @@ public class ChoosePlaceLayout extends LinearLayout implements IHttpResponse {
                 item = (ChoosePlaceItemLayout) llContent.getChildAt(llContent.getChildCount() - 1);
                 item.selected();
                 infos.clear();
-                infos.addAll(listAreaInfos);
+                if (null != listAreaInfos) {
+                    infos.addAll(listAreaInfos);
+                }
                 adapter.notifyDataSetChanged();
             }
         });
