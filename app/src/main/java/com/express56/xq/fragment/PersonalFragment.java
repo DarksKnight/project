@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.express56.xq.R;
+import com.express56.xq.activity.InvokeStaticMethod;
 import com.express56.xq.activity.MainActivity;
 import com.express56.xq.activity.RechargeRecordActivity;
 import com.express56.xq.constant.ExpressConstant;
@@ -22,10 +23,14 @@ import com.express56.xq.model.PersonalInfo;
 import com.express56.xq.util.BitmapUtils;
 import com.express56.xq.util.LogUtil;
 import com.express56.xq.util.StringUtils;
+import com.express56.xq.widget.ToastUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import alibaba.fastjson.JSON;
+import alibaba.fastjson.JSONObject;
 
 
 public class PersonalFragment extends MyBaseFragment implements View.OnClickListener{
@@ -137,6 +142,12 @@ public class PersonalFragment extends MyBaseFragment implements View.OnClickList
     @Override
     protected void initData() {
         super.initData();
+
+        HttpHelper.sendRequest_getUserInfo(context, RequestID.REQ_GET_USERINFO, sp.getUserInfo().token, null);
+        setData();
+    }
+
+    private void setData() {
         loadImageView();
         String tempNicknameStr = null;
         if (sp.getUserInfo().userType == ExpressConstant.USER_TYPE_NORMAL) {
@@ -155,8 +166,42 @@ public class PersonalFragment extends MyBaseFragment implements View.OnClickList
         textView_account_credit.setText("￥" + personalInfo.creditAccount);
         textView_credit_limit.setText("￥" + personalInfo.creditLimit);
         textView_account_installment.setText("￥" + personalInfo.installmentAccount);
+    }
 
-
+    public void doHttpResponse(Object... param) {
+        String result = (String) param[0];
+        LogUtil.d(TAG, "response str=" + result);
+        if (result == null) {
+            return;
+        }
+        if (InvokeStaticMethod.isNotJSONstring(getActivity(), result)) {
+            return;
+        }
+        JSONObject object = JSON.parseObject(result);
+        if (object == null) {
+            ToastUtil.showMessage(getActivity(), "返回数据异常", false);
+            return;
+        }
+        switch (Integer.parseInt(param[1].toString())) {
+            case RequestID.REQ_GET_ORDER_LIST:
+                if (object.containsKey("code")) {
+                    int code = object.getIntValue("code");
+                    if (code == 9) {
+                        if (object != null && object.containsKey("result")) {
+                            final String content = object.getString("result");
+                            personalInfo = JSON.parseObject(object.getString("result"), PersonalInfo.class);
+                            if (!StringUtils.isEmpty(personalInfo.userPhoto)) {
+                                String url = HttpHelper.HTTP + HttpHelper.IP.substring(0, HttpHelper.IP.length() - 0) + "/images/" + personalInfo.userPhoto.replace("\\", "/");
+                                personalInfo.userPhoto = url;
+                                setData();
+                            }
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     private void loadImageView() {

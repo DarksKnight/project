@@ -1,9 +1,9 @@
 package com.express56.xq.constant;
 
-import com.express56.xq.http.HttpHelper;
-
 import android.Manifest;
 import android.os.Environment;
+
+import com.express56.xq.http.HttpHelper;
 
 import java.io.File;
 
@@ -360,9 +360,22 @@ public class ExpressConstant {
      */
     public static final int EXPRESS_TYPE_RECEIVE = 2;
 
-    public static final String EXPRESS_ORDER_NOT_RELEASE = "1";
+    public static final String EXPRESS_ORDER_NOT_RELEASE = "1"; //未发布
 
-    public static final String EXPRESS_ORDER_RELEASE = "2";
+    public static final String EXPRESS_ORDER_RELEASE = "2";//已发布
 
-    public static final String EXPRESS_ORDER_PAY_COMPLETE = "5";
+    public static final String EXPRESS_ORDER_PAY_FAIL = "3";//付款失败
+
+    public static final String EXPRESS_ORDER_PAY_ING = "4";//付款确认中
+
+    public static final String EXPRESS_ORDER_PAY_COMPLETE = "5";//已付款
+
+    public static final String EXPRESS_ORDER_COMPLETE = "6"; //待评论
+
+    public static final String EXPRESS_ORDER_COMMENT = "7";//已评论
+
+    public static final String EXPRESS_ORDER_PAY_REIMBURSE = "8";//退款申请中
+
+    public static final String EXPRESS_ORDER_PAY_REIMBURSE_COMPLETE = "9";//退款完成
+
 }

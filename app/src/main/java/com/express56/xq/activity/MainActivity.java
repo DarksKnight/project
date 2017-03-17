@@ -48,7 +48,6 @@ import com.express56.xq.util.VersionUtils;
 import com.express56.xq.widget.CustomDialog;
 import com.express56.xq.widget.CycleViewPager;
 import com.express56.xq.widget.ToastUtil;
-import com.jaeger.library.StatusBarUtil;
 
 import java.io.File;
 import java.io.IOException;

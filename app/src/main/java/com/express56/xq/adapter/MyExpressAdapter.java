@@ -1,11 +1,5 @@
 package com.express56.xq.adapter;
 
-import com.express56.xq.R;
-import com.express56.xq.activity.PlaceOrderEditActivity;
-import com.express56.xq.activity.PlaceOrderShowActivity;
-import com.express56.xq.constant.ExpressConstant;
-import com.express56.xq.model.MyExpressInfo;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.express56.xq.R;
+import com.express56.xq.activity.PlaceOrderEditActivity;
+import com.express56.xq.activity.PlaceOrderShowActivity;
+import com.express56.xq.constant.ExpressConstant;
+import com.express56.xq.model.MyExpressInfo;
 
 import java.util.List;
 
@@ -77,8 +77,20 @@ public class MyExpressAdapter extends BaseAdapter {
             status = "未发布";
         } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_RELEASE)) {
             status = "已发布";
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_FAIL)) {
+            status = "付款失败";
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_ING)) {
+            status = "付款确认中";
         } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_COMPLETE)) {
             status = "已付款";
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_COMPLETE)) {
+            status = "待评论";
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_COMMENT)) {
+            status = "已评论";
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_REIMBURSE)) {
+            status = "退款申请中";
+        } else if (listMyExpress.get(position).orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_REIMBURSE_COMPLETE)) {
+            status = "退款完成";
         }
         viewHolder.tvOrderStatus.setText(status);
         viewHolder.tvOrderDate.setText(listMyExpress.get(position).createDate);
