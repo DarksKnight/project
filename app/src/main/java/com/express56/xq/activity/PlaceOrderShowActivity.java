@@ -359,10 +359,15 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             tvTitleExpressMoney.setVisibility(GONE);
             llExpressMoney.setVisibility(GONE);
         }
-        if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_COMPLETE)) {
+        if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_COMPLETE)
+                || currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_REIMBURSE)) {
             btnPay.setVisibility(View.GONE);
             btnCancel.setVisibility(View.GONE);
-            btnReimburse.setVisibility(View.VISIBLE);
+            if (currentInfo.orderStatus.equals(ExpressConstant.EXPRESS_ORDER_PAY_REIMBURSE)) {
+                btnReimburse.setVisibility(View.GONE);
+            } else {
+                btnReimburse.setVisibility(View.VISIBLE);
+            }
             tvPersonName.setText(currentInfo.expressUserName);
             tvPersonPhone.setText(currentInfo.expressUserPhone);
             llExpressUser.setVisibility(View.VISIBLE);
@@ -381,11 +386,11 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             intent.putExtra("orderId", currentInfo.id);
             startActivityForResult(intent, 1000);
         } else if (v == btnPay) {
-            createDialog();
+            doPay();
         } else if (v == btnCancel) {
             alert();
         } else if (v == btnReimburse) {
-            HttpHelper.sendRequest_reimburse(this, RequestID.REQ_REIMBURSE, currentInfo.id, sp.getUserInfo().token, dialog);
+            alertReimburse();
         } else if (v == llNormalAccount) {
             payType = "4";
             if (canPay) {
@@ -401,7 +406,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             payType = "3";
             pay();
         } else if (v == llExpressPerson) {
-            Intent intent=new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + currentInfo.expressUserPhone));
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + currentInfo.expressUserPhone));
             startActivity(intent);
         }
     }
@@ -468,7 +473,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         dialogPay.getWindow().setAttributes(lp);
     }
 
-    private void createDialog() {
+    private void doPay() {
         HttpHelper.sendRequest_getUserMoney(this, RequestID.REQ_GET_USER_MONEY, sp.getUserInfo().token, dialog);
     }
 
@@ -495,6 +500,25 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
             public void onClick(DialogInterface alertDialog, int which) {
                 HttpHelper.sendRequest_cancelOrder(context, RequestID.REQ_ORDER_CANCEL, currentInfo.id,
                         sp.getUserInfo().token, dialog);
+            }
+        });
+        alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
+    private void alertReimburse() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setMessage("确认申请退款吗？");
+        alertDialog.setTitle("提示");
+        alertDialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface alertDialog, int which) {
+                HttpHelper.sendRequest_reimburse(this, RequestID.REQ_REIMBURSE, currentInfo.id, sp.getUserInfo().token, dialog);
             }
         });
         alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {

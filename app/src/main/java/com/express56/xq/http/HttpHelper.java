@@ -45,8 +45,8 @@ public class HttpHelper {
 
 
     public static final String HTTP = "http://";
-//    public static final String IP = "58.220.216.74:82";
-    public static final String IP = "192.168.1.102:8081";
+    public static final String IP = "58.220.216.74:82";
+//    public static final String IP = "192.168.1.102:8081";
 
     //  http://120.195.137.162:82
     //  http://192.168.31.234:8080

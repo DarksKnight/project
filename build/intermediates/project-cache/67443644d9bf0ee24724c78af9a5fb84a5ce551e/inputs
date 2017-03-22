@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/locSDK_6.13.jar
+FILE_HASH=2cdb37444b41b42e1ce5a8a27e5d3c22e1c57479
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

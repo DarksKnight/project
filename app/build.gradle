@@ -42,7 +42,6 @@ android {
         minSdkVersion 17
         targetSdkVersion 23
         versionName getVersionName()
-        multiDexEnabled true
     }
     //签名
     signingConfigs {

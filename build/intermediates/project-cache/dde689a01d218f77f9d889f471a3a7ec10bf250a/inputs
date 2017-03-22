@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/alipaySingle-20161222.jar
+FILE_HASH=795c38473dc8c277a8a07694592e13d7e7601108
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

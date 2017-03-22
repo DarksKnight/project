@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/okio-1.8.0.jar
+FILE_HASH=05ea7af56cc7c567ed9856d99efb30740e9b17ff
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

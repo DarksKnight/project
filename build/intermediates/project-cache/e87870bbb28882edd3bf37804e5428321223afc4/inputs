@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/eventbus-3.0.0.jar
+FILE_HASH=ddd99896e9569eaababbe81b35d80e1b91c4ad85
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

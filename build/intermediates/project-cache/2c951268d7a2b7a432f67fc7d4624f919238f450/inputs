@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/core-3.0.0.jar
+FILE_HASH=fb52cf43975eb06d1696b341b5b7d8e40e8a59e5
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

@@ -95,7 +95,7 @@ public class MyExpressAdapter extends BaseAdapter {
         viewHolder.tvOrderStatus.setText(status);
         viewHolder.tvOrderDate.setText(listMyExpress.get(position).createDate);
         viewHolder.tvOrderPerson.setText("收货人:" + listMyExpress.get(position).receiver);
-        viewHolder.tvOrderPersonAddress.setText("收货人地址:" + listMyExpress.get(position).receiveAddress + listMyExpress.get(position).receiveDetailAddress);
+        viewHolder.tvOrderPersonAddress.setText(listMyExpress.get(position).receiveAddress + listMyExpress.get(position).receiveDetailAddress);
         viewHolder.tvOrderPersonPhone.setText("收货人联系电话:" + listMyExpress.get(position).receiverPhone);
 
         viewHolder.rlBody.setOnClickListener(new View.OnClickListener() {

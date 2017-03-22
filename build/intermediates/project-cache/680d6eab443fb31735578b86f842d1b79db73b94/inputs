@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/ucrop-1.0.1-sources.jar
+FILE_HASH=f504f0a6966bb45a7de2cef9966f77e9d5e5b524
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

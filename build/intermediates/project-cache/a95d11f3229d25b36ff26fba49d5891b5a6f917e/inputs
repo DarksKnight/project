@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/junit-4.12.jar
+FILE_HASH=2973d150c0dc1fefe998f834810d68f278ea58ec
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

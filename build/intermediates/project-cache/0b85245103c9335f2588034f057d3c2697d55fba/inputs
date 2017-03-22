@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/okhttp-3.2.0.jar
+FILE_HASH=f7873a2ebde246a45c2a8d6f3247108b4c88a879
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

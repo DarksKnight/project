@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/universal-image-loader-1.9.5.jar
+FILE_HASH=442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

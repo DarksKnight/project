@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/Xg_sdk_v2.47_20161026_0936.jar
+FILE_HASH=bf805014c23dd47a70909310a7fc3acdfab4ac1b
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true

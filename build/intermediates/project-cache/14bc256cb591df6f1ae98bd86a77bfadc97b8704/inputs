@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=/Users/sdk-app-shy/Documents/other/project/app/libs/jg_filter_sdk_1.1.jar
+FILE_HASH=ebfc3cde0309ff27e9568757784eefefc71407a2
+DX_VERSION=1.12
+JUMBO_MODE=false
+OPTIMIZE=true
