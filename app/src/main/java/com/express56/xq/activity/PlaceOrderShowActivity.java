@@ -518,7 +518,7 @@ public class PlaceOrderShowActivity extends BaseActivity implements View.OnClick
         alertDialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface alertDialog, int which) {
-                HttpHelper.sendRequest_reimburse(this, RequestID.REQ_REIMBURSE, currentInfo.id, sp.getUserInfo().token, dialog);
+                HttpHelper.sendRequest_reimburse(PlaceOrderShowActivity.this, RequestID.REQ_REIMBURSE, currentInfo.id, sp.getUserInfo().token, dialog);
             }
         });
         alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
